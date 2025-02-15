@@ -13,7 +13,9 @@ add_subdirectory(modules/gui)
 add_library(RockCV STATIC rockcv.cpp)
 
 # Добавляем заголовочные файлы (PUBLIC, чтобы были видны пользователям)
-target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/include)
+# target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/include)
+target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/modules/gui/include)
+target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/modules/img/include)
 
 # Линкуем модули img и gui в RockCV
 target_link_libraries(RockCV PRIVATE img gui)
@@ -23,4 +25,5 @@ target_compile_options(RockCV PRIVATE -march=armv8-a -O2)
 
 # Устанавливаем библиотеку и заголовки
 install(TARGETS RockCV DESTINATION lib)
-install(DIRECTORY include/ DESTINATION include)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/modules/gui/include DESTINATION ./)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/modules/img/include DESTINATION ./)

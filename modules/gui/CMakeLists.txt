@@ -1,11 +1,7 @@
-add_library(gui SHARED
-    src/gui.cpp
-)
+add_library(gui STATIC src/gui.cpp)
+target_include_directories(gui PUBLIC ${CMAKE_SOURCE_DIR}/modules/gui/include)
+install(TARGETS gui DESTINATION lib)
 
-target_include_directories(gui
-    PUBLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
 
 # find_package(OpenCL REQUIRED)
 # target_link_libraries(gui
