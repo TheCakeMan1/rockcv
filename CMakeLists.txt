@@ -9,13 +9,30 @@ set(CMAKE_BUILD_TYPE Debug)
 add_subdirectory(modules/img)
 add_subdirectory(modules/gui)
 
-# Определяем библиотеку RockCV
-add_library(RockCV STATIC rockcv.cpp)
+# Найти OpenCV
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
 
-# Добавляем заголовочные файлы (PUBLIC, чтобы были видны пользователям)
-# target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/include)
+# Пути к Rockchip RGA
+set(RGA_INCLUDE_DIR "/usr/include/rga") # Проверь, где у тебя лежат заголовочные файлы
+set(RGA_LIBS "/usr/lib/librga.so")      # Проверь путь к библиотеке RGA
+
+include_directories(${RGA_INCLUDE_DIR})
+
+# Определяем библиотеку RockCV
+add_library(RockCV SHARED rockcv.cpp)
+
+set_target_properties(RockCV PROPERTIES
+    CMAKE_INSTALL_RPATH "\$ORIGIN/../lib"
+    CMAKE_BUILD_WITH_INSTALL_RPATH TRUE
+)
+
+# Подключаем заголовочные файлы
 target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/modules/gui/include)
 target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/modules/img/include)
+
+# Определяем макросы для использования OpenCV и RGA
+target_compile_definitions(RockCV PUBLIC WITH_OPENCV=1 WITH_RGA=1)
 
 # Линкуем модули img и gui в RockCV
 target_link_libraries(RockCV PRIVATE img gui)
@@ -23,7 +40,10 @@ target_link_libraries(RockCV PRIVATE img gui)
 # Опции компиляции (оптимизация для ARM NEON, Rockchip)
 target_compile_options(RockCV PRIVATE -march=armv8-a -O2)
 
+# Линкуем OpenCV и RGA
+target_link_libraries(RockCV PRIVATE ${OpenCV_LIBS} ${RGA_LIBS})
+
 # Устанавливаем библиотеку и заголовки
 install(TARGETS RockCV DESTINATION lib)
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/modules/gui/include DESTINATION ./)
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/modules/img/include DESTINATION ./)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/modules/gui/include DESTINATION ./)

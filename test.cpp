@@ -1,6 +1,248 @@
-#include "gui.h"
-
-int main(){
-    // he();
-    int8_t a = create_win(640, 640);
+#include <iostream>
+extern "C"{
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
+#include <libswscale/swscale.h>
 }
+#include "transform.h"
+#include "img_op.h"
+#include <opencv2/opencv.hpp>  // <-- Главное для отображения
+
+int main() {
+    // Открываем файл
+    // const char* input_filename = "321.mp4";
+    const char* input_filename = "rtsp://192.168.6.53:554/user=admin_password=1UfX6Hen_channel=1_stream=0&protocol=unicast.sdp?real_stream";
+    const char* output_filename = "output.mp4";
+
+    // Открываем входной файл
+    // const char* input_filename = "input.mp4";
+    // const char* output_filename = "output.mp4";
+
+    AVFormatContext* input_format_ctx = nullptr;
+    AVFormatContext* output_format_ctx = nullptr;
+
+    if (avformat_open_input(&input_format_ctx, input_filename, nullptr, nullptr) < 0) {
+        std::cerr << "Не удалось открыть входной файл." << std::endl;
+        return -1;
+    }
+
+    if (avformat_find_stream_info(input_format_ctx, nullptr) < 0) {
+        std::cerr << "Не удалось найти информацию о потоках." << std::endl;
+        return -1;
+    }
+
+    // Находим видеопоток в источнике
+    int video_stream_index = -1;
+    for (int i = 0; i < input_format_ctx->nb_streams; i++) {
+        if (input_format_ctx->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO) {
+            video_stream_index = i;
+            break;
+        }
+    }
+
+    if (video_stream_index == -1) {
+        std::cerr << "Входной файл не содержит видеопоток." << std::endl;
+        return -1;
+    }
+
+    AVStream* input_stream = input_format_ctx->streams[video_stream_index];
+    const AVCodec* input_codec = avcodec_find_decoder_by_name("h264_rkmpp");
+    if (!input_codec) {
+        std::cerr << "Не удалось найти декодер h264_rkmpp." << std::endl;
+        return -1;
+    }
+
+    AVCodecContext* input_codec_ctx = avcodec_alloc_context3(input_codec);
+    if (avcodec_parameters_to_context(input_codec_ctx, input_stream->codecpar) < 0) {
+        std::cerr << "Не удалось сконфигурировать контекст декодера." << std::endl;
+        return -1;
+    }
+
+    if (avcodec_open2(input_codec_ctx, input_codec, nullptr) < 0) {
+        std::cerr << "Не удалось открыть декодер h264_rkmpp." << std::endl;
+        return -1;
+    }
+
+    // Открываем выходной файл
+    if (avformat_alloc_output_context2(&output_format_ctx, nullptr, nullptr, output_filename) < 0) {
+        std::cerr << "Не удалось создать выходной формат." << std::endl;
+        return -1;
+    }
+
+    const AVCodec* output_codec = avcodec_find_encoder_by_name("hevc_rkmpp");
+    if (!output_codec) {
+        std::cerr << "Не удалось найти кодер hevc_rkmpp." << std::endl;
+        return -1;
+    }
+
+    AVStream* output_stream = avformat_new_stream(output_format_ctx, nullptr);
+    AVCodecContext* output_codec_ctx = avcodec_alloc_context3(output_codec);
+    if (!output_stream || !output_codec_ctx) {
+        std::cerr << "Не удалось создать выходной видеопоток." << std::endl;
+        return -1;
+    }
+
+    output_codec_ctx->height = input_stream->codecpar->height;
+    output_codec_ctx->width = input_stream->codecpar->width;
+    output_codec_ctx->pix_fmt = AV_PIX_FMT_NV12;
+    output_codec_ctx->time_base = input_stream->time_base; // Сохраняем time_base
+    output_codec_ctx->framerate = input_stream->r_frame_rate; // Используем ту же частоту кадров, что и у входного потока
+
+    if (avcodec_open2(output_codec_ctx, output_codec, nullptr) < 0) {
+        std::cerr << "Не удалось открыть кодер hevc_rkmpp." << std::endl;
+        return -1;
+    }
+
+    if (avcodec_parameters_from_context(output_stream->codecpar, output_codec_ctx) < 0) {
+        std::cerr << "Не удалось сконфигурировать параметры для выходного потока." << std::endl;
+        return -1;
+    }
+
+    // Открытие выходного файла
+    if (!(output_format_ctx->oformat->flags & AVFMT_NOFILE)) {
+        if (avio_open(&output_format_ctx->pb, output_filename, AVIO_FLAG_WRITE) < 0) {
+            std::cerr << "Не удалось открыть выходной файл." << std::endl;
+            return -1;
+        }
+    }
+
+    // Запись заголовков
+    if (avformat_write_header(output_format_ctx, nullptr) < 0) {
+        std::cerr << "Не удалось записать заголовки." << std::endl;
+        return -1;
+    }
+
+    AVPacket packet;
+    // AVFrame* frame = av_frame_alloc();
+    // if (!frame) {
+    //     std::cerr << "Не удалось выделить память для фрейма." << std::endl;
+    //     return -1;
+    // }
+// int i = 0;
+    SwsContext* sws_ctx = sws_getContext(
+        input_codec_ctx->width,                // Исходная ширина
+        input_codec_ctx->height,               // Исходная высота
+        input_codec_ctx->pix_fmt,              // Исходный формат (то, что возвращает декодер)
+        input_codec_ctx->width,                // Желаемая ширина
+        input_codec_ctx->height,               // Желаемая высота
+        AV_PIX_FMT_BGR24,                      // Формат, понятный OpenCV (BGR24)
+        SWS_BICUBIC,                           // Алгоритм масштабирования
+        nullptr, nullptr, nullptr
+    );
+
+    // Подготавливаем фрейм для BGR
+    AVFrame* bgrFrame = av_frame_alloc();
+    bgrFrame->format = AV_PIX_FMT_BGR24;
+    bgrFrame->width  = input_codec_ctx->width;
+    bgrFrame->height = input_codec_ctx->height;
+
+    // Выделяем память под bgrFrame
+    if (av_frame_get_buffer(bgrFrame, 32) < 0) {
+        std::cerr << "Не удалось выделить буфер для bgrFrame\n";
+        return -1;
+    }
+
+    // ------------------------------------
+
+    // Основной цикл чтения пакетов
+    // AVPacket packet;
+    AVFrame* frame = av_frame_alloc();
+    // AVFrame* output = av_frame_alloc();
+    frame_t test;
+    frame_t output;
+    // frame_t test;
+    // frame_t output;
+    // AVFrame* frame_out = av_frame_alloc();
+
+    while (av_read_frame(input_format_ctx, &packet) >= 0) {
+        if (packet.stream_index == video_stream_index) {
+            if (avcodec_send_packet(input_codec_ctx, &packet) < 0) {
+                std::cerr << "Ошибка отправки пакета в декодер.\n";
+                break;
+            }
+
+            while (avcodec_receive_frame(input_codec_ctx, frame) >= 0) {
+                // -------------------------------------------------------------
+                // 1) Отображение кадра в OpenCV (добавляем sws_scale -> cv::imshow)
+                //    Конвертируем frame -> bgrFrame
+                    // SwsContext* sws_ctx = sws_getContext(
+                    //     input_codec_ctx->width,                // Исходная ширина
+                    //     input_codec_ctx->height,               // Исходная высота
+                    //     input_codec_ctx->pix_fmt,              // Исходный формат (то, что возвращает декодер)
+                    //     input_codec_ctx->width,                // Желаемая ширина
+                    //     input_codec_ctx->height,               // Желаемая высота
+                    //     AV_PIX_FMT_BGR24,                      // Формат, понятный OpenCV (BGR24)
+                    //     SWS_BICUBIC,                           // Алгоритм масштабирования
+                    //     nullptr, nullptr, nullptr
+                    // );
+
+
+                // test.data = frame;
+                // test.codecCtx = input_codec_ctx;
+
+                // --- Масштабируем и конвертируем в BGR ---
+                // --- Заворачиваем `output.data->data[0]` в OpenCV `cv::Mat` ---
+                
+                // scaleFrame(frame, output, input_codec_ctx, 640, 640);
+                test.avframe = frame;
+                test.avcodeccontext = input_codec_ctx;
+
+                scaleFrame(&test, &output, 640, 640);
+                sws_scale(
+                    sws_ctx,
+                    frame->data,
+                    frame->linesize,
+                    0,
+                    frame->height,
+                    bgrFrame->data,
+                    bgrFrame->linesize
+                );
+
+                // Заворачиваем bgrFrame->data[0] в cv::Mat
+                cv::Mat mat(
+                    output.avframe->height,
+                    output.avframe->width,
+                    CV_8UC3,               // 8 бит на канал, 3 канала (BGR)
+                    output.avframe->data[0],
+                    output.avframe->linesize[0] // шаг (pitch) в байтах
+                );
+
+                // Показываем
+
+                static cv::Mat img;
+                // scaleFrame(mat, img, 640, 640);
+                // cv::resize(mat, img, cv::Size(640,640));
+                cv::imshow("Video", mat);
+                cv::waitKey(1);  // Небольшая задержка, чтобы окно обновлялось
+
+                // -------------------------------------------------------------
+                // 2) Перекодирование (если вам всё ещё нужно):
+                //    Обновляем временные метки, отправляем во второй кодек
+                frame->pts     = av_rescale_q(frame->pts,     input_stream->time_base, output_stream->time_base);
+                frame->pkt_dts = av_rescale_q(frame->pkt_dts, input_stream->time_base, output_stream->time_base);
+
+                if (avcodec_send_frame(output_codec_ctx, frame) < 0) {
+                    std::cerr << "Ошибка отправки фрейма в кодер.\n";
+                    break;
+                }
+
+                while (avcodec_receive_packet(output_codec_ctx, &packet) >= 0) {
+                    packet.stream_index = 0;
+                    if (av_write_frame(output_format_ctx, &packet) < 0) {
+                        std::cerr << "Ошибка записи пакета.\n";
+                        break;
+                    }
+                    av_packet_unref(&packet);
+                }
+            }
+        }
+        av_packet_unref(&packet);
+    }
+
+    // Завершение, освобождение ресурсов, av_write_trailer и т.д.
+    // ...
+    av_frame_free(&bgrFrame);
+    sws_freeContext(sws_ctx);
+    return 0;
+}
+

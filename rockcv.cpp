@@ -1,5 +1,5 @@
 #include "gui.h"
 
-int test(){
-    create_win(504,342);
-}
+// int test(){
+//     create_win(504,342);
+// }
