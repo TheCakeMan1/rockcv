@@ -184,19 +184,34 @@ int main() {
                 // --- Заворачиваем `output.data->data[0]` в OpenCV `cv::Mat` ---
                 
                 // scaleFrame(frame, output, input_codec_ctx, 640, 640);
-                test.avframe = frame;
-                test.avcodeccontext = input_codec_ctx;
+                // test.avframe = frame;
+                // test.avcodeccontext = input_codec_ctx;
 
-                scaleFrame(&test, &output, 640, 640);
-                sws_scale(
-                    sws_ctx,
-                    frame->data,
-                    frame->linesize,
-                    0,
-                    frame->height,
-                    bgrFrame->data,
-                    bgrFrame->linesize
-                );
+                uniti_frame(test, frame, input_codec_ctx);
+                // uniti_frame(output, frame, input_codec_ctx);
+                // convertAVFrameColor(test.avframe, test.avframe, AV_PIX_FMT_RGB24);
+                //                 AVFrame* convertedFrame = convertToRGB24(test.avframe, test.avcodeccontext);
+                // if (!convertedFrame) {
+                //     std::cerr << "Ошибка: не удалось конвертировать кадр в RGB24!" << std::endl;
+                //     return 1;
+                // }
+
+                // // Теперь вызываем RGA
+                // test.avframe = convertedFrame;
+                resize(&test, &output, ALIGN_UP(801,16), ALIGN_UP(801,16), AV_PIX_FMT_BGR24);
+
+                printf("%d\n", output.avframe->height);
+                // printf("Out: %d %d %d %d\n", output.avframe->width, output.avframe->height, output.avframe->linesize[0], test.avframe->linesize[0]);
+
+                // sws_scale(
+                //     sws_ctx,
+                //     frame->data,
+                //     frame->linesize,
+                //     0,
+                //     frame->height,
+                //     bgrFrame->data,
+                //     bgrFrame->linesize
+                // );
 
                 // Заворачиваем bgrFrame->data[0] в cv::Mat
                 cv::Mat mat(
@@ -210,8 +225,10 @@ int main() {
                 // Показываем
 
                 static cv::Mat img;
+                // mirror(mat, img, 3);
                 // scaleFrame(mat, img, 640, 640);
                 // cv::resize(mat, img, cv::Size(640,640));
+                cv::cvtColor(mat, mat, cv::COLOR_RGB2BGR);
                 cv::imshow("Video", mat);
                 cv::waitKey(1);  // Небольшая задержка, чтобы окно обновлялось
 
