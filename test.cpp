@@ -80,23 +80,24 @@ int main() {
     timer.start();
     int i = 0;
     test.avframe = con.frame;
+
     while (read_packet(&con)) {
-    if (read_frame(&con)) {
-        resize(&test, &output, ALIGN_UP(400, 16), ALIGN_UP(400, 16), AV_PIX_FMT_RGB24);
+        while (read_frame(&con)) {
+            resize(&test, &temp, 400, 400, AV_PIX_FMT_RGB24, 1);
+            rotate(&temp, &output, 90);
+            cv::Mat mat(
+                output.avframe->height,
+                output.avframe->width,
+                CV_8UC3,  // 8 бит на канал, 3 канала (BGR)
+                output.avframe->data[0],
+                output.avframe->linesize[0]  // Шаг (pitch) в байтах
+            );
 
-        cv::Mat mat(
-            output.avframe->height,
-            output.avframe->width,
-            CV_8UC3,  // 8 бит на канал, 3 канала (BGR)
-            output.avframe->data[0],
-            output.avframe->linesize[0]  // Шаг (pitch) в байтах
-        );
-
-        // Отображение кадра
-        cv::imshow("Video", mat);
-        cv::waitKey(1);
+            // Отображение кадра
+            cv::imshow("Video", mat);
+            cv::waitKey(1);
+        }
     }
-}
 
     return 0;
 }
@@ -261,9 +262,9 @@ int main() {
 //                 std::cerr << "Ошибка отправки пакета в декодер.\n";
 //                 break;
 //             }
-//             if (timer.elapsed()> 300){
-//                 return 0;
-//             }
+//             // if (timer.elapsed()> 300){
+//             //     return 0;
+//             // }
 
 //             while (avcodec_receive_frame(input_codec_ctx, frame) >= 0) {
 //                 // -------------------------------------------------------------

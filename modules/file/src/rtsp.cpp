@@ -50,27 +50,34 @@ int8_t open_rtsp(const char* input, context_rtsp_t* context){
 
 bool read_packet(context_rtsp_t* context) {
     if (av_read_frame(context->input_format_ctx, &context->packet) >= 0) {
+        if (context->packet.stream_index == context->video_stream_index) {
+            int ret = avcodec_send_packet(context->input_codec_ctx, &context->packet);
+            if (ret < 0) {
+                if (ret == AVERROR(EAGAIN)) {
+                    std::cerr << "Буфер декодера заполнен, необходимо сначала получить кадры.\n";
+                } else {
+                    std::cerr << "Ошибка отправки пакета в декодер: " << ret << std::endl;
+                }
+                return false;
+            }
+        }
         return true;
     }
     return false;
 }
 
 bool read_frame(context_rtsp_t* context) {
-    // Проверка, что это видео поток
-    if (context->packet.stream_index == context->video_stream_index) {
-        // Отправка пакета в декодер
-        if (avcodec_send_packet(context->input_codec_ctx, &context->packet) < 0) {
-            std::cerr << "Ошибка отправки пакета в декодер.\n";
-            av_packet_unref(&context->packet);
-            return false;
-        }
-
-        // Получение и обработка одного кадра
-        if (avcodec_receive_frame(context->input_codec_ctx, context->frame) >= 0) {
-            return true;
-        }
-
-        av_packet_unref(&context->packet);
+    int ret = avcodec_receive_frame(context->input_codec_ctx, context->frame);
+    
+    if (ret >= 0) {
+        return true;  // Успешно получили один кадр
     }
+    
+    if (ret == AVERROR(EAGAIN)) {
+        av_packet_unref(&context->packet);
+        return false;  // Кадров больше нет, нужен новый пакет
+    }
+
+    std::cerr << "Ошибка получения кадра: " << ret << std::endl;
     return false;
 }

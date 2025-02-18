@@ -25,6 +25,7 @@ int8_t resize(const AVFrame* input, AVFrame* output, int new_width, int new_heig
 int8_t ffresize(const AVFrame* input, AVFrame* output, AVCodecContext* codecCtx, int new_width, int new_height);
 int8_t ffresize(const frame_t* input, frame_t* output, int new_width, int new_height);
 
+
 /**
  * @brief Отзеркаливает изображение относительно параметра который вы передадите в type.
  *
@@ -36,17 +37,18 @@ int8_t ffresize(const frame_t* input, frame_t* output, int new_width, int new_he
  */
 int8_t rotate(frame_t *input, frame_t *output, int angle, AVPixelFormat format = AV_PIX_FMT_RGB24);
 
+// #define LEANEAE IM_HAL_TRANSFORM_NEAREST
 /**
- * @brief Отзеркаливает изображение относительно параметра который вы передадите в type.
+ * @brief Уменьшает размер кадра с сохранением сожержмимого.
  *
  * @param frame_t *input Входное изображение
  * @param frame_t *output Выходное изображение
  * @param new_width новая ширина
  * @param new_height новая длина
  * @param AVPixelFormat format формат на выходе
- *
+ * @param mode С сохранением пропорций(1) или нет(2)
  */
-int8_t resize(frame_t *input, frame_t *output, int new_width, int new_height, AVPixelFormat format = AV_PIX_FMT_RGB24);
+int8_t resize(frame_t *input, frame_t *output, int new_width, int new_height, AVPixelFormat format, bool mode = 0);
 
 /**
  * @brief Отзеркаливает изображение относительно параметра который вы передадите в type.
@@ -61,10 +63,20 @@ int8_t resize(frame_t *input, frame_t *output, int new_width, int new_height, AV
  * 
  *    * 3 - по горизонтали и по вертикали
  * @param AVPixelFormat format формат на выходе
- *
  */
 int8_t flip(frame_t *input, frame_t *output, int type, AVPixelFormat format = AV_PIX_FMT_RGB24);
 
+/**
+ * @brief Вырезает область кадра
+ *
+ * @param frame_t *input Входное изображение
+ * @param frame_t *output Выходное изображение
+ * @param x_start левый верхний угол
+ * @param y_start левый верхний угол
+ * @param x_stop правый нижний угол
+ * @param y_stot правый нижний угол
+ * @param AVPixelFormat format формат на выходе
+ */
 int8_t crop(frame_t *input, frame_t *output, int x_start, int y_start, int x_stop, int y_stop, AVPixelFormat format = AV_PIX_FMT_RGB24);
 
 
