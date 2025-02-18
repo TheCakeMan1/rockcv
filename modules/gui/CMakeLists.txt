@@ -16,7 +16,7 @@ target_link_libraries(gui PUBLIC ${AVUTIL_LIBRARIES} ${AVCODEC_LIBRARIES} ${AVFO
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 set(QT_VERSION Qt5)
 
-include_directories(${PROJECT_SOURCE_DIR}/modules/img/include)
+include_directories(${PROJECT_SOURCE_DIR}/modules/frame/include)
 include_directories(${Qt5Widgets_INCLUDE_DIRS})
 target_link_libraries(gui PUBLIC Qt5::Widgets)
 

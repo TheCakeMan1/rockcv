@@ -6,8 +6,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_BUILD_TYPE Debug)
 
 # Включаем модули
-add_subdirectory(modules/img)
+add_subdirectory(modules/frame)
 add_subdirectory(modules/gui)
+add_subdirectory(modules/log)
+add_subdirectory(modules/file)
 
 # Найти OpenCV
 find_package(OpenCV REQUIRED)
@@ -29,7 +31,9 @@ set_target_properties(RockCV PROPERTIES
 
 # Подключаем заголовочные файлы
 target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/modules/gui/include)
-target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/modules/img/include)
+target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/modules/frame/include)
+target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/modules/log/include)
+target_include_directories(RockCV PUBLIC ${CMAKE_SOURCE_DIR}/modules/file/include)
 
 # Определяем макросы для использования OpenCV и RGA
 target_compile_definitions(RockCV PUBLIC WITH_OPENCV=1 WITH_RGA=1)
@@ -38,11 +42,13 @@ target_compile_definitions(RockCV PUBLIC WITH_OPENCV=1 WITH_RGA=1)
 target_compile_options(RockCV PRIVATE -march=armv8-a -O2)
 
 # Линкуем OpenCV и RGA
-target_link_libraries(RockCV PRIVATE img gui)
+target_link_libraries(RockCV PRIVATE frame gui log)
 target_link_libraries(RockCV PRIVATE ${OpenCV_LIBS} ${RGA_LIBS} ${DRM_LIBS})
 
 
 # Устанавливаем библиотеку и заголовки
 install(TARGETS RockCV DESTINATION lib)
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/modules/img/include DESTINATION ./)
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/modules/gui/include DESTINATION ./)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/modules/frame/include/ DESTINATION include/rockcv)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/modules/gui/include/ DESTINATION include/rockcv)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/modules/log/include/ DESTINATION include/rockcv)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/modules/file/include/ DESTINATION include/rockcv)

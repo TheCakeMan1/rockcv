@@ -1,0 +1,31 @@
+=================================================================
+==178477==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 170185 byte(s) in 536 object(s) allocated from:
+    #0 0x7f8817af34 in __interceptor_posix_memalign ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:226
+    #1 0x7f83fd919c in av_malloc (/home/orangepi/opencv_rockchip/lib/libavutil.so.58+0x4919c)
+    #2 0x7f835f73f8 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #3 0x7f835f74c8 in __libc_start_main_impl ../csu/libc-start.c:392
+    #4 0x5594a749ec in _start (/home/orangepi/rockcv/test_rockcv+0x49ec)
+
+Indirect leak of 761801961 byte(s) in 1141 object(s) allocated from:
+    #0 0x7f8817af34 in __interceptor_posix_memalign ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:226
+    #1 0x7f83fd919c in av_malloc (/home/orangepi/opencv_rockchip/lib/libavutil.so.58+0x4919c)
+    #2 0x7f835f73f8 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #3 0x7f835f74c8 in __libc_start_main_impl ../csu/libc-start.c:392
+    #4 0x5594a749ec in _start (/home/orangepi/rockcv/test_rockcv+0x49ec)
+
+Indirect leak of 65536 byte(s) in 1 object(s) allocated from:
+    #0 0x7f8817a69c in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7f8517bd90  (/home/orangepi/opencv_rockchip/lib/libavformat.so.60+0x10bd90)
+    #2 0x7f835f73f8 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #3 0x7f835f74c8 in __libc_start_main_impl ../csu/libc-start.c:392
+    #4 0x5594a749ec in _start (/home/orangepi/rockcv/test_rockcv+0x49ec)
+
+Indirect leak of 14961 byte(s) in 1 object(s) allocated from:
+    #0 0x7f8817a69c in __interceptor_realloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:164
+    #1 0x7f83fd9aa8 in av_fast_realloc (/home/orangepi/opencv_rockchip/lib/libavutil.so.58+0x49aa8)
+    #2 0x7f835f73f8 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #3 0x7f835f74c8 in __libc_start_main_impl ../csu/libc-start.c:392
+    #4 0x5594a749ec in _start (/home/orangepi/rockcv/test_rockcv+0x49ec)
+

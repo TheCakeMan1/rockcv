@@ -1,0 +1,10 @@
+ RgaBlit(1465) RGA_BLIT fail: Invalid argument
+ RgaBlit(1466) RGA_BLIT fail: Invalid argument
+handl-fd-vir-phy-hnd-format[0, -1, 0x7faa3c3800, (nil), 0, 3584]
+rect[0, 0, 2880, 1616, 2880, 2880, 3584, 0]
+f-blend-size-rotation-col-log-mmu[3584, 0, 0, 0, 0, 0, 1]
+handl-fd-vir-phy-hnd-format[0, -1, 0x7fca401800, (nil), 0, 1792]
+rect[0, 0, 400, 400, 400, 1200, 1792, 0]
+f-blend-size-rotation-col-log-mmu[1792, 0, 0, 0, 0, 0, 1]
+This output the user parameters when rga call blit fail
+Ошибка: RGA масштабирование не удалось! Код ошибки: -22
