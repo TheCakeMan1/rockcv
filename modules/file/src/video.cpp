@@ -1,49 +1,49 @@
-#include "rtsp.h"
+#include "video.h"
 
-int8_t open_rtsp(const char* input, context_rtsp_t* context){
-    if (avformat_open_input(&context->input_format_ctx, input, nullptr, nullptr) < 0) {
+int8_t open_video(const char* input, context_video_t& context){
+    if (avformat_open_input(&context.input_format_ctx, input, nullptr, nullptr) < 0) {
         std::cerr << "Не удалось открыть входной файл." << std::endl;
         return -1;
     }
-    if (avformat_find_stream_info(context->input_format_ctx, nullptr) < 0) {
+    if (avformat_find_stream_info(context.input_format_ctx, nullptr) < 0) {
         std::cerr << "Не удалось найти информацию о потоках." << std::endl;
         return -1;
     }
-    context->video_stream_index = -1;
-    for (int i = 0; i < context->input_format_ctx->nb_streams; i++) {
-        if (context->input_format_ctx->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO) {
-            context->video_stream_index = i;
+    context.video_stream_index = -1;
+    context.max_stream_v = context.input_format_ctx->nb_streams;
+    for (int i = 0; i < context.input_format_ctx->nb_streams; i++) {
+        if (context.input_format_ctx->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO) {
+            context.video_stream_index = i;
             break;
         }
     }
-    if (context->video_stream_index == -1) {
+    if (context.video_stream_index == -1) {
         std::cerr << "Входной файл не содержит видеопоток." << std::endl;
         return -1;
     }
-
-    context->input_stream = context->input_format_ctx->streams[context->video_stream_index];
-    context->input_codec = get_codec_by_id_rkmpp(context->input_stream->codecpar->codec_id);
-
-    if (!context->input_codec) {
-        std::cerr << "Не удалось найти декодер " << context->input_codec->id << " " << context->input_codec->name << "." << std::endl;
+    
+    context.input_stream = context.input_format_ctx->streams[context.video_stream_index];
+    context.input_codec = get_codec_by_id_rkmpp(context.input_stream->codecpar->codec_id);
+    
+    if (!context.input_codec) {
+        std::cerr << "Не удалось найти декодер h264_rkmpp." << std::endl;
         return -1;
     }
 
-    context->input_codec_ctx = avcodec_alloc_context3(context->input_codec);
-    if (avcodec_parameters_to_context(context->input_codec_ctx, context->input_stream->codecpar) < 0) {
+    context.input_codec_ctx = avcodec_alloc_context3(context.input_codec);
+    if (avcodec_parameters_to_context(context.input_codec_ctx, context.input_stream->codecpar) < 0) {
         std::cerr << "Не удалось сконфигурировать контекст декодера." << std::endl;
         return -1;
     }
 
-    if (avcodec_open2(context->input_codec_ctx, context->input_codec, nullptr) < 0) {
-        std::cerr << "Не удалось открыть декодер " << context->input_codec->name << "." << std::endl;
+    if (avcodec_open2(context.input_codec_ctx, context.input_codec, nullptr) < 0) {
+        std::cerr << "Не удалось открыть декодер h264_rkmpp." << std::endl;
         return -1;
     }
-
     return 0;
 }
 
-void print_stream_list(context_rtsp_t& context){
+void print_stream_list(context_video_t& context){
     printf("Stream list:\n");
     for (int i = 0; i < context.input_format_ctx->nb_streams; i++) {
         AVStream *stream = context.input_format_ctx->streams[i];
@@ -82,7 +82,7 @@ void print_stream_list(context_rtsp_t& context){
     }
 }
 
-bool read_f(context_rtsp_t& context){
+bool read_f(context_video_t& context){
     if(avcodec_receive_frame(context.input_codec_ctx, context.frame) >= 0){
         return true;
     } else {
@@ -98,11 +98,12 @@ bool read_f(context_rtsp_t& context){
         }
     }
     if(avcodec_receive_frame(context.input_codec_ctx, context.frame) >= 0){
-        if (context.frame->buf[0]) {
-            av_buffer_unref(&context.frame->buf[0]);
-        }
         return true;
     } else {
         return false;
     }
 }
+
+// void delay(context_video_t& context){
+//     std::this_thread::sleep_for(std::chrono::milliseconds((int)(600 / av_q2d(context.input_stream->codecpar->framerate))));
+// }

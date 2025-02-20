@@ -12,6 +12,7 @@ extern "C"{
 #include <chrono>
 #include <thread>
 #include "rockcv/rtsp.h"
+#include "rockcv/video.h"
 
 class Timer {
 public:
@@ -54,6 +55,11 @@ private:
 
 int main() {
     av_log_set_level(AV_LOG_QUIET);
+    // const AVCodec *codec = NULL;
+    // void *i = 0;
+    // while ((codec = av_codec_iterate(&i))) {
+    //     printf("Codec: %s, ID: %d\n", codec->name, codec->id);
+    // }
     // Открываем файл
     // const char* input_filename = "321.mp4";
     const char* input_filename = "rtsp://192.168.6.53:554/user=admin_password=1UfX6Hen_channel=1_stream=0&protocol=unicast.sdp?real_stream";
@@ -64,6 +70,7 @@ int main() {
     // const char* output_filename = "output.mp4";
 
     context_rtsp_t con;
+    // context_video_t con;
 
     open_rtsp(input_filename, &con);
 
@@ -71,7 +78,9 @@ int main() {
 
     con.frame = av_frame_alloc();
 
-    AVFrame* frame = av_frame_alloc();
+    print_stream_list(con);
+
+    // AVFrame* frame = av_frame_alloc();
     frame_t test;
     frame_t temp;
     frame_t output;
@@ -79,12 +88,18 @@ int main() {
     Timer timer;
     timer.start();
     int i = 0;
+    double last_timestamp = 0;
     test.avframe = con.frame;
-
-    while (read_packet(&con)) {
-        while (read_frame(&con)) {
-            resize(&test, &temp, 400, 400, AV_PIX_FMT_RGB24, 1);
-            rotate(&temp, &output, 90);
+        double timestamp;
+    while (1) {
+        if(timer.elapsed() > 1200){
+            break;
+        }
+        if (read_f(con)) {
+            // printf("%d\n", sizeof(con));
+            // rockf::convert(&test, &temp, AV_PIX_FMT_RGB24);
+            rockf::resize(&test, &output, 640, 640, AV_PIX_FMT_RGB24, 1);
+            // rotate(&temp, &output, 90);
             cv::Mat mat(
                 output.avframe->height,
                 output.avframe->width,
@@ -96,14 +111,39 @@ int main() {
             // Отображение кадра
             cv::imshow("Video", mat);
             cv::waitKey(1);
+            // cv::waitKey(600 / av_q2d(con.input_stream->codecpar->framerate));
+            // delay(con);
         }
     }
+
 
     return 0;
 }
 
 
 
+    // while (read_packet(&con)) {
+    //     if(timer.elapsed() > 60){
+    //         break;
+    //     }
+    //     while (read_frame(&con)) {
+    //         // printf("%d\n", sizeof(con));
+    //         // rockf::convert(&test, &temp, AV_PIX_FMT_RGB24);
+    //         rockf::resize(&test, &output, 640, 640, AV_PIX_FMT_RGB24, 0);
+    //         // rotate(&temp, &output, 90);
+    //         cv::Mat mat(
+    //             output.avframe->height,
+    //             output.avframe->width,
+    //             CV_8UC3,  // 8 бит на канал, 3 канала (BGR)
+    //             output.avframe->data[0],
+    //             output.avframe->linesize[0]  // Шаг (pitch) в байтах
+    //         );
+
+    //         // Отображение кадра
+    //         cv::imshow("Video", mat);
+    //         cv::waitKey(1);
+    //     }
+    // }
 
 // int main() {
 //     av_log_set_level(AV_LOG_QUIET);
@@ -296,7 +336,7 @@ int main() {
 
 //                 // // Теперь вызываем RGA
 //                 // // test.avframe = convertedFrame;
-//                 resize(&test, &output, ALIGN_UP(400, 16), ALIGN_UP(400, 16), AV_PIX_FMT_RGB24);
+//                 rockf::resize(&test, &output, ALIGN_UP(400, 16), ALIGN_UP(400, 16), AV_PIX_FMT_RGB24);
                 
 //                 // rotate(&test, &output, 90, AV_PIX_FMT_RGB24);
 //                 // av_frame_unref(frame);
@@ -338,22 +378,22 @@ int main() {
 //                 // -------------------------------------------------------------
 //                 // 2) Перекодирование (если вам всё ещё нужно):
 //                 //    Обновляем временные метки, отправляем во второй кодек
-//                 frame->pts     = av_rescale_q(frame->pts,     input_stream->time_base, output_stream->time_base);
-//                 frame->pkt_dts = av_rescale_q(frame->pkt_dts, input_stream->time_base, output_stream->time_base);
+//                 // frame->pts     = av_rescale_q(frame->pts,     input_stream->time_base, output_stream->time_base);
+//                 // frame->pkt_dts = av_rescale_q(frame->pkt_dts, input_stream->time_base, output_stream->time_base);
 
-//                 if (avcodec_send_frame(output_codec_ctx, frame) < 0) {
-//                     std::cerr << "Ошибка отправки фрейма в кодер.\n";
-//                     break;
-//                 }
+//                 // if (avcodec_send_frame(output_codec_ctx, frame) < 0) {
+//                 //     std::cerr << "Ошибка отправки фрейма в кодер.\n";
+//                 //     break;
+//                 // }
 
-//                 while (avcodec_receive_packet(output_codec_ctx, &packet) >= 0) {
-//                     packet.stream_index = 0;
-//                     if (av_write_frame(output_format_ctx, &packet) < 0) {
-//                         std::cerr << "Ошибка записи пакета.\n";
-//                         break;
-//                     }
-//                     av_packet_unref(&packet);
-//                 }
+//                 // while (avcodec_receive_packet(output_codec_ctx, &packet) >= 0) {
+//                 //     packet.stream_index = 0;
+//                 //     if (av_write_frame(output_format_ctx, &packet) < 0) {
+//                 //         std::cerr << "Ошибка записи пакета.\n";
+//                 //         break;
+//                 //     }
+//                 //     av_packet_unref(&packet);
+//                 // }
 //             }
 //         }
 //         av_packet_unref(&packet);
@@ -365,4 +405,38 @@ int main() {
 //     sws_freeContext(sws_ctx);
 //     return 0;
 // }
+
+
+
+// // while (av_read_frame(input_format_ctx, &packet) >= 0) {
+// //         if (packet.stream_index == video_stream_index) {
+// //             if (avcodec_send_packet(input_codec_ctx, &packet) < 0) {
+// //                 std::cerr << "Ошибка отправки пакета в декодер.\n";
+// //                 break;
+// //             }
+
+// //             while (avcodec_receive_frame(input_codec_ctx, frame) >= 0) {
+                
+// //                 resize(&test, &output, ALIGN_UP(400, 16), ALIGN_UP(400, 16), AV_PIX_FMT_RGB24);
+                
+// //                 cv::Mat mat(
+// //                     output.avframe->height,
+// //                     output.avframe->width,
+// //                     CV_8UC3,               // 8 бит на канал, 3 канала (BGR)
+// //                     output.avframe->data[0],
+// //                     output.avframe->linesize[0] // шаг (pitch) в байтах
+// //                 );
+// //                 static cv::Mat img;
+// //                 cv::imshow("Video", mat);
+// //                 cv::waitKey(1); 
+
+// //             }
+// //         }
+// //         av_packet_unref(&packet);
+// //     }
+
+// //     av_frame_free(&bgrFrame);
+// //     sws_freeContext(sws_ctx);
+// //     return 0;
+// // }
 

@@ -5,24 +5,17 @@ extern "C"{
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
 #include <libswscale/swscale.h>
+#include <libavutil/pixdesc.h>
 }
 #include <iostream>
-
-struct context_rtsp_t
-{
-    AVFormatContext* input_format_ctx = nullptr;
-    int video_stream_index;
-    AVStream* input_stream = nullptr;
-    AVCodecContext* input_codec_ctx = nullptr;
-    const AVCodec* input_codec;
-    AVPacket packet;
-    AVFrame* frame;
-};
+#include "struct.h"
+#include "codec.h"
 
 int8_t open_rtsp(const char* input, context_rtsp_t* context);
 bool read_frame(context_rtsp_t* context);
 bool read_packet(context_rtsp_t* context);
+bool read_f(context_rtsp_t& context);
 
-
+void print_stream_list(context_rtsp_t& context);
 
 #endif

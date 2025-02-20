@@ -20,11 +20,14 @@ extern "C"{
 // int8_t resize(const cv::Mat &input, cv::Mat &output, int new_width, int new_height);
 // int8_t rotate(const cv::Mat& input, cv::Mat& output, int angle);
 // int8_t mirror(const cv::Mat& input, cv::Mat& output, int type);
+
+namespace rockf{
 int8_t resize(const AVFrame* input, AVFrame* output, int new_width, int new_height);
 
 int8_t ffresize(const AVFrame* input, AVFrame* output, AVCodecContext* codecCtx, int new_width, int new_height);
 int8_t ffresize(const frame_t* input, frame_t* output, int new_width, int new_height);
-
+int8_t convert(frame_t *input, frame_t *output, AVPixelFormat format = AV_PIX_FMT_RGB24);
+int8_t copy(frame_t *input, frame_t *output);
 
 /**
  * @brief Отзеркаливает изображение относительно параметра который вы передадите в type.
@@ -79,5 +82,6 @@ int8_t flip(frame_t *input, frame_t *output, int type, AVPixelFormat format = AV
  */
 int8_t crop(frame_t *input, frame_t *output, int x_start, int y_start, int x_stop, int y_stop, AVPixelFormat format = AV_PIX_FMT_RGB24);
 
+}
 
 #endif

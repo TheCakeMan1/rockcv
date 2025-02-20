@@ -1,5 +1,81 @@
 #include "transform.h"
 
+namespace rockf{
+
+int8_t copy(frame_t *input, frame_t *output){
+    rga_info_t src, dst;
+    memset(&src, 0, sizeof(rga_info_t));
+    memset(&dst, 0, sizeof(rga_info_t));
+
+    if (!input || !input->avframe) {
+        std::cerr << "Ошибка: входной кадр NULL!" << std::endl;
+        return 1;
+    }
+    
+    //* Чистим avframe
+    if (output->avframe != nullptr){
+        av_freep(&output->avframe->data[0]);
+        av_frame_free(&output->avframe);
+        avcodec_free_context(&output->avcodeccontext);
+        output->avframe = nullptr;
+        output->avcodeccontext = nullptr;
+    }
+
+    output->avframe = av_frame_alloc();
+    output->avframe->width = input->avframe->width;
+    output->avframe->height = input->avframe->height;
+    output->avframe->format = input->avframe->format;
+
+    if (!output->avframe) {
+        std::cerr << "Ошибка выделения памяти для avframe!" << std::endl;
+        return 1;
+    }
+
+    int ret = av_image_alloc(output->avframe->data, output->avframe->linesize, 
+        input->avframe->width, input->avframe->height, (AVPixelFormat)input->avframe->format, 16);
+    
+    if (ret < 0) {
+        av_frame_free(&output->avframe);
+        std::cerr << "Ошибка выделения памяти для выходного кадра! Код ошибки: " << ret << std::endl;
+        return 1;
+    }
+        
+    //* Чистим буферы
+    buffer_free(input);
+    buffer_free(output);
+    
+    //* Заполняем память
+    convert_avframe_to_buffer(input);
+
+    src.fd = -1;
+    src.virAddr = input->buffer;
+    src.mmuFlag = 1;
+    src.format = AV_TO_RK_FORMAT(AVPixelFormat(input->avframe->format));
+
+    dst.fd = -1;
+    dst.virAddr = output->buffer;
+    dst.mmuFlag = 1;
+    dst.format = AV_TO_RK_FORMAT(input->avframe->format);
+
+    rga_set_rect(&src.rect, 0, 0, input->avframe->width, input->avframe->height, 
+        ALIGN_UP(input->avframe->width, 16), ALIGN_UP(input->avframe->height, 16), src.format);
+    rga_set_rect(&dst.rect, 0, 0, input->avframe->width, input->avframe->height, 
+        ALIGN_UP(input->avframe->width, 16), ALIGN_UP(input->avframe->height, 16), dst.format);
+
+    int rga_status = c_RkRgaBlit(&src, &dst, NULL);
+    if (rga_status != 0) {
+        std::cerr << "Ошибка: RGA масштабирование не удалось! Код ошибки: " << rga_status << std::endl;
+        av_free(input->buffer);
+        av_free(output->buffer);
+        av_frame_free(&output->avframe);
+        return 1;
+    }
+
+    convert_buffer_to_avframe(output);
+
+    return 0;
+}
+
 int8_t convert(frame_t *input, frame_t *output, AVPixelFormat format) {
     rga_info_t src, dst;
     memset(&src, 0, sizeof(rga_info_t));
@@ -87,12 +163,15 @@ int8_t resize(frame_t *input, frame_t *output, int new_width, int new_height, AV
     
     //* Чистим avframe
     if (output->avframe != nullptr){
-        // av_freep(&output->avframe->data[0]);
+        av_freep(&output->avframe->data[0]);
         av_frame_free(&output->avframe);
         avcodec_free_context(&output->avcodeccontext);
         output->avframe = nullptr;
         output->avcodeccontext = nullptr;
     }
+
+    new_width = ALIGN_UP(new_width, 16);
+    new_height = ALIGN_UP(new_height, 16);
 
     output->avframe = av_frame_alloc();
     output->avframe->width = new_width;
@@ -146,12 +225,12 @@ int8_t resize(frame_t *input, frame_t *output, int new_width, int new_height, AV
         rga_set_rect(&src.rect, 0, 0, orig_w, orig_h, 
             ALIGN_UP(orig_w, 16), ALIGN_UP(orig_h, 16), src.format);
         rga_set_rect(&dst.rect, pad_x, pad_y, resized_w, resized_h, 
-            ALIGN_UP(new_width, 16), ALIGN_UP(new_height, 16), dst.format);
+            new_width, new_height, dst.format);
     } else {
         rga_set_rect(&src.rect, 0, 0, input->avframe->width, input->avframe->height, 
             ALIGN_UP(input->avframe->width, 16), ALIGN_UP(input->avframe->height, 16), src.format);
         rga_set_rect(&dst.rect, 0, 0, new_width, new_height, 
-            ALIGN_UP(new_width, 16), ALIGN_UP(new_height, 16), dst.format);
+            new_width, new_height, dst.format);
     }
 
     int rga_status = c_RkRgaBlit(&src, &dst, NULL);
@@ -164,7 +243,6 @@ int8_t resize(frame_t *input, frame_t *output, int new_width, int new_height, AV
     }
 
     convert_buffer_to_avframe(output);
-
     return 0;
 }
 
@@ -396,4 +474,6 @@ int8_t crop(frame_t *input, frame_t *output, int x_start, int y_start, int x_sto
     convert_buffer_to_avframe(output);
 
     return 0;
+}
+
 }
