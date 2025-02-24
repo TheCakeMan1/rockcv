@@ -6,6 +6,7 @@ extern "C"{
 #include <libavformat/avformat.h>
 #include <libswscale/swscale.h>
 }
+#include "codec.h"
 
 struct context_rtsp_t
 {
@@ -21,14 +22,15 @@ struct context_rtsp_t
 
 struct context_video_t
 {
-    AVFormatContext* input_format_ctx = nullptr;
+    AVFormatContext* format_ctx = nullptr;
     int video_stream_index;
-    AVStream* input_stream = nullptr;
-    AVCodecContext* input_codec_ctx = nullptr;
-    const AVCodec* input_codec = nullptr;
+    AVStream* stream = nullptr;
+    AVCodecContext* codec_ctx = nullptr;
+    const AVCodec* codec = nullptr;
     AVPacket packet;
     AVFrame* frame = nullptr;
     int max_stream_v;
 };
+
 
 #endif

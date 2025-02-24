@@ -4,7 +4,8 @@
 #include <cstdint>
 #include <cstdio>
 
-extern "C"{
+extern "C"
+{
 #include <libavcodec/avcodec.h>
 #include <libavutil/frame.h>
 #include <libswscale/swscale.h>
@@ -20,25 +21,33 @@ extern "C"{
 
 struct frame_t
 {
-    AVFrame* avframe = nullptr;
-    AVCodecContext* avcodeccontext = nullptr;
-    uint8_t* buffer = nullptr;
+    AVPixelFormat format;
+    int width;
+    int height;
+    uint8_t *buffer = nullptr;
+    AVFrame *avframe = nullptr;
+    AVCodecContext *avcodeccontext = nullptr;
+    int dmabuf_fd;
 };
 
-#define uniti_frame(name, avframes, AVCodecContexts) (name).avframe = av_frame_clone(avframes); \
-    (name).avcodeccontext = avcodec_alloc_context3(NULL); \
-    if ((name).avcodeccontext) { \
-        AVCodecParameters *params = avcodec_parameters_alloc(); \
-        avcodec_parameters_from_context(params, AVCodecContexts); \
+#define uniti_frame(name, avframes, AVCodecContexts)                  \
+    (name).avframe = av_frame_clone(avframes);                        \
+    (name).avcodeccontext = avcodec_alloc_context3(NULL);             \
+    if ((name).avcodeccontext)                                        \
+    {                                                                 \
+        AVCodecParameters *params = avcodec_parameters_alloc();       \
+        avcodec_parameters_from_context(params, AVCodecContexts);     \
         avcodec_parameters_to_context((name).avcodeccontext, params); \
-        avcodec_parameters_free(&params); \
+        avcodec_parameters_free(&params);                             \
     }
 
-#define init_buffer(frame) (frame)->buffer = (uint8_t*)av_malloc(av_image_get_buffer_size(AVPixelFormat((frame)->avframe->format), (frame)->avframe->width, (frame)->avframe->height, 1));
+#define init_buffer(frame) (frame)->buffer = (uint8_t *)av_malloc(av_image_get_buffer_size(AVPixelFormat((frame).avframe->format), (frame).avframe->width, (frame).avframe->height, 1));
 
-#define convert_avframe_to_buffer(frame) av_image_copy_to_buffer((frame)->buffer, av_image_get_buffer_size(AVPixelFormat((frame)->avframe->format), (frame)->avframe->width, (frame)->avframe->height, 1), (frame)->avframe->data, (frame)->avframe->linesize, AVPixelFormat((frame)->avframe->format), (frame)->avframe->width, (frame)->avframe->height, 1);
+#define convert_avframe_to_buffer(frame) av_image_copy_to_buffer((frame).buffer, av_image_get_buffer_size(AVPixelFormat((frame).avframe->format), (frame).avframe->width, (frame).avframe->height, 1), (frame).avframe->data, (frame).avframe->linesize, AVPixelFormat((frame).avframe->format), (frame).avframe->width, (frame).avframe->height, 1);
 
-void buffer_free(frame_t* frame);
+void buffer_free(frame_t &frame);
+// extern "C" void buffer_free(frame_t *frame);
+void frame2mat(frame_t &input, cv::Mat &output);
 
 // #define convert_avframe_to_buffer(frame) { \
 //     init_buffer(frame); \
@@ -50,8 +59,11 @@ void buffer_free(frame_t* frame);
 //     (frame)->buffer = ptr; \
 // }
 
+// #define convert_buffer_to_avframe(frame) \
+//     fast_copy_neon(frame->avframe->data[0], frame->buffer, \
+//     frame->avframe->width, frame->avframe->height, \
+//     frame->avframe->linesize[0], frame->avframe->linesize[0]);
 
-
-#define convert_buffer_to_avframe(frame) av_image_copy(frame->avframe->data, frame->avframe->linesize, (const uint8_t**)&frame->buffer, frame->avframe->linesize, (AVPixelFormat)frame->avframe->format, frame->avframe->width, frame->avframe->height);
+#define convert_buffer_to_avframe(frame) av_image_copy(frame.avframe->data, frame.avframe->linesize, (const uint8_t **)&frame.buffer, frame.avframe->linesize, (AVPixelFormat)frame.avframe->format, frame.avframe->width, frame.avframe->height);
 
 #endif
