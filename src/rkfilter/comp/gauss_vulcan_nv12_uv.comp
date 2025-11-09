@@ -1,0 +1,26 @@
+#version 450
+layout(local_size_x = 16, local_size_y = 16) in;
+
+layout(binding = 0) uniform sampler2D srcImg;
+layout(binding = 1, rg8) writeonly uniform image2D dstImg;
+
+layout(push_constant) uniform PC {
+    int   radius;
+    float invW;
+    float invH;
+    vec2  dir;
+    float weights[32];
+} pc;
+
+void main() {
+    ivec2 p  = ivec2(gl_GlobalInvocationID.xy);
+    vec2  uv = (vec2(p) + vec2(0.5)) * vec2(pc.invW, pc.invH);
+
+    vec2 acc = texture(srcImg, uv).rg * pc.weights[0];
+    for (int i = 1; i <= pc.radius; ++i) {
+        vec2 du = pc.dir * vec2(float(i) * pc.invW, float(i) * pc.invH);
+        acc += texture(srcImg, uv + du).rg * pc.weights[i];
+        acc += texture(srcImg, uv - du).rg * pc.weights[i];
+    }
+    imageStore(dstImg, p, vec4(acc.x, acc.y, 0.0, 1.0));
+}
