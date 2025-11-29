@@ -1,0 +1,8600 @@
+{
+  "8": {
+    " ": {
+      "x": 0,
+      "y": 0,
+      "w": 0,
+      "h": 0,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 0
+    },
+    "!": {
+      "x": 2,
+      "y": 0,
+      "w": 2,
+      "h": 7,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "\"": {
+      "x": 6,
+      "y": 0,
+      "w": 3,
+      "h": 3,
+      "advance": 3,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "#": {
+      "x": 11,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "$": {
+      "x": 18,
+      "y": 0,
+      "w": 5,
+      "h": 8,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 7
+    },
+    "%": {
+      "x": 25,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "&": {
+      "x": 33,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "'": {
+      "x": 41,
+      "y": 0,
+      "w": 2,
+      "h": 3,
+      "advance": 1,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "(": {
+      "x": 45,
+      "y": 0,
+      "w": 3,
+      "h": 9,
+      "advance": 3,
+      "bearing_x": 0,
+      "bearing_y": 7
+    },
+    ")": {
+      "x": 50,
+      "y": 0,
+      "w": 3,
+      "h": 9,
+      "advance": 3,
+      "bearing_x": 0,
+      "bearing_y": 7
+    },
+    "*": {
+      "x": 55,
+      "y": 0,
+      "w": 4,
+      "h": 4,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "+": {
+      "x": 61,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    ",": {
+      "x": 68,
+      "y": 0,
+      "w": 2,
+      "h": 3,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 1
+    },
+    "-": {
+      "x": 72,
+      "y": 0,
+      "w": 3,
+      "h": 2,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 3
+    },
+    ".": {
+      "x": 77,
+      "y": 0,
+      "w": 2,
+      "h": 3,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 2
+    },
+    "/": {
+      "x": 81,
+      "y": 0,
+      "w": 4,
+      "h": 7,
+      "advance": 3,
+      "bearing_x": -1,
+      "bearing_y": 6
+    },
+    "0": {
+      "x": 87,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "1": {
+      "x": 94,
+      "y": 0,
+      "w": 4,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "2": {
+      "x": 100,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "3": {
+      "x": 107,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "4": {
+      "x": 114,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "5": {
+      "x": 121,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "6": {
+      "x": 128,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "7": {
+      "x": 135,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "8": {
+      "x": 142,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "9": {
+      "x": 149,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    ":": {
+      "x": 156,
+      "y": 0,
+      "w": 2,
+      "h": 6,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    ";": {
+      "x": 160,
+      "y": 0,
+      "w": 2,
+      "h": 7,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "<": {
+      "x": 164,
+      "y": 0,
+      "w": 4,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "=": {
+      "x": 170,
+      "y": 0,
+      "w": 5,
+      "h": 3,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 4
+    },
+    ">": {
+      "x": 177,
+      "y": 0,
+      "w": 4,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "?": {
+      "x": 183,
+      "y": 0,
+      "w": 4,
+      "h": 7,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "@": {
+      "x": 189,
+      "y": 0,
+      "w": 7,
+      "h": 8,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "A": {
+      "x": 198,
+      "y": 0,
+      "w": 7,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": -1,
+      "bearing_y": 6
+    },
+    "B": {
+      "x": 207,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "C": {
+      "x": 214,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "D": {
+      "x": 222,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "E": {
+      "x": 229,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "F": {
+      "x": 236,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "G": {
+      "x": 243,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "H": {
+      "x": 251,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "I": {
+      "x": 259,
+      "y": 0,
+      "w": 2,
+      "h": 6,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "J": {
+      "x": 263,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "K": {
+      "x": 270,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "L": {
+      "x": 278,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "M": {
+      "x": 285,
+      "y": 0,
+      "w": 7,
+      "h": 6,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "N": {
+      "x": 294,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "O": {
+      "x": 302,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "P": {
+      "x": 310,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Q": {
+      "x": 317,
+      "y": 0,
+      "w": 6,
+      "h": 8,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "R": {
+      "x": 325,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "S": {
+      "x": 333,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "T": {
+      "x": 340,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "U": {
+      "x": 347,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "V": {
+      "x": 354,
+      "y": 0,
+      "w": 7,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": -1,
+      "bearing_y": 6
+    },
+    "W": {
+      "x": 363,
+      "y": 0,
+      "w": 7,
+      "h": 6,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "X": {
+      "x": 372,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Y": {
+      "x": 380,
+      "y": 0,
+      "w": 7,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": -1,
+      "bearing_y": 6
+    },
+    "Z": {
+      "x": 389,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "[": {
+      "x": 396,
+      "y": 0,
+      "w": 3,
+      "h": 9,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 7
+    },
+    "\\": {
+      "x": 401,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 3,
+      "bearing_x": -1,
+      "bearing_y": 6
+    },
+    "]": {
+      "x": 408,
+      "y": 0,
+      "w": 2,
+      "h": 9,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 7
+    },
+    "^": {
+      "x": 412,
+      "y": 0,
+      "w": 4,
+      "h": 4,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "_": {
+      "x": 418,
+      "y": 0,
+      "w": 4,
+      "h": 1,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 0
+    },
+    "`": {
+      "x": 424,
+      "y": 0,
+      "w": 3,
+      "h": 2,
+      "advance": 3,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "a": {
+      "x": 429,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "b": {
+      "x": 436,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "c": {
+      "x": 443,
+      "y": 0,
+      "w": 4,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "d": {
+      "x": 449,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "e": {
+      "x": 456,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "f": {
+      "x": 463,
+      "y": 0,
+      "w": 3,
+      "h": 7,
+      "advance": 3,
+      "bearing_x": 0,
+      "bearing_y": 7
+    },
+    "g": {
+      "x": 468,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "h": {
+      "x": 475,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "i": {
+      "x": 482,
+      "y": 0,
+      "w": 2,
+      "h": 6,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "j": {
+      "x": 486,
+      "y": 0,
+      "w": 3,
+      "h": 8,
+      "advance": 2,
+      "bearing_x": -1,
+      "bearing_y": 6
+    },
+    "k": {
+      "x": 491,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "l": {
+      "x": 498,
+      "y": 0,
+      "w": 2,
+      "h": 6,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "m": {
+      "x": 502,
+      "y": 0,
+      "w": 7,
+      "h": 5,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "n": {
+      "x": 511,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "o": {
+      "x": 518,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "p": {
+      "x": 525,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "q": {
+      "x": 532,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "r": {
+      "x": 539,
+      "y": 0,
+      "w": 3,
+      "h": 5,
+      "advance": 3,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "s": {
+      "x": 544,
+      "y": 0,
+      "w": 4,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "t": {
+      "x": 550,
+      "y": 0,
+      "w": 3,
+      "h": 7,
+      "advance": 3,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "u": {
+      "x": 555,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "v": {
+      "x": 562,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "w": {
+      "x": 569,
+      "y": 0,
+      "w": 6,
+      "h": 5,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "x": {
+      "x": 577,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "y": {
+      "x": 584,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "advance": 4,
+      "bearing_x": -1,
+      "bearing_y": 5
+    },
+    "z": {
+      "x": 592,
+      "y": 0,
+      "w": 4,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "{": {
+      "x": 598,
+      "y": 0,
+      "w": 3,
+      "h": 9,
+      "advance": 3,
+      "bearing_x": 0,
+      "bearing_y": 7
+    },
+    "|": {
+      "x": 603,
+      "y": 0,
+      "w": 2,
+      "h": 8,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "}": {
+      "x": 607,
+      "y": 0,
+      "w": 3,
+      "h": 9,
+      "advance": 3,
+      "bearing_x": 0,
+      "bearing_y": 7
+    },
+    "~": {
+      "x": 612,
+      "y": 0,
+      "w": 5,
+      "h": 3,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 4
+    },
+    "А": {
+      "x": 619,
+      "y": 0,
+      "w": 7,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": -1,
+      "bearing_y": 6
+    },
+    "Б": {
+      "x": 628,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "В": {
+      "x": 635,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Г": {
+      "x": 642,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Д": {
+      "x": 649,
+      "y": 0,
+      "w": 6,
+      "h": 8,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Е": {
+      "x": 657,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Ж": {
+      "x": 664,
+      "y": 0,
+      "w": 9,
+      "h": 6,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "З": {
+      "x": 675,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "И": {
+      "x": 682,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Й": {
+      "x": 690,
+      "y": 0,
+      "w": 6,
+      "h": 8,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 8
+    },
+    "К": {
+      "x": 698,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Л": {
+      "x": 706,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "М": {
+      "x": 714,
+      "y": 0,
+      "w": 7,
+      "h": 6,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Н": {
+      "x": 723,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "О": {
+      "x": 731,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "П": {
+      "x": 739,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Р": {
+      "x": 747,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "С": {
+      "x": 754,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Т": {
+      "x": 762,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "У": {
+      "x": 769,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Ф": {
+      "x": 777,
+      "y": 0,
+      "w": 7,
+      "h": 7,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Х": {
+      "x": 786,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Ц": {
+      "x": 794,
+      "y": 0,
+      "w": 6,
+      "h": 8,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Ч": {
+      "x": 802,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Ш": {
+      "x": 810,
+      "y": 0,
+      "w": 8,
+      "h": 6,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Щ": {
+      "x": 820,
+      "y": 0,
+      "w": 9,
+      "h": 8,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Ъ": {
+      "x": 831,
+      "y": 0,
+      "w": 7,
+      "h": 6,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Ы": {
+      "x": 840,
+      "y": 0,
+      "w": 7,
+      "h": 6,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Ь": {
+      "x": 849,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Э": {
+      "x": 856,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Ю": {
+      "x": 863,
+      "y": 0,
+      "w": 8,
+      "h": 7,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "Я": {
+      "x": 873,
+      "y": 0,
+      "w": 6,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": -1,
+      "bearing_y": 6
+    },
+    "а": {
+      "x": 881,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "б": {
+      "x": 888,
+      "y": 0,
+      "w": 5,
+      "h": 8,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 7
+    },
+    "в": {
+      "x": 895,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "г": {
+      "x": 902,
+      "y": 0,
+      "w": 4,
+      "h": 5,
+      "advance": 3,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "д": {
+      "x": 908,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "е": {
+      "x": 916,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "ж": {
+      "x": 923,
+      "y": 0,
+      "w": 8,
+      "h": 5,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "з": {
+      "x": 933,
+      "y": 0,
+      "w": 4,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "и": {
+      "x": 939,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "й": {
+      "x": 946,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 7
+    },
+    "к": {
+      "x": 953,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "л": {
+      "x": 960,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "м": {
+      "x": 967,
+      "y": 0,
+      "w": 6,
+      "h": 5,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "н": {
+      "x": 975,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "о": {
+      "x": 982,
+      "y": 0,
+      "w": 5,
+      "h": 6,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "п": {
+      "x": 989,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "р": {
+      "x": 996,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "с": {
+      "x": 1003,
+      "y": 0,
+      "w": 4,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "т": {
+      "x": 1009,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "у": {
+      "x": 1016,
+      "y": 0,
+      "w": 6,
+      "h": 7,
+      "advance": 4,
+      "bearing_x": -1,
+      "bearing_y": 5
+    },
+    "ф": {
+      "x": 1024,
+      "y": 0,
+      "w": 6,
+      "h": 8,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 6
+    },
+    "х": {
+      "x": 1032,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "ц": {
+      "x": 1039,
+      "y": 0,
+      "w": 5,
+      "h": 7,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "ч": {
+      "x": 1046,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "ш": {
+      "x": 1053,
+      "y": 0,
+      "w": 7,
+      "h": 5,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "щ": {
+      "x": 1062,
+      "y": 0,
+      "w": 8,
+      "h": 7,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "ъ": {
+      "x": 1072,
+      "y": 0,
+      "w": 6,
+      "h": 5,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "ы": {
+      "x": 1080,
+      "y": 0,
+      "w": 7,
+      "h": 5,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "ь": {
+      "x": 1089,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "э": {
+      "x": 1096,
+      "y": 0,
+      "w": 4,
+      "h": 6,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "ю": {
+      "x": 1102,
+      "y": 0,
+      "w": 7,
+      "h": 6,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 5
+    },
+    "я": {
+      "x": 1111,
+      "y": 0,
+      "w": 5,
+      "h": 5,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 5
+    }
+  },
+  "16": {
+    " ": {
+      "x": 0,
+      "y": 17,
+      "w": 0,
+      "h": 0,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 0
+    },
+    "!": {
+      "x": 2,
+      "y": 17,
+      "w": 4,
+      "h": 12,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "\"": {
+      "x": 8,
+      "y": 17,
+      "w": 5,
+      "h": 4,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "#": {
+      "x": 15,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "$": {
+      "x": 26,
+      "y": 17,
+      "w": 9,
+      "h": 16,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 14
+    },
+    "%": {
+      "x": 37,
+      "y": 17,
+      "w": 12,
+      "h": 12,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "&": {
+      "x": 51,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "'": {
+      "x": 64,
+      "y": 17,
+      "w": 3,
+      "h": 5,
+      "advance": 2,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "(": {
+      "x": 69,
+      "y": 17,
+      "w": 6,
+      "h": 17,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    ")": {
+      "x": 77,
+      "y": 17,
+      "w": 5,
+      "h": 17,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "*": {
+      "x": 84,
+      "y": 17,
+      "w": 8,
+      "h": 7,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "+": {
+      "x": 94,
+      "y": 17,
+      "w": 9,
+      "h": 8,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    ",": {
+      "x": 105,
+      "y": 17,
+      "w": 4,
+      "h": 5,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 2
+    },
+    "-": {
+      "x": 111,
+      "y": 17,
+      "w": 5,
+      "h": 3,
+      "advance": 7,
+      "bearing_x": 1,
+      "bearing_y": 7
+    },
+    ".": {
+      "x": 118,
+      "y": 17,
+      "w": 4,
+      "h": 3,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 3
+    },
+    "/": {
+      "x": 124,
+      "y": 17,
+      "w": 7,
+      "h": 13,
+      "advance": 6,
+      "bearing_x": -1,
+      "bearing_y": 12
+    },
+    "0": {
+      "x": 133,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "1": {
+      "x": 144,
+      "y": 17,
+      "w": 6,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 1,
+      "bearing_y": 12
+    },
+    "2": {
+      "x": 152,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "3": {
+      "x": 163,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "4": {
+      "x": 174,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "5": {
+      "x": 185,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "6": {
+      "x": 196,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "7": {
+      "x": 207,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "8": {
+      "x": 218,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "9": {
+      "x": 229,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    ":": {
+      "x": 240,
+      "y": 17,
+      "w": 4,
+      "h": 9,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    ";": {
+      "x": 246,
+      "y": 17,
+      "w": 4,
+      "h": 12,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "<": {
+      "x": 252,
+      "y": 17,
+      "w": 8,
+      "h": 8,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "=": {
+      "x": 262,
+      "y": 17,
+      "w": 8,
+      "h": 8,
+      "advance": 9,
+      "bearing_x": 1,
+      "bearing_y": 9
+    },
+    ">": {
+      "x": 272,
+      "y": 17,
+      "w": 8,
+      "h": 8,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "?": {
+      "x": 282,
+      "y": 17,
+      "w": 8,
+      "h": 12,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "@": {
+      "x": 292,
+      "y": 17,
+      "w": 14,
+      "h": 15,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 11
+    },
+    "A": {
+      "x": 308,
+      "y": 17,
+      "w": 12,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": -1,
+      "bearing_y": 12
+    },
+    "B": {
+      "x": 322,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "C": {
+      "x": 334,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "D": {
+      "x": 347,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "E": {
+      "x": 359,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "F": {
+      "x": 370,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "G": {
+      "x": 381,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "H": {
+      "x": 394,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "I": {
+      "x": 407,
+      "y": 17,
+      "w": 3,
+      "h": 12,
+      "advance": 5,
+      "bearing_x": 1,
+      "bearing_y": 12
+    },
+    "J": {
+      "x": 412,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "K": {
+      "x": 423,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "L": {
+      "x": 436,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "M": {
+      "x": 447,
+      "y": 17,
+      "w": 14,
+      "h": 12,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "N": {
+      "x": 463,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "O": {
+      "x": 476,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "P": {
+      "x": 489,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Q": {
+      "x": 501,
+      "y": 17,
+      "w": 11,
+      "h": 14,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "R": {
+      "x": 514,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "S": {
+      "x": 527,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "T": {
+      "x": 539,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "U": {
+      "x": 551,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "V": {
+      "x": 563,
+      "y": 17,
+      "w": 12,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": -1,
+      "bearing_y": 12
+    },
+    "W": {
+      "x": 577,
+      "y": 17,
+      "w": 14,
+      "h": 12,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "X": {
+      "x": 593,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Y": {
+      "x": 606,
+      "y": 17,
+      "w": 12,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": -1,
+      "bearing_y": 12
+    },
+    "Z": {
+      "x": 620,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "[": {
+      "x": 632,
+      "y": 17,
+      "w": 5,
+      "h": 16,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "\\": {
+      "x": 639,
+      "y": 17,
+      "w": 9,
+      "h": 13,
+      "advance": 7,
+      "bearing_x": -1,
+      "bearing_y": 12
+    },
+    "]": {
+      "x": 650,
+      "y": 17,
+      "w": 4,
+      "h": 16,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "^": {
+      "x": 656,
+      "y": 17,
+      "w": 7,
+      "h": 6,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "_": {
+      "x": 665,
+      "y": 17,
+      "w": 9,
+      "h": 2,
+      "advance": 7,
+      "bearing_x": -1,
+      "bearing_y": 0
+    },
+    "`": {
+      "x": 676,
+      "y": 17,
+      "w": 5,
+      "h": 2,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "a": {
+      "x": 683,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "b": {
+      "x": 694,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "c": {
+      "x": 705,
+      "y": 17,
+      "w": 8,
+      "h": 9,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "d": {
+      "x": 715,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "e": {
+      "x": 726,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "f": {
+      "x": 737,
+      "y": 17,
+      "w": 6,
+      "h": 12,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "g": {
+      "x": 745,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "h": {
+      "x": 756,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "i": {
+      "x": 767,
+      "y": 17,
+      "w": 4,
+      "h": 13,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "j": {
+      "x": 773,
+      "y": 17,
+      "w": 5,
+      "h": 16,
+      "advance": 4,
+      "bearing_x": -1,
+      "bearing_y": 13
+    },
+    "k": {
+      "x": 780,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "l": {
+      "x": 791,
+      "y": 17,
+      "w": 4,
+      "h": 12,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "m": {
+      "x": 797,
+      "y": 17,
+      "w": 14,
+      "h": 9,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "n": {
+      "x": 813,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "o": {
+      "x": 824,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "p": {
+      "x": 835,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "q": {
+      "x": 846,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "r": {
+      "x": 857,
+      "y": 17,
+      "w": 6,
+      "h": 9,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "s": {
+      "x": 865,
+      "y": 17,
+      "w": 8,
+      "h": 9,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "t": {
+      "x": 875,
+      "y": 17,
+      "w": 6,
+      "h": 11,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 11
+    },
+    "u": {
+      "x": 883,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "v": {
+      "x": 894,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "w": {
+      "x": 905,
+      "y": 17,
+      "w": 12,
+      "h": 9,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "x": {
+      "x": 919,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "y": {
+      "x": 930,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 8,
+      "bearing_x": -1,
+      "bearing_y": 9
+    },
+    "z": {
+      "x": 942,
+      "y": 17,
+      "w": 8,
+      "h": 9,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "{": {
+      "x": 952,
+      "y": 17,
+      "w": 5,
+      "h": 15,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "|": {
+      "x": 959,
+      "y": 17,
+      "w": 2,
+      "h": 14,
+      "advance": 4,
+      "bearing_x": 1,
+      "bearing_y": 12
+    },
+    "}": {
+      "x": 963,
+      "y": 17,
+      "w": 5,
+      "h": 15,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "~": {
+      "x": 970,
+      "y": 17,
+      "w": 10,
+      "h": 4,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 7
+    },
+    "А": {
+      "x": 982,
+      "y": 17,
+      "w": 12,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": -1,
+      "bearing_y": 12
+    },
+    "Б": {
+      "x": 996,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "В": {
+      "x": 1008,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Г": {
+      "x": 1020,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Д": {
+      "x": 1031,
+      "y": 17,
+      "w": 12,
+      "h": 15,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Е": {
+      "x": 1045,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Ж": {
+      "x": 1056,
+      "y": 17,
+      "w": 17,
+      "h": 12,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "З": {
+      "x": 1075,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "И": {
+      "x": 1087,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Й": {
+      "x": 1100,
+      "y": 17,
+      "w": 11,
+      "h": 15,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 15
+    },
+    "К": {
+      "x": 1113,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Л": {
+      "x": 1126,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "М": {
+      "x": 1139,
+      "y": 17,
+      "w": 14,
+      "h": 12,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Н": {
+      "x": 1155,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "О": {
+      "x": 1168,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "П": {
+      "x": 1181,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Р": {
+      "x": 1194,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "С": {
+      "x": 1206,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Т": {
+      "x": 1219,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "У": {
+      "x": 1231,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Ф": {
+      "x": 1244,
+      "y": 17,
+      "w": 13,
+      "h": 12,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Х": {
+      "x": 1259,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Ц": {
+      "x": 1272,
+      "y": 17,
+      "w": 12,
+      "h": 15,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Ч": {
+      "x": 1286,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 11,
+      "bearing_x": 1,
+      "bearing_y": 12
+    },
+    "Ш": {
+      "x": 1298,
+      "y": 17,
+      "w": 15,
+      "h": 12,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Щ": {
+      "x": 1315,
+      "y": 17,
+      "w": 17,
+      "h": 15,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Ъ": {
+      "x": 1334,
+      "y": 17,
+      "w": 13,
+      "h": 12,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Ы": {
+      "x": 1349,
+      "y": 17,
+      "w": 14,
+      "h": 12,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Ь": {
+      "x": 1365,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Э": {
+      "x": 1377,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Ю": {
+      "x": 1389,
+      "y": 17,
+      "w": 15,
+      "h": 12,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "Я": {
+      "x": 1406,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": -1,
+      "bearing_y": 12
+    },
+    "а": {
+      "x": 1418,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "б": {
+      "x": 1429,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "в": {
+      "x": 1440,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "г": {
+      "x": 1451,
+      "y": 17,
+      "w": 7,
+      "h": 9,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "д": {
+      "x": 1460,
+      "y": 17,
+      "w": 11,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "е": {
+      "x": 1473,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "ж": {
+      "x": 1484,
+      "y": 17,
+      "w": 15,
+      "h": 9,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "з": {
+      "x": 1501,
+      "y": 17,
+      "w": 8,
+      "h": 9,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "и": {
+      "x": 1511,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "й": {
+      "x": 1522,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "к": {
+      "x": 1533,
+      "y": 17,
+      "w": 10,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "л": {
+      "x": 1545,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "м": {
+      "x": 1556,
+      "y": 17,
+      "w": 12,
+      "h": 9,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "н": {
+      "x": 1570,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "о": {
+      "x": 1581,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "п": {
+      "x": 1592,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "р": {
+      "x": 1603,
+      "y": 17,
+      "w": 9,
+      "h": 12,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "с": {
+      "x": 1614,
+      "y": 17,
+      "w": 8,
+      "h": 9,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "т": {
+      "x": 1624,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "у": {
+      "x": 1635,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 8,
+      "bearing_x": -1,
+      "bearing_y": 9
+    },
+    "ф": {
+      "x": 1647,
+      "y": 17,
+      "w": 12,
+      "h": 15,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 12
+    },
+    "х": {
+      "x": 1661,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "ц": {
+      "x": 1672,
+      "y": 17,
+      "w": 10,
+      "h": 12,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "ч": {
+      "x": 1684,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "ш": {
+      "x": 1695,
+      "y": 17,
+      "w": 13,
+      "h": 9,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "щ": {
+      "x": 1710,
+      "y": 17,
+      "w": 15,
+      "h": 12,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "ъ": {
+      "x": 1727,
+      "y": 17,
+      "w": 11,
+      "h": 9,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "ы": {
+      "x": 1740,
+      "y": 17,
+      "w": 13,
+      "h": 9,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "ь": {
+      "x": 1755,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "э": {
+      "x": 1766,
+      "y": 17,
+      "w": 8,
+      "h": 9,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "ю": {
+      "x": 1776,
+      "y": 17,
+      "w": 13,
+      "h": 9,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 9
+    },
+    "я": {
+      "x": 1791,
+      "y": 17,
+      "w": 9,
+      "h": 9,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 9
+    }
+  },
+  "24": {
+    " ": {
+      "x": 0,
+      "y": 42,
+      "w": 0,
+      "h": 0,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 0
+    },
+    "!": {
+      "x": 2,
+      "y": 42,
+      "w": 5,
+      "h": 17,
+      "advance": 7,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "\"": {
+      "x": 9,
+      "y": 42,
+      "w": 8,
+      "h": 7,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 18
+    },
+    "#": {
+      "x": 19,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "$": {
+      "x": 35,
+      "y": 42,
+      "w": 13,
+      "h": 21,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 19
+    },
+    "%": {
+      "x": 50,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "&": {
+      "x": 68,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "'": {
+      "x": 86,
+      "y": 42,
+      "w": 4,
+      "h": 7,
+      "advance": 4,
+      "bearing_x": 0,
+      "bearing_y": 18
+    },
+    "(": {
+      "x": 92,
+      "y": 42,
+      "w": 7,
+      "h": 24,
+      "advance": 8,
+      "bearing_x": 1,
+      "bearing_y": 19
+    },
+    ")": {
+      "x": 101,
+      "y": 42,
+      "w": 8,
+      "h": 24,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 19
+    },
+    "*": {
+      "x": 111,
+      "y": 42,
+      "w": 12,
+      "h": 10,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "+": {
+      "x": 125,
+      "y": 42,
+      "w": 13,
+      "h": 12,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    ",": {
+      "x": 140,
+      "y": 42,
+      "w": 5,
+      "h": 8,
+      "advance": 6,
+      "bearing_x": 0,
+      "bearing_y": 3
+    },
+    "-": {
+      "x": 147,
+      "y": 42,
+      "w": 8,
+      "h": 4,
+      "advance": 11,
+      "bearing_x": 1,
+      "bearing_y": 10
+    },
+    ".": {
+      "x": 157,
+      "y": 42,
+      "w": 5,
+      "h": 4,
+      "advance": 7,
+      "bearing_x": 1,
+      "bearing_y": 4
+    },
+    "/": {
+      "x": 164,
+      "y": 42,
+      "w": 10,
+      "h": 18,
+      "advance": 8,
+      "bearing_x": -1,
+      "bearing_y": 17
+    },
+    "0": {
+      "x": 176,
+      "y": 42,
+      "w": 12,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "1": {
+      "x": 190,
+      "y": 42,
+      "w": 9,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "2": {
+      "x": 201,
+      "y": 42,
+      "w": 13,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "3": {
+      "x": 216,
+      "y": 42,
+      "w": 13,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "4": {
+      "x": 231,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "5": {
+      "x": 247,
+      "y": 42,
+      "w": 13,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "6": {
+      "x": 262,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "7": {
+      "x": 278,
+      "y": 42,
+      "w": 13,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "8": {
+      "x": 293,
+      "y": 42,
+      "w": 12,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "9": {
+      "x": 307,
+      "y": 42,
+      "w": 13,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    ":": {
+      "x": 322,
+      "y": 42,
+      "w": 5,
+      "h": 13,
+      "advance": 7,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    ";": {
+      "x": 329,
+      "y": 42,
+      "w": 6,
+      "h": 18,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "<": {
+      "x": 337,
+      "y": 42,
+      "w": 11,
+      "h": 12,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "=": {
+      "x": 350,
+      "y": 42,
+      "w": 12,
+      "h": 10,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 12
+    },
+    ">": {
+      "x": 364,
+      "y": 42,
+      "w": 11,
+      "h": 12,
+      "advance": 12,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "?": {
+      "x": 377,
+      "y": 42,
+      "w": 12,
+      "h": 17,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "@": {
+      "x": 391,
+      "y": 42,
+      "w": 21,
+      "h": 22,
+      "advance": 22,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "A": {
+      "x": 414,
+      "y": 42,
+      "w": 18,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": -1,
+      "bearing_y": 17
+    },
+    "B": {
+      "x": 434,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "C": {
+      "x": 450,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "D": {
+      "x": 468,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "E": {
+      "x": 484,
+      "y": 42,
+      "w": 13,
+      "h": 17,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "F": {
+      "x": 499,
+      "y": 42,
+      "w": 12,
+      "h": 17,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "G": {
+      "x": 513,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "H": {
+      "x": 531,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "I": {
+      "x": 548,
+      "y": 42,
+      "w": 5,
+      "h": 17,
+      "advance": 7,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "J": {
+      "x": 555,
+      "y": 42,
+      "w": 13,
+      "h": 17,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "K": {
+      "x": 570,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "L": {
+      "x": 587,
+      "y": 42,
+      "w": 12,
+      "h": 17,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "M": {
+      "x": 601,
+      "y": 42,
+      "w": 19,
+      "h": 17,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "N": {
+      "x": 622,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "O": {
+      "x": 639,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "P": {
+      "x": 657,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Q": {
+      "x": 673,
+      "y": 42,
+      "w": 16,
+      "h": 20,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "R": {
+      "x": 691,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "S": {
+      "x": 708,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "T": {
+      "x": 725,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "U": {
+      "x": 742,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "V": {
+      "x": 758,
+      "y": 42,
+      "w": 17,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": -1,
+      "bearing_y": 17
+    },
+    "W": {
+      "x": 777,
+      "y": 42,
+      "w": 21,
+      "h": 17,
+      "advance": 21,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "X": {
+      "x": 800,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "Y": {
+      "x": 818,
+      "y": 42,
+      "w": 17,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": -1,
+      "bearing_y": 17
+    },
+    "Z": {
+      "x": 837,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "[": {
+      "x": 854,
+      "y": 42,
+      "w": 6,
+      "h": 24,
+      "advance": 7,
+      "bearing_x": 1,
+      "bearing_y": 20
+    },
+    "\\": {
+      "x": 862,
+      "y": 42,
+      "w": 13,
+      "h": 18,
+      "advance": 10,
+      "bearing_x": -1,
+      "bearing_y": 17
+    },
+    "]": {
+      "x": 877,
+      "y": 42,
+      "w": 6,
+      "h": 24,
+      "advance": 7,
+      "bearing_x": 0,
+      "bearing_y": 20
+    },
+    "^": {
+      "x": 885,
+      "y": 42,
+      "w": 11,
+      "h": 9,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "_": {
+      "x": 898,
+      "y": 42,
+      "w": 12,
+      "h": 3,
+      "advance": 11,
+      "bearing_x": -1,
+      "bearing_y": 0
+    },
+    "`": {
+      "x": 912,
+      "y": 42,
+      "w": 8,
+      "h": 4,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 18
+    },
+    "a": {
+      "x": 922,
+      "y": 42,
+      "w": 13,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "b": {
+      "x": 937,
+      "y": 42,
+      "w": 12,
+      "h": 18,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 18
+    },
+    "c": {
+      "x": 951,
+      "y": 42,
+      "w": 12,
+      "h": 13,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "d": {
+      "x": 965,
+      "y": 42,
+      "w": 13,
+      "h": 18,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 18
+    },
+    "e": {
+      "x": 980,
+      "y": 42,
+      "w": 13,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "f": {
+      "x": 995,
+      "y": 42,
+      "w": 9,
+      "h": 18,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 18
+    },
+    "g": {
+      "x": 1006,
+      "y": 42,
+      "w": 13,
+      "h": 18,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "h": {
+      "x": 1021,
+      "y": 42,
+      "w": 12,
+      "h": 18,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 18
+    },
+    "i": {
+      "x": 1035,
+      "y": 42,
+      "w": 5,
+      "h": 18,
+      "advance": 7,
+      "bearing_x": 1,
+      "bearing_y": 18
+    },
+    "j": {
+      "x": 1042,
+      "y": 42,
+      "w": 8,
+      "h": 23,
+      "advance": 7,
+      "bearing_x": -2,
+      "bearing_y": 18
+    },
+    "k": {
+      "x": 1052,
+      "y": 42,
+      "w": 13,
+      "h": 18,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 18
+    },
+    "l": {
+      "x": 1067,
+      "y": 42,
+      "w": 5,
+      "h": 18,
+      "advance": 7,
+      "bearing_x": 1,
+      "bearing_y": 18
+    },
+    "m": {
+      "x": 1074,
+      "y": 42,
+      "w": 19,
+      "h": 13,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "n": {
+      "x": 1095,
+      "y": 42,
+      "w": 12,
+      "h": 13,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "o": {
+      "x": 1109,
+      "y": 42,
+      "w": 13,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "p": {
+      "x": 1124,
+      "y": 42,
+      "w": 12,
+      "h": 18,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "q": {
+      "x": 1138,
+      "y": 42,
+      "w": 13,
+      "h": 18,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "r": {
+      "x": 1153,
+      "y": 42,
+      "w": 8,
+      "h": 13,
+      "advance": 9,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "s": {
+      "x": 1163,
+      "y": 42,
+      "w": 12,
+      "h": 13,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "t": {
+      "x": 1177,
+      "y": 42,
+      "w": 8,
+      "h": 16,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 16
+    },
+    "u": {
+      "x": 1187,
+      "y": 42,
+      "w": 12,
+      "h": 13,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "v": {
+      "x": 1201,
+      "y": 42,
+      "w": 13,
+      "h": 13,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "w": {
+      "x": 1216,
+      "y": 42,
+      "w": 18,
+      "h": 13,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "x": {
+      "x": 1236,
+      "y": 42,
+      "w": 13,
+      "h": 13,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "y": {
+      "x": 1251,
+      "y": 42,
+      "w": 14,
+      "h": 18,
+      "advance": 12,
+      "bearing_x": -1,
+      "bearing_y": 13
+    },
+    "z": {
+      "x": 1267,
+      "y": 42,
+      "w": 12,
+      "h": 13,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "{": {
+      "x": 1281,
+      "y": 42,
+      "w": 8,
+      "h": 23,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 19
+    },
+    "|": {
+      "x": 1291,
+      "y": 42,
+      "w": 3,
+      "h": 20,
+      "advance": 6,
+      "bearing_x": 2,
+      "bearing_y": 17
+    },
+    "}": {
+      "x": 1296,
+      "y": 42,
+      "w": 8,
+      "h": 23,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 19
+    },
+    "~": {
+      "x": 1306,
+      "y": 42,
+      "w": 14,
+      "h": 6,
+      "advance": 15,
+      "bearing_x": 1,
+      "bearing_y": 10
+    },
+    "А": {
+      "x": 1322,
+      "y": 42,
+      "w": 18,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": -1,
+      "bearing_y": 17
+    },
+    "Б": {
+      "x": 1342,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "В": {
+      "x": 1358,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Г": {
+      "x": 1374,
+      "y": 42,
+      "w": 12,
+      "h": 17,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Д": {
+      "x": 1388,
+      "y": 42,
+      "w": 18,
+      "h": 22,
+      "advance": 18,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "Е": {
+      "x": 1408,
+      "y": 42,
+      "w": 13,
+      "h": 17,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Ж": {
+      "x": 1423,
+      "y": 42,
+      "w": 26,
+      "h": 17,
+      "advance": 25,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "З": {
+      "x": 1451,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "И": {
+      "x": 1467,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Й": {
+      "x": 1484,
+      "y": 42,
+      "w": 15,
+      "h": 22,
+      "advance": 17,
+      "bearing_x": 1,
+      "bearing_y": 22
+    },
+    "К": {
+      "x": 1501,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Л": {
+      "x": 1518,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "М": {
+      "x": 1536,
+      "y": 42,
+      "w": 19,
+      "h": 17,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Н": {
+      "x": 1557,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "О": {
+      "x": 1574,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "П": {
+      "x": 1592,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Р": {
+      "x": 1609,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "С": {
+      "x": 1625,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "Т": {
+      "x": 1643,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "У": {
+      "x": 1660,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "Ф": {
+      "x": 1678,
+      "y": 42,
+      "w": 20,
+      "h": 18,
+      "advance": 20,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "Х": {
+      "x": 1700,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "Ц": {
+      "x": 1718,
+      "y": 42,
+      "w": 17,
+      "h": 21,
+      "advance": 19,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Ч": {
+      "x": 1737,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Ш": {
+      "x": 1754,
+      "y": 42,
+      "w": 21,
+      "h": 17,
+      "advance": 23,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Щ": {
+      "x": 1777,
+      "y": 42,
+      "w": 24,
+      "h": 21,
+      "advance": 25,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Ъ": {
+      "x": 1803,
+      "y": 42,
+      "w": 19,
+      "h": 17,
+      "advance": 19,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "Ы": {
+      "x": 1824,
+      "y": 42,
+      "w": 19,
+      "h": 17,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Ь": {
+      "x": 1845,
+      "y": 42,
+      "w": 14,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Э": {
+      "x": 1861,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "Ю": {
+      "x": 1878,
+      "y": 42,
+      "w": 22,
+      "h": 17,
+      "advance": 23,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "Я": {
+      "x": 1902,
+      "y": 42,
+      "w": 15,
+      "h": 17,
+      "advance": 14,
+      "bearing_x": -2,
+      "bearing_y": 17
+    },
+    "а": {
+      "x": 1919,
+      "y": 42,
+      "w": 13,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "б": {
+      "x": 1934,
+      "y": 42,
+      "w": 14,
+      "h": 18,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 18
+    },
+    "в": {
+      "x": 1950,
+      "y": 42,
+      "w": 12,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "г": {
+      "x": 1964,
+      "y": 42,
+      "w": 9,
+      "h": 13,
+      "advance": 10,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "д": {
+      "x": 1975,
+      "y": 42,
+      "w": 16,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "е": {
+      "x": 1993,
+      "y": 42,
+      "w": 13,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "ж": {
+      "x": 2008,
+      "y": 42,
+      "w": 22,
+      "h": 13,
+      "advance": 22,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "з": {
+      "x": 2032,
+      "y": 42,
+      "w": 12,
+      "h": 13,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "и": {
+      "x": 0,
+      "y": 70,
+      "w": 12,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "й": {
+      "x": 14,
+      "y": 70,
+      "w": 12,
+      "h": 19,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 19
+    },
+    "к": {
+      "x": 28,
+      "y": 70,
+      "w": 13,
+      "h": 13,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "л": {
+      "x": 43,
+      "y": 70,
+      "w": 13,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "м": {
+      "x": 58,
+      "y": 70,
+      "w": 16,
+      "h": 13,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "н": {
+      "x": 76,
+      "y": 70,
+      "w": 12,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "о": {
+      "x": 90,
+      "y": 70,
+      "w": 13,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "п": {
+      "x": 105,
+      "y": 70,
+      "w": 12,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "р": {
+      "x": 119,
+      "y": 70,
+      "w": 12,
+      "h": 18,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "с": {
+      "x": 133,
+      "y": 70,
+      "w": 12,
+      "h": 13,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "т": {
+      "x": 147,
+      "y": 70,
+      "w": 13,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "у": {
+      "x": 162,
+      "y": 70,
+      "w": 14,
+      "h": 18,
+      "advance": 12,
+      "bearing_x": -1,
+      "bearing_y": 13
+    },
+    "ф": {
+      "x": 178,
+      "y": 70,
+      "w": 17,
+      "h": 23,
+      "advance": 18,
+      "bearing_x": 0,
+      "bearing_y": 18
+    },
+    "х": {
+      "x": 197,
+      "y": 70,
+      "w": 13,
+      "h": 13,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "ц": {
+      "x": 212,
+      "y": 70,
+      "w": 14,
+      "h": 17,
+      "advance": 15,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "ч": {
+      "x": 228,
+      "y": 70,
+      "w": 13,
+      "h": 13,
+      "advance": 13,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "ш": {
+      "x": 243,
+      "y": 70,
+      "w": 18,
+      "h": 13,
+      "advance": 20,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "щ": {
+      "x": 263,
+      "y": 70,
+      "w": 21,
+      "h": 17,
+      "advance": 22,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "ъ": {
+      "x": 286,
+      "y": 70,
+      "w": 16,
+      "h": 13,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "ы": {
+      "x": 304,
+      "y": 70,
+      "w": 19,
+      "h": 13,
+      "advance": 20,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "ь": {
+      "x": 325,
+      "y": 70,
+      "w": 13,
+      "h": 13,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "э": {
+      "x": 340,
+      "y": 70,
+      "w": 12,
+      "h": 13,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 13
+    },
+    "ю": {
+      "x": 354,
+      "y": 70,
+      "w": 18,
+      "h": 13,
+      "advance": 19,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "я": {
+      "x": 374,
+      "y": 70,
+      "w": 13,
+      "h": 13,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 13
+    }
+  },
+  "32": {
+    " ": {
+      "x": 0,
+      "y": 101,
+      "w": 0,
+      "h": 0,
+      "advance": 8,
+      "bearing_x": 0,
+      "bearing_y": 0
+    },
+    "!": {
+      "x": 2,
+      "y": 101,
+      "w": 7,
+      "h": 23,
+      "advance": 9,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "\"": {
+      "x": 11,
+      "y": 101,
+      "w": 10,
+      "h": 9,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 24
+    },
+    "#": {
+      "x": 23,
+      "y": 101,
+      "w": 18,
+      "h": 23,
+      "advance": 19,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "$": {
+      "x": 43,
+      "y": 101,
+      "w": 17,
+      "h": 29,
+      "advance": 19,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "%": {
+      "x": 62,
+      "y": 101,
+      "w": 22,
+      "h": 23,
+      "advance": 24,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "&": {
+      "x": 86,
+      "y": 101,
+      "w": 22,
+      "h": 23,
+      "advance": 22,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "'": {
+      "x": 110,
+      "y": 101,
+      "w": 5,
+      "h": 9,
+      "advance": 5,
+      "bearing_x": 0,
+      "bearing_y": 24
+    },
+    "(": {
+      "x": 117,
+      "y": 101,
+      "w": 10,
+      "h": 32,
+      "advance": 11,
+      "bearing_x": 1,
+      "bearing_y": 25
+    },
+    ")": {
+      "x": 129,
+      "y": 101,
+      "w": 10,
+      "h": 32,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 25
+    },
+    "*": {
+      "x": 141,
+      "y": 101,
+      "w": 15,
+      "h": 14,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "+": {
+      "x": 158,
+      "y": 101,
+      "w": 17,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 19
+    },
+    ",": {
+      "x": 177,
+      "y": 101,
+      "w": 7,
+      "h": 10,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 4
+    },
+    "-": {
+      "x": 186,
+      "y": 101,
+      "w": 10,
+      "h": 5,
+      "advance": 14,
+      "bearing_x": 2,
+      "bearing_y": 13
+    },
+    ".": {
+      "x": 198,
+      "y": 101,
+      "w": 7,
+      "h": 6,
+      "advance": 10,
+      "bearing_x": 1,
+      "bearing_y": 6
+    },
+    "/": {
+      "x": 207,
+      "y": 101,
+      "w": 13,
+      "h": 25,
+      "advance": 11,
+      "bearing_x": -1,
+      "bearing_y": 23
+    },
+    "0": {
+      "x": 222,
+      "y": 101,
+      "w": 17,
+      "h": 23,
+      "advance": 19,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "1": {
+      "x": 241,
+      "y": 101,
+      "w": 12,
+      "h": 23,
+      "advance": 19,
+      "bearing_x": 2,
+      "bearing_y": 23
+    },
+    "2": {
+      "x": 255,
+      "y": 101,
+      "w": 18,
+      "h": 23,
+      "advance": 19,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "3": {
+      "x": 275,
+      "y": 101,
+      "w": 18,
+      "h": 23,
+      "advance": 19,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "4": {
+      "x": 295,
+      "y": 101,
+      "w": 18,
+      "h": 23,
+      "advance": 19,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "5": {
+      "x": 315,
+      "y": 101,
+      "w": 17,
+      "h": 23,
+      "advance": 19,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "6": {
+      "x": 334,
+      "y": 101,
+      "w": 17,
+      "h": 23,
+      "advance": 19,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "7": {
+      "x": 353,
+      "y": 101,
+      "w": 18,
+      "h": 23,
+      "advance": 19,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "8": {
+      "x": 373,
+      "y": 101,
+      "w": 17,
+      "h": 23,
+      "advance": 19,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "9": {
+      "x": 392,
+      "y": 101,
+      "w": 17,
+      "h": 23,
+      "advance": 19,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    ":": {
+      "x": 411,
+      "y": 101,
+      "w": 7,
+      "h": 18,
+      "advance": 10,
+      "bearing_x": 1,
+      "bearing_y": 18
+    },
+    ";": {
+      "x": 420,
+      "y": 101,
+      "w": 7,
+      "h": 24,
+      "advance": 9,
+      "bearing_x": 1,
+      "bearing_y": 18
+    },
+    "<": {
+      "x": 429,
+      "y": 101,
+      "w": 15,
+      "h": 15,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "=": {
+      "x": 446,
+      "y": 101,
+      "w": 15,
+      "h": 13,
+      "advance": 19,
+      "bearing_x": 2,
+      "bearing_y": 16
+    },
+    ">": {
+      "x": 463,
+      "y": 101,
+      "w": 15,
+      "h": 15,
+      "advance": 16,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "?": {
+      "x": 480,
+      "y": 101,
+      "w": 16,
+      "h": 23,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "@": {
+      "x": 498,
+      "y": 101,
+      "w": 28,
+      "h": 29,
+      "advance": 29,
+      "bearing_x": 0,
+      "bearing_y": 22
+    },
+    "A": {
+      "x": 528,
+      "y": 101,
+      "w": 23,
+      "h": 23,
+      "advance": 22,
+      "bearing_x": -1,
+      "bearing_y": 23
+    },
+    "B": {
+      "x": 553,
+      "y": 101,
+      "w": 19,
+      "h": 23,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "C": {
+      "x": 574,
+      "y": 101,
+      "w": 20,
+      "h": 23,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "D": {
+      "x": 596,
+      "y": 101,
+      "w": 19,
+      "h": 23,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "E": {
+      "x": 617,
+      "y": 101,
+      "w": 17,
+      "h": 23,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "F": {
+      "x": 636,
+      "y": 101,
+      "w": 16,
+      "h": 23,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "G": {
+      "x": 654,
+      "y": 101,
+      "w": 20,
+      "h": 23,
+      "advance": 22,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "H": {
+      "x": 676,
+      "y": 101,
+      "w": 20,
+      "h": 23,
+      "advance": 22,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "I": {
+      "x": 698,
+      "y": 101,
+      "w": 6,
+      "h": 23,
+      "advance": 10,
+      "bearing_x": 2,
+      "bearing_y": 23
+    },
+    "J": {
+      "x": 706,
+      "y": 101,
+      "w": 17,
+      "h": 23,
+      "advance": 18,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "K": {
+      "x": 725,
+      "y": 101,
+      "w": 20,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "L": {
+      "x": 747,
+      "y": 101,
+      "w": 16,
+      "h": 23,
+      "advance": 17,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "M": {
+      "x": 765,
+      "y": 101,
+      "w": 26,
+      "h": 23,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "N": {
+      "x": 793,
+      "y": 101,
+      "w": 20,
+      "h": 23,
+      "advance": 22,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "O": {
+      "x": 815,
+      "y": 101,
+      "w": 20,
+      "h": 23,
+      "advance": 22,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "P": {
+      "x": 837,
+      "y": 101,
+      "w": 19,
+      "h": 23,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Q": {
+      "x": 858,
+      "y": 101,
+      "w": 21,
+      "h": 27,
+      "advance": 22,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "R": {
+      "x": 881,
+      "y": 101,
+      "w": 20,
+      "h": 23,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "S": {
+      "x": 903,
+      "y": 101,
+      "w": 18,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "T": {
+      "x": 923,
+      "y": 101,
+      "w": 20,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "U": {
+      "x": 945,
+      "y": 101,
+      "w": 19,
+      "h": 23,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "V": {
+      "x": 966,
+      "y": 101,
+      "w": 23,
+      "h": 23,
+      "advance": 21,
+      "bearing_x": -1,
+      "bearing_y": 23
+    },
+    "W": {
+      "x": 991,
+      "y": 101,
+      "w": 28,
+      "h": 23,
+      "advance": 28,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "X": {
+      "x": 1021,
+      "y": 101,
+      "w": 21,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "Y": {
+      "x": 1044,
+      "y": 101,
+      "w": 22,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": -1,
+      "bearing_y": 23
+    },
+    "Z": {
+      "x": 1068,
+      "y": 101,
+      "w": 19,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "[": {
+      "x": 1089,
+      "y": 101,
+      "w": 8,
+      "h": 32,
+      "advance": 9,
+      "bearing_x": 1,
+      "bearing_y": 27
+    },
+    "\\": {
+      "x": 1099,
+      "y": 101,
+      "w": 16,
+      "h": 25,
+      "advance": 14,
+      "bearing_x": -1,
+      "bearing_y": 23
+    },
+    "]": {
+      "x": 1117,
+      "y": 101,
+      "w": 8,
+      "h": 32,
+      "advance": 9,
+      "bearing_x": 0,
+      "bearing_y": 27
+    },
+    "^": {
+      "x": 1127,
+      "y": 101,
+      "w": 14,
+      "h": 11,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "_": {
+      "x": 1143,
+      "y": 101,
+      "w": 16,
+      "h": 4,
+      "advance": 14,
+      "bearing_x": -1,
+      "bearing_y": 0
+    },
+    "`": {
+      "x": 1161,
+      "y": 101,
+      "w": 10,
+      "h": 5,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 24
+    },
+    "a": {
+      "x": 1173,
+      "y": 101,
+      "w": 17,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "b": {
+      "x": 1192,
+      "y": 101,
+      "w": 17,
+      "h": 24,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 24
+    },
+    "c": {
+      "x": 1211,
+      "y": 101,
+      "w": 16,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "d": {
+      "x": 1229,
+      "y": 101,
+      "w": 17,
+      "h": 24,
+      "advance": 18,
+      "bearing_x": 0,
+      "bearing_y": 24
+    },
+    "e": {
+      "x": 1248,
+      "y": 101,
+      "w": 17,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "f": {
+      "x": 1267,
+      "y": 101,
+      "w": 12,
+      "h": 24,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 24
+    },
+    "g": {
+      "x": 1281,
+      "y": 101,
+      "w": 17,
+      "h": 24,
+      "advance": 18,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "h": {
+      "x": 1300,
+      "y": 101,
+      "w": 16,
+      "h": 24,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 24
+    },
+    "i": {
+      "x": 1318,
+      "y": 101,
+      "w": 7,
+      "h": 25,
+      "advance": 9,
+      "bearing_x": 1,
+      "bearing_y": 25
+    },
+    "j": {
+      "x": 1327,
+      "y": 101,
+      "w": 10,
+      "h": 32,
+      "advance": 9,
+      "bearing_x": -2,
+      "bearing_y": 25
+    },
+    "k": {
+      "x": 1339,
+      "y": 101,
+      "w": 17,
+      "h": 24,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 24
+    },
+    "l": {
+      "x": 1358,
+      "y": 101,
+      "w": 7,
+      "h": 24,
+      "advance": 9,
+      "bearing_x": 1,
+      "bearing_y": 24
+    },
+    "m": {
+      "x": 1367,
+      "y": 101,
+      "w": 26,
+      "h": 17,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "n": {
+      "x": 1395,
+      "y": 101,
+      "w": 16,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "o": {
+      "x": 1413,
+      "y": 101,
+      "w": 18,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "p": {
+      "x": 1433,
+      "y": 101,
+      "w": 17,
+      "h": 24,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "q": {
+      "x": 1452,
+      "y": 101,
+      "w": 17,
+      "h": 24,
+      "advance": 18,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "r": {
+      "x": 1471,
+      "y": 101,
+      "w": 11,
+      "h": 17,
+      "advance": 12,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "s": {
+      "x": 1484,
+      "y": 101,
+      "w": 16,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "t": {
+      "x": 1502,
+      "y": 101,
+      "w": 11,
+      "h": 21,
+      "advance": 11,
+      "bearing_x": 0,
+      "bearing_y": 21
+    },
+    "u": {
+      "x": 1515,
+      "y": 101,
+      "w": 16,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "v": {
+      "x": 1533,
+      "y": 101,
+      "w": 17,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "w": {
+      "x": 1552,
+      "y": 101,
+      "w": 23,
+      "h": 17,
+      "advance": 23,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "x": {
+      "x": 1577,
+      "y": 101,
+      "w": 17,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "y": {
+      "x": 1596,
+      "y": 101,
+      "w": 18,
+      "h": 24,
+      "advance": 17,
+      "bearing_x": -1,
+      "bearing_y": 17
+    },
+    "z": {
+      "x": 1616,
+      "y": 101,
+      "w": 15,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "{": {
+      "x": 1633,
+      "y": 101,
+      "w": 10,
+      "h": 31,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 25
+    },
+    "|": {
+      "x": 1645,
+      "y": 101,
+      "w": 4,
+      "h": 27,
+      "advance": 8,
+      "bearing_x": 2,
+      "bearing_y": 23
+    },
+    "}": {
+      "x": 1651,
+      "y": 101,
+      "w": 10,
+      "h": 31,
+      "advance": 10,
+      "bearing_x": 0,
+      "bearing_y": 25
+    },
+    "~": {
+      "x": 1663,
+      "y": 101,
+      "w": 18,
+      "h": 7,
+      "advance": 20,
+      "bearing_x": 1,
+      "bearing_y": 13
+    },
+    "А": {
+      "x": 1683,
+      "y": 101,
+      "w": 23,
+      "h": 23,
+      "advance": 22,
+      "bearing_x": -1,
+      "bearing_y": 23
+    },
+    "Б": {
+      "x": 1708,
+      "y": 101,
+      "w": 19,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "В": {
+      "x": 1729,
+      "y": 101,
+      "w": 19,
+      "h": 23,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Г": {
+      "x": 1750,
+      "y": 101,
+      "w": 17,
+      "h": 23,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Д": {
+      "x": 1769,
+      "y": 101,
+      "w": 24,
+      "h": 30,
+      "advance": 24,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "Е": {
+      "x": 1795,
+      "y": 101,
+      "w": 17,
+      "h": 23,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Ж": {
+      "x": 1814,
+      "y": 101,
+      "w": 34,
+      "h": 23,
+      "advance": 33,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "З": {
+      "x": 1850,
+      "y": 101,
+      "w": 19,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "И": {
+      "x": 1871,
+      "y": 101,
+      "w": 20,
+      "h": 23,
+      "advance": 22,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Й": {
+      "x": 1893,
+      "y": 101,
+      "w": 20,
+      "h": 30,
+      "advance": 22,
+      "bearing_x": 1,
+      "bearing_y": 30
+    },
+    "К": {
+      "x": 1915,
+      "y": 101,
+      "w": 21,
+      "h": 23,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Л": {
+      "x": 1938,
+      "y": 101,
+      "w": 21,
+      "h": 23,
+      "advance": 23,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "М": {
+      "x": 1961,
+      "y": 101,
+      "w": 26,
+      "h": 23,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Н": {
+      "x": 1989,
+      "y": 101,
+      "w": 20,
+      "h": 23,
+      "advance": 22,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "О": {
+      "x": 2011,
+      "y": 101,
+      "w": 20,
+      "h": 23,
+      "advance": 22,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "П": {
+      "x": 0,
+      "y": 137,
+      "w": 20,
+      "h": 23,
+      "advance": 23,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Р": {
+      "x": 22,
+      "y": 137,
+      "w": 19,
+      "h": 23,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "С": {
+      "x": 43,
+      "y": 137,
+      "w": 20,
+      "h": 23,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Т": {
+      "x": 65,
+      "y": 137,
+      "w": 20,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "У": {
+      "x": 87,
+      "y": 137,
+      "w": 21,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "Ф": {
+      "x": 110,
+      "y": 137,
+      "w": 25,
+      "h": 24,
+      "advance": 27,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Х": {
+      "x": 137,
+      "y": 137,
+      "w": 21,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "Ц": {
+      "x": 160,
+      "y": 137,
+      "w": 23,
+      "h": 28,
+      "advance": 25,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Ч": {
+      "x": 185,
+      "y": 137,
+      "w": 19,
+      "h": 23,
+      "advance": 22,
+      "bearing_x": 2,
+      "bearing_y": 23
+    },
+    "Ш": {
+      "x": 206,
+      "y": 137,
+      "w": 29,
+      "h": 23,
+      "advance": 31,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Щ": {
+      "x": 237,
+      "y": 137,
+      "w": 32,
+      "h": 28,
+      "advance": 33,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Ъ": {
+      "x": 271,
+      "y": 137,
+      "w": 25,
+      "h": 23,
+      "advance": 25,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "Ы": {
+      "x": 298,
+      "y": 137,
+      "w": 26,
+      "h": 23,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Ь": {
+      "x": 326,
+      "y": 137,
+      "w": 19,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Э": {
+      "x": 347,
+      "y": 137,
+      "w": 20,
+      "h": 23,
+      "advance": 20,
+      "bearing_x": 0,
+      "bearing_y": 23
+    },
+    "Ю": {
+      "x": 369,
+      "y": 137,
+      "w": 29,
+      "h": 23,
+      "advance": 31,
+      "bearing_x": 1,
+      "bearing_y": 23
+    },
+    "Я": {
+      "x": 400,
+      "y": 137,
+      "w": 20,
+      "h": 23,
+      "advance": 18,
+      "bearing_x": -2,
+      "bearing_y": 23
+    },
+    "а": {
+      "x": 422,
+      "y": 137,
+      "w": 17,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "б": {
+      "x": 441,
+      "y": 137,
+      "w": 17,
+      "h": 24,
+      "advance": 19,
+      "bearing_x": 1,
+      "bearing_y": 24
+    },
+    "в": {
+      "x": 460,
+      "y": 137,
+      "w": 17,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "г": {
+      "x": 479,
+      "y": 137,
+      "w": 13,
+      "h": 17,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "д": {
+      "x": 494,
+      "y": 137,
+      "w": 21,
+      "h": 22,
+      "advance": 21,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "е": {
+      "x": 517,
+      "y": 137,
+      "w": 17,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "ж": {
+      "x": 536,
+      "y": 137,
+      "w": 29,
+      "h": 17,
+      "advance": 29,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "з": {
+      "x": 567,
+      "y": 137,
+      "w": 16,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "и": {
+      "x": 585,
+      "y": 137,
+      "w": 16,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "й": {
+      "x": 603,
+      "y": 137,
+      "w": 16,
+      "h": 24,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 24
+    },
+    "к": {
+      "x": 621,
+      "y": 137,
+      "w": 18,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "л": {
+      "x": 641,
+      "y": 137,
+      "w": 17,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "м": {
+      "x": 660,
+      "y": 137,
+      "w": 22,
+      "h": 17,
+      "advance": 25,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "н": {
+      "x": 684,
+      "y": 137,
+      "w": 16,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "о": {
+      "x": 702,
+      "y": 137,
+      "w": 18,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "п": {
+      "x": 722,
+      "y": 137,
+      "w": 16,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "р": {
+      "x": 740,
+      "y": 137,
+      "w": 17,
+      "h": 24,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "с": {
+      "x": 759,
+      "y": 137,
+      "w": 16,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "т": {
+      "x": 777,
+      "y": 137,
+      "w": 17,
+      "h": 17,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "у": {
+      "x": 796,
+      "y": 137,
+      "w": 18,
+      "h": 24,
+      "advance": 17,
+      "bearing_x": -1,
+      "bearing_y": 17
+    },
+    "ф": {
+      "x": 816,
+      "y": 137,
+      "w": 23,
+      "h": 31,
+      "advance": 23,
+      "bearing_x": 0,
+      "bearing_y": 24
+    },
+    "х": {
+      "x": 841,
+      "y": 137,
+      "w": 17,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "ц": {
+      "x": 860,
+      "y": 137,
+      "w": 19,
+      "h": 22,
+      "advance": 20,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "ч": {
+      "x": 881,
+      "y": 137,
+      "w": 16,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "ш": {
+      "x": 899,
+      "y": 137,
+      "w": 25,
+      "h": 17,
+      "advance": 27,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "щ": {
+      "x": 926,
+      "y": 137,
+      "w": 29,
+      "h": 22,
+      "advance": 30,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "ъ": {
+      "x": 957,
+      "y": 137,
+      "w": 22,
+      "h": 17,
+      "advance": 22,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "ы": {
+      "x": 981,
+      "y": 137,
+      "w": 25,
+      "h": 17,
+      "advance": 27,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "ь": {
+      "x": 1008,
+      "y": 137,
+      "w": 17,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "э": {
+      "x": 1027,
+      "y": 137,
+      "w": 16,
+      "h": 17,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 17
+    },
+    "ю": {
+      "x": 1045,
+      "y": 137,
+      "w": 24,
+      "h": 17,
+      "advance": 26,
+      "bearing_x": 1,
+      "bearing_y": 17
+    },
+    "я": {
+      "x": 1071,
+      "y": 137,
+      "w": 17,
+      "h": 17,
+      "advance": 18,
+      "bearing_x": 0,
+      "bearing_y": 17
+    }
+  },
+  "48": {
+    " ": {
+      "x": 0,
+      "y": 176,
+      "w": 0,
+      "h": 0,
+      "advance": 12,
+      "bearing_x": 0,
+      "bearing_y": 0
+    },
+    "!": {
+      "x": 2,
+      "y": 176,
+      "w": 10,
+      "h": 34,
+      "advance": 13,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "\"": {
+      "x": 14,
+      "y": 176,
+      "w": 15,
+      "h": 13,
+      "advance": 15,
+      "bearing_x": 0,
+      "bearing_y": 36
+    },
+    "#": {
+      "x": 31,
+      "y": 176,
+      "w": 27,
+      "h": 34,
+      "advance": 28,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "$": {
+      "x": 60,
+      "y": 176,
+      "w": 25,
+      "h": 44,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 39
+    },
+    "%": {
+      "x": 87,
+      "y": 176,
+      "w": 32,
+      "h": 34,
+      "advance": 36,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "&": {
+      "x": 121,
+      "y": 176,
+      "w": 31,
+      "h": 34,
+      "advance": 32,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "'": {
+      "x": 154,
+      "y": 176,
+      "w": 6,
+      "h": 13,
+      "advance": 7,
+      "bearing_x": 1,
+      "bearing_y": 36
+    },
+    "(": {
+      "x": 162,
+      "y": 176,
+      "w": 15,
+      "h": 49,
+      "advance": 17,
+      "bearing_x": 2,
+      "bearing_y": 38
+    },
+    ")": {
+      "x": 179,
+      "y": 176,
+      "w": 15,
+      "h": 49,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 38
+    },
+    "*": {
+      "x": 196,
+      "y": 176,
+      "w": 23,
+      "h": 21,
+      "advance": 22,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "+": {
+      "x": 221,
+      "y": 176,
+      "w": 24,
+      "h": 25,
+      "advance": 26,
+      "bearing_x": 1,
+      "bearing_y": 29
+    },
+    ",": {
+      "x": 247,
+      "y": 176,
+      "w": 9,
+      "h": 15,
+      "advance": 13,
+      "bearing_x": 1,
+      "bearing_y": 6
+    },
+    "-": {
+      "x": 258,
+      "y": 176,
+      "w": 15,
+      "h": 7,
+      "advance": 22,
+      "bearing_x": 3,
+      "bearing_y": 19
+    },
+    ".": {
+      "x": 275,
+      "y": 176,
+      "w": 10,
+      "h": 8,
+      "advance": 15,
+      "bearing_x": 2,
+      "bearing_y": 8
+    },
+    "/": {
+      "x": 287,
+      "y": 176,
+      "w": 18,
+      "h": 37,
+      "advance": 17,
+      "bearing_x": -1,
+      "bearing_y": 34
+    },
+    "0": {
+      "x": 307,
+      "y": 176,
+      "w": 24,
+      "h": 34,
+      "advance": 28,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "1": {
+      "x": 333,
+      "y": 176,
+      "w": 17,
+      "h": 34,
+      "advance": 28,
+      "bearing_x": 3,
+      "bearing_y": 34
+    },
+    "2": {
+      "x": 352,
+      "y": 176,
+      "w": 25,
+      "h": 34,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "3": {
+      "x": 379,
+      "y": 176,
+      "w": 25,
+      "h": 34,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "4": {
+      "x": 406,
+      "y": 176,
+      "w": 26,
+      "h": 34,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "5": {
+      "x": 434,
+      "y": 176,
+      "w": 25,
+      "h": 34,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "6": {
+      "x": 461,
+      "y": 176,
+      "w": 26,
+      "h": 34,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "7": {
+      "x": 489,
+      "y": 176,
+      "w": 25,
+      "h": 34,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "8": {
+      "x": 516,
+      "y": 176,
+      "w": 24,
+      "h": 34,
+      "advance": 28,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "9": {
+      "x": 542,
+      "y": 176,
+      "w": 25,
+      "h": 34,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    ":": {
+      "x": 569,
+      "y": 176,
+      "w": 10,
+      "h": 27,
+      "advance": 14,
+      "bearing_x": 2,
+      "bearing_y": 27
+    },
+    ";": {
+      "x": 581,
+      "y": 176,
+      "w": 11,
+      "h": 36,
+      "advance": 14,
+      "bearing_x": 1,
+      "bearing_y": 27
+    },
+    "<": {
+      "x": 594,
+      "y": 176,
+      "w": 21,
+      "h": 23,
+      "advance": 25,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "=": {
+      "x": 617,
+      "y": 176,
+      "w": 22,
+      "h": 18,
+      "advance": 28,
+      "bearing_x": 3,
+      "bearing_y": 24
+    },
+    ">": {
+      "x": 641,
+      "y": 176,
+      "w": 22,
+      "h": 23,
+      "advance": 25,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "?": {
+      "x": 665,
+      "y": 176,
+      "w": 23,
+      "h": 34,
+      "advance": 24,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "@": {
+      "x": 690,
+      "y": 176,
+      "w": 41,
+      "h": 44,
+      "advance": 43,
+      "bearing_x": 1,
+      "bearing_y": 33
+    },
+    "A": {
+      "x": 733,
+      "y": 176,
+      "w": 34,
+      "h": 34,
+      "advance": 33,
+      "bearing_x": -1,
+      "bearing_y": 34
+    },
+    "B": {
+      "x": 769,
+      "y": 176,
+      "w": 28,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "C": {
+      "x": 799,
+      "y": 176,
+      "w": 30,
+      "h": 34,
+      "advance": 32,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "D": {
+      "x": 831,
+      "y": 176,
+      "w": 28,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "E": {
+      "x": 861,
+      "y": 176,
+      "w": 25,
+      "h": 34,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "F": {
+      "x": 888,
+      "y": 176,
+      "w": 24,
+      "h": 34,
+      "advance": 26,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "G": {
+      "x": 914,
+      "y": 176,
+      "w": 30,
+      "h": 34,
+      "advance": 33,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "H": {
+      "x": 946,
+      "y": 176,
+      "w": 30,
+      "h": 34,
+      "advance": 34,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "I": {
+      "x": 978,
+      "y": 176,
+      "w": 9,
+      "h": 34,
+      "advance": 15,
+      "bearing_x": 3,
+      "bearing_y": 34
+    },
+    "J": {
+      "x": 989,
+      "y": 176,
+      "w": 25,
+      "h": 34,
+      "advance": 27,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "K": {
+      "x": 1016,
+      "y": 176,
+      "w": 30,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "L": {
+      "x": 1048,
+      "y": 176,
+      "w": 24,
+      "h": 34,
+      "advance": 26,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "M": {
+      "x": 1074,
+      "y": 176,
+      "w": 38,
+      "h": 34,
+      "advance": 42,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "N": {
+      "x": 1114,
+      "y": 176,
+      "w": 30,
+      "h": 34,
+      "advance": 34,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "O": {
+      "x": 1146,
+      "y": 176,
+      "w": 31,
+      "h": 34,
+      "advance": 33,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "P": {
+      "x": 1179,
+      "y": 176,
+      "w": 28,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Q": {
+      "x": 1209,
+      "y": 176,
+      "w": 31,
+      "h": 40,
+      "advance": 33,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "R": {
+      "x": 1242,
+      "y": 176,
+      "w": 29,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "S": {
+      "x": 1273,
+      "y": 176,
+      "w": 28,
+      "h": 34,
+      "advance": 30,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "T": {
+      "x": 1303,
+      "y": 176,
+      "w": 30,
+      "h": 34,
+      "advance": 30,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "U": {
+      "x": 1335,
+      "y": 176,
+      "w": 28,
+      "h": 34,
+      "advance": 32,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "V": {
+      "x": 1365,
+      "y": 176,
+      "w": 33,
+      "h": 34,
+      "advance": 32,
+      "bearing_x": -1,
+      "bearing_y": 34
+    },
+    "W": {
+      "x": 1400,
+      "y": 176,
+      "w": 42,
+      "h": 34,
+      "advance": 42,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "X": {
+      "x": 1444,
+      "y": 176,
+      "w": 31,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "Y": {
+      "x": 1477,
+      "y": 176,
+      "w": 32,
+      "h": 34,
+      "advance": 30,
+      "bearing_x": -1,
+      "bearing_y": 34
+    },
+    "Z": {
+      "x": 1511,
+      "y": 176,
+      "w": 28,
+      "h": 34,
+      "advance": 29,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "[": {
+      "x": 1541,
+      "y": 176,
+      "w": 12,
+      "h": 48,
+      "advance": 14,
+      "bearing_x": 2,
+      "bearing_y": 40
+    },
+    "\\": {
+      "x": 1555,
+      "y": 176,
+      "w": 24,
+      "h": 37,
+      "advance": 20,
+      "bearing_x": -1,
+      "bearing_y": 34
+    },
+    "]": {
+      "x": 1581,
+      "y": 176,
+      "w": 12,
+      "h": 48,
+      "advance": 14,
+      "bearing_x": 0,
+      "bearing_y": 40
+    },
+    "^": {
+      "x": 1595,
+      "y": 176,
+      "w": 21,
+      "h": 17,
+      "advance": 22,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "_": {
+      "x": 1618,
+      "y": 176,
+      "w": 23,
+      "h": 6,
+      "advance": 21,
+      "bearing_x": -1,
+      "bearing_y": 0
+    },
+    "`": {
+      "x": 1643,
+      "y": 176,
+      "w": 14,
+      "h": 7,
+      "advance": 16,
+      "bearing_x": 1,
+      "bearing_y": 36
+    },
+    "a": {
+      "x": 1659,
+      "y": 176,
+      "w": 24,
+      "h": 26,
+      "advance": 26,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "b": {
+      "x": 1685,
+      "y": 176,
+      "w": 24,
+      "h": 36,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 36
+    },
+    "c": {
+      "x": 1711,
+      "y": 176,
+      "w": 23,
+      "h": 26,
+      "advance": 25,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "d": {
+      "x": 1736,
+      "y": 176,
+      "w": 24,
+      "h": 36,
+      "advance": 27,
+      "bearing_x": 1,
+      "bearing_y": 36
+    },
+    "e": {
+      "x": 1762,
+      "y": 176,
+      "w": 25,
+      "h": 26,
+      "advance": 26,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "f": {
+      "x": 1789,
+      "y": 176,
+      "w": 18,
+      "h": 36,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 36
+    },
+    "g": {
+      "x": 1809,
+      "y": 176,
+      "w": 25,
+      "h": 36,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "h": {
+      "x": 1836,
+      "y": 176,
+      "w": 23,
+      "h": 36,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 36
+    },
+    "i": {
+      "x": 1861,
+      "y": 176,
+      "w": 9,
+      "h": 37,
+      "advance": 13,
+      "bearing_x": 2,
+      "bearing_y": 37
+    },
+    "j": {
+      "x": 1872,
+      "y": 176,
+      "w": 14,
+      "h": 47,
+      "advance": 13,
+      "bearing_x": -3,
+      "bearing_y": 37
+    },
+    "k": {
+      "x": 1888,
+      "y": 176,
+      "w": 25,
+      "h": 36,
+      "advance": 26,
+      "bearing_x": 2,
+      "bearing_y": 36
+    },
+    "l": {
+      "x": 1915,
+      "y": 176,
+      "w": 9,
+      "h": 36,
+      "advance": 13,
+      "bearing_x": 2,
+      "bearing_y": 36
+    },
+    "m": {
+      "x": 1926,
+      "y": 176,
+      "w": 38,
+      "h": 26,
+      "advance": 41,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "n": {
+      "x": 1966,
+      "y": 176,
+      "w": 23,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "o": {
+      "x": 1991,
+      "y": 176,
+      "w": 25,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "p": {
+      "x": 2018,
+      "y": 176,
+      "w": 24,
+      "h": 36,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "q": {
+      "x": 0,
+      "y": 229,
+      "w": 24,
+      "h": 36,
+      "advance": 27,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "r": {
+      "x": 26,
+      "y": 229,
+      "w": 16,
+      "h": 26,
+      "advance": 18,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "s": {
+      "x": 44,
+      "y": 229,
+      "w": 24,
+      "h": 26,
+      "advance": 25,
+      "bearing_x": 0,
+      "bearing_y": 26
+    },
+    "t": {
+      "x": 70,
+      "y": 229,
+      "w": 16,
+      "h": 32,
+      "advance": 17,
+      "bearing_x": 0,
+      "bearing_y": 32
+    },
+    "u": {
+      "x": 88,
+      "y": 229,
+      "w": 23,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "v": {
+      "x": 113,
+      "y": 229,
+      "w": 25,
+      "h": 26,
+      "advance": 25,
+      "bearing_x": 0,
+      "bearing_y": 26
+    },
+    "w": {
+      "x": 140,
+      "y": 229,
+      "w": 35,
+      "h": 26,
+      "advance": 35,
+      "bearing_x": 0,
+      "bearing_y": 26
+    },
+    "x": {
+      "x": 177,
+      "y": 229,
+      "w": 25,
+      "h": 26,
+      "advance": 25,
+      "bearing_x": 0,
+      "bearing_y": 26
+    },
+    "y": {
+      "x": 204,
+      "y": 229,
+      "w": 27,
+      "h": 36,
+      "advance": 25,
+      "bearing_x": -1,
+      "bearing_y": 26
+    },
+    "z": {
+      "x": 233,
+      "y": 229,
+      "w": 23,
+      "h": 26,
+      "advance": 25,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "{": {
+      "x": 258,
+      "y": 229,
+      "w": 15,
+      "h": 45,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 37
+    },
+    "|": {
+      "x": 275,
+      "y": 229,
+      "w": 5,
+      "h": 40,
+      "advance": 12,
+      "bearing_x": 4,
+      "bearing_y": 34
+    },
+    "}": {
+      "x": 282,
+      "y": 229,
+      "w": 15,
+      "h": 45,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 37
+    },
+    "~": {
+      "x": 299,
+      "y": 229,
+      "w": 27,
+      "h": 11,
+      "advance": 30,
+      "bearing_x": 2,
+      "bearing_y": 20
+    },
+    "А": {
+      "x": 328,
+      "y": 229,
+      "w": 34,
+      "h": 34,
+      "advance": 33,
+      "bearing_x": -1,
+      "bearing_y": 34
+    },
+    "Б": {
+      "x": 364,
+      "y": 229,
+      "w": 27,
+      "h": 34,
+      "advance": 30,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "В": {
+      "x": 393,
+      "y": 229,
+      "w": 28,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Г": {
+      "x": 423,
+      "y": 229,
+      "w": 24,
+      "h": 34,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Д": {
+      "x": 449,
+      "y": 229,
+      "w": 36,
+      "h": 43,
+      "advance": 36,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "Е": {
+      "x": 487,
+      "y": 229,
+      "w": 25,
+      "h": 34,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Ж": {
+      "x": 514,
+      "y": 229,
+      "w": 51,
+      "h": 34,
+      "advance": 50,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "З": {
+      "x": 567,
+      "y": 229,
+      "w": 27,
+      "h": 34,
+      "advance": 30,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "И": {
+      "x": 596,
+      "y": 229,
+      "w": 29,
+      "h": 34,
+      "advance": 33,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Й": {
+      "x": 627,
+      "y": 229,
+      "w": 29,
+      "h": 44,
+      "advance": 33,
+      "bearing_x": 2,
+      "bearing_y": 44
+    },
+    "К": {
+      "x": 658,
+      "y": 229,
+      "w": 30,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Л": {
+      "x": 690,
+      "y": 229,
+      "w": 32,
+      "h": 34,
+      "advance": 34,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "М": {
+      "x": 724,
+      "y": 229,
+      "w": 38,
+      "h": 34,
+      "advance": 42,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Н": {
+      "x": 764,
+      "y": 229,
+      "w": 30,
+      "h": 34,
+      "advance": 34,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "О": {
+      "x": 796,
+      "y": 229,
+      "w": 31,
+      "h": 34,
+      "advance": 33,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "П": {
+      "x": 829,
+      "y": 229,
+      "w": 30,
+      "h": 34,
+      "advance": 34,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Р": {
+      "x": 861,
+      "y": 229,
+      "w": 28,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "С": {
+      "x": 891,
+      "y": 229,
+      "w": 30,
+      "h": 34,
+      "advance": 32,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "Т": {
+      "x": 923,
+      "y": 229,
+      "w": 30,
+      "h": 34,
+      "advance": 30,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "У": {
+      "x": 955,
+      "y": 229,
+      "w": 31,
+      "h": 34,
+      "advance": 30,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "Ф": {
+      "x": 988,
+      "y": 229,
+      "w": 38,
+      "h": 35,
+      "advance": 40,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "Х": {
+      "x": 1028,
+      "y": 229,
+      "w": 31,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "Ц": {
+      "x": 1061,
+      "y": 229,
+      "w": 34,
+      "h": 42,
+      "advance": 37,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Ч": {
+      "x": 1097,
+      "y": 229,
+      "w": 29,
+      "h": 34,
+      "advance": 34,
+      "bearing_x": 3,
+      "bearing_y": 34
+    },
+    "Ш": {
+      "x": 1128,
+      "y": 229,
+      "w": 42,
+      "h": 34,
+      "advance": 46,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Щ": {
+      "x": 1172,
+      "y": 229,
+      "w": 47,
+      "h": 42,
+      "advance": 50,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Ъ": {
+      "x": 1221,
+      "y": 229,
+      "w": 37,
+      "h": 34,
+      "advance": 37,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "Ы": {
+      "x": 1260,
+      "y": 229,
+      "w": 38,
+      "h": 34,
+      "advance": 42,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Ь": {
+      "x": 1300,
+      "y": 229,
+      "w": 27,
+      "h": 34,
+      "advance": 30,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Э": {
+      "x": 1329,
+      "y": 229,
+      "w": 29,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "Ю": {
+      "x": 1360,
+      "y": 229,
+      "w": 43,
+      "h": 34,
+      "advance": 47,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "Я": {
+      "x": 1405,
+      "y": 229,
+      "w": 29,
+      "h": 34,
+      "advance": 27,
+      "bearing_x": -3,
+      "bearing_y": 34
+    },
+    "а": {
+      "x": 1436,
+      "y": 229,
+      "w": 24,
+      "h": 26,
+      "advance": 26,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "б": {
+      "x": 1462,
+      "y": 229,
+      "w": 26,
+      "h": 36,
+      "advance": 28,
+      "bearing_x": 1,
+      "bearing_y": 36
+    },
+    "в": {
+      "x": 1490,
+      "y": 229,
+      "w": 24,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "г": {
+      "x": 1516,
+      "y": 229,
+      "w": 18,
+      "h": 26,
+      "advance": 20,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "д": {
+      "x": 1536,
+      "y": 229,
+      "w": 31,
+      "h": 34,
+      "advance": 31,
+      "bearing_x": 0,
+      "bearing_y": 26
+    },
+    "е": {
+      "x": 1569,
+      "y": 229,
+      "w": 25,
+      "h": 26,
+      "advance": 26,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "ж": {
+      "x": 1596,
+      "y": 229,
+      "w": 43,
+      "h": 26,
+      "advance": 43,
+      "bearing_x": 0,
+      "bearing_y": 26
+    },
+    "з": {
+      "x": 1641,
+      "y": 229,
+      "w": 23,
+      "h": 26,
+      "advance": 25,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "и": {
+      "x": 1666,
+      "y": 229,
+      "w": 23,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "й": {
+      "x": 1691,
+      "y": 229,
+      "w": 23,
+      "h": 36,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 36
+    },
+    "к": {
+      "x": 1716,
+      "y": 229,
+      "w": 26,
+      "h": 26,
+      "advance": 28,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "л": {
+      "x": 1744,
+      "y": 229,
+      "w": 25,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 0,
+      "bearing_y": 26
+    },
+    "м": {
+      "x": 1771,
+      "y": 229,
+      "w": 32,
+      "h": 26,
+      "advance": 37,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "н": {
+      "x": 1805,
+      "y": 229,
+      "w": 23,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "о": {
+      "x": 1830,
+      "y": 229,
+      "w": 25,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "п": {
+      "x": 1857,
+      "y": 229,
+      "w": 23,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "р": {
+      "x": 1882,
+      "y": 229,
+      "w": 24,
+      "h": 36,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "с": {
+      "x": 1908,
+      "y": 229,
+      "w": 23,
+      "h": 26,
+      "advance": 25,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "т": {
+      "x": 1933,
+      "y": 229,
+      "w": 25,
+      "h": 26,
+      "advance": 25,
+      "bearing_x": 0,
+      "bearing_y": 26
+    },
+    "у": {
+      "x": 1960,
+      "y": 229,
+      "w": 27,
+      "h": 36,
+      "advance": 25,
+      "bearing_x": -1,
+      "bearing_y": 26
+    },
+    "ф": {
+      "x": 1989,
+      "y": 229,
+      "w": 33,
+      "h": 46,
+      "advance": 35,
+      "bearing_x": 1,
+      "bearing_y": 36
+    },
+    "х": {
+      "x": 0,
+      "y": 279,
+      "w": 25,
+      "h": 26,
+      "advance": 25,
+      "bearing_x": 0,
+      "bearing_y": 26
+    },
+    "ц": {
+      "x": 27,
+      "y": 279,
+      "w": 28,
+      "h": 34,
+      "advance": 30,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "ч": {
+      "x": 57,
+      "y": 279,
+      "w": 24,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "ш": {
+      "x": 83,
+      "y": 279,
+      "w": 36,
+      "h": 26,
+      "advance": 40,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "щ": {
+      "x": 121,
+      "y": 279,
+      "w": 42,
+      "h": 34,
+      "advance": 45,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "ъ": {
+      "x": 165,
+      "y": 279,
+      "w": 32,
+      "h": 26,
+      "advance": 32,
+      "bearing_x": 0,
+      "bearing_y": 26
+    },
+    "ы": {
+      "x": 199,
+      "y": 279,
+      "w": 37,
+      "h": 26,
+      "advance": 41,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "ь": {
+      "x": 238,
+      "y": 279,
+      "w": 25,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "э": {
+      "x": 265,
+      "y": 279,
+      "w": 23,
+      "h": 26,
+      "advance": 25,
+      "bearing_x": 1,
+      "bearing_y": 26
+    },
+    "ю": {
+      "x": 290,
+      "y": 279,
+      "w": 36,
+      "h": 26,
+      "advance": 39,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "я": {
+      "x": 328,
+      "y": 279,
+      "w": 24,
+      "h": 26,
+      "advance": 27,
+      "bearing_x": 1,
+      "bearing_y": 26
+    }
+  },
+  "64": {
+    " ": {
+      "x": 0,
+      "y": 321,
+      "w": 0,
+      "h": 0,
+      "advance": 16,
+      "bearing_x": 0,
+      "bearing_y": 0
+    },
+    "!": {
+      "x": 2,
+      "y": 321,
+      "w": 12,
+      "h": 47,
+      "advance": 18,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "\"": {
+      "x": 16,
+      "y": 321,
+      "w": 19,
+      "h": 18,
+      "advance": 20,
+      "bearing_x": 0,
+      "bearing_y": 48
+    },
+    "#": {
+      "x": 37,
+      "y": 321,
+      "w": 36,
+      "h": 46,
+      "advance": 37,
+      "bearing_x": 0,
+      "bearing_y": 46
+    },
+    "$": {
+      "x": 75,
+      "y": 321,
+      "w": 33,
+      "h": 61,
+      "advance": 37,
+      "bearing_x": 2,
+      "bearing_y": 54
+    },
+    "%": {
+      "x": 110,
+      "y": 321,
+      "w": 43,
+      "h": 48,
+      "advance": 48,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    "&": {
+      "x": 155,
+      "y": 321,
+      "w": 42,
+      "h": 48,
+      "advance": 43,
+      "bearing_x": 1,
+      "bearing_y": 47
+    },
+    "'": {
+      "x": 199,
+      "y": 321,
+      "w": 8,
+      "h": 18,
+      "advance": 10,
+      "bearing_x": 1,
+      "bearing_y": 48
+    },
+    "(": {
+      "x": 209,
+      "y": 321,
+      "w": 19,
+      "h": 64,
+      "advance": 23,
+      "bearing_x": 3,
+      "bearing_y": 50
+    },
+    ")": {
+      "x": 230,
+      "y": 321,
+      "w": 19,
+      "h": 64,
+      "advance": 23,
+      "bearing_x": 1,
+      "bearing_y": 50
+    },
+    "*": {
+      "x": 251,
+      "y": 321,
+      "w": 30,
+      "h": 28,
+      "advance": 30,
+      "bearing_x": 0,
+      "bearing_y": 46
+    },
+    "+": {
+      "x": 283,
+      "y": 321,
+      "w": 32,
+      "h": 33,
+      "advance": 34,
+      "bearing_x": 1,
+      "bearing_y": 38
+    },
+    ",": {
+      "x": 317,
+      "y": 321,
+      "w": 13,
+      "h": 20,
+      "advance": 17,
+      "bearing_x": 1,
+      "bearing_y": 8
+    },
+    "-": {
+      "x": 332,
+      "y": 321,
+      "w": 20,
+      "h": 9,
+      "advance": 29,
+      "bearing_x": 4,
+      "bearing_y": 25
+    },
+    ".": {
+      "x": 354,
+      "y": 321,
+      "w": 13,
+      "h": 11,
+      "advance": 19,
+      "bearing_x": 3,
+      "bearing_y": 10
+    },
+    "/": {
+      "x": 369,
+      "y": 321,
+      "w": 24,
+      "h": 50,
+      "advance": 22,
+      "bearing_x": -1,
+      "bearing_y": 46
+    },
+    "0": {
+      "x": 395,
+      "y": 321,
+      "w": 33,
+      "h": 48,
+      "advance": 37,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    "1": {
+      "x": 430,
+      "y": 321,
+      "w": 22,
+      "h": 46,
+      "advance": 37,
+      "bearing_x": 5,
+      "bearing_y": 46
+    },
+    "2": {
+      "x": 454,
+      "y": 321,
+      "w": 34,
+      "h": 47,
+      "advance": 37,
+      "bearing_x": 1,
+      "bearing_y": 47
+    },
+    "3": {
+      "x": 490,
+      "y": 321,
+      "w": 34,
+      "h": 48,
+      "advance": 37,
+      "bearing_x": 1,
+      "bearing_y": 47
+    },
+    "4": {
+      "x": 526,
+      "y": 321,
+      "w": 35,
+      "h": 46,
+      "advance": 37,
+      "bearing_x": 1,
+      "bearing_y": 46
+    },
+    "5": {
+      "x": 563,
+      "y": 321,
+      "w": 33,
+      "h": 47,
+      "advance": 37,
+      "bearing_x": 2,
+      "bearing_y": 46
+    },
+    "6": {
+      "x": 598,
+      "y": 321,
+      "w": 34,
+      "h": 47,
+      "advance": 37,
+      "bearing_x": 2,
+      "bearing_y": 46
+    },
+    "7": {
+      "x": 634,
+      "y": 321,
+      "w": 34,
+      "h": 46,
+      "advance": 37,
+      "bearing_x": 1,
+      "bearing_y": 46
+    },
+    "8": {
+      "x": 670,
+      "y": 321,
+      "w": 33,
+      "h": 48,
+      "advance": 37,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    "9": {
+      "x": 705,
+      "y": 321,
+      "w": 33,
+      "h": 47,
+      "advance": 37,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    ":": {
+      "x": 740,
+      "y": 321,
+      "w": 13,
+      "h": 36,
+      "advance": 19,
+      "bearing_x": 3,
+      "bearing_y": 35
+    },
+    ";": {
+      "x": 755,
+      "y": 321,
+      "w": 13,
+      "h": 47,
+      "advance": 18,
+      "bearing_x": 2,
+      "bearing_y": 35
+    },
+    "<": {
+      "x": 770,
+      "y": 321,
+      "w": 29,
+      "h": 31,
+      "advance": 33,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "=": {
+      "x": 801,
+      "y": 321,
+      "w": 29,
+      "h": 24,
+      "advance": 38,
+      "bearing_x": 4,
+      "bearing_y": 32
+    },
+    ">": {
+      "x": 832,
+      "y": 321,
+      "w": 28,
+      "h": 30,
+      "advance": 33,
+      "bearing_x": 3,
+      "bearing_y": 34
+    },
+    "?": {
+      "x": 862,
+      "y": 321,
+      "w": 31,
+      "h": 48,
+      "advance": 33,
+      "bearing_x": 0,
+      "bearing_y": 47
+    },
+    "@": {
+      "x": 895,
+      "y": 321,
+      "w": 55,
+      "h": 58,
+      "advance": 57,
+      "bearing_x": 1,
+      "bearing_y": 44
+    },
+    "A": {
+      "x": 952,
+      "y": 321,
+      "w": 45,
+      "h": 46,
+      "advance": 44,
+      "bearing_x": -1,
+      "bearing_y": 46
+    },
+    "B": {
+      "x": 999,
+      "y": 321,
+      "w": 36,
+      "h": 46,
+      "advance": 41,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "C": {
+      "x": 1037,
+      "y": 321,
+      "w": 39,
+      "h": 48,
+      "advance": 42,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    "D": {
+      "x": 1078,
+      "y": 321,
+      "w": 37,
+      "h": 46,
+      "advance": 41,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "E": {
+      "x": 1117,
+      "y": 321,
+      "w": 32,
+      "h": 46,
+      "advance": 36,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "F": {
+      "x": 1151,
+      "y": 321,
+      "w": 31,
+      "h": 46,
+      "advance": 35,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "G": {
+      "x": 1184,
+      "y": 321,
+      "w": 39,
+      "h": 48,
+      "advance": 44,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    "H": {
+      "x": 1225,
+      "y": 321,
+      "w": 39,
+      "h": 46,
+      "advance": 45,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "I": {
+      "x": 1266,
+      "y": 321,
+      "w": 12,
+      "h": 46,
+      "advance": 19,
+      "bearing_x": 4,
+      "bearing_y": 46
+    },
+    "J": {
+      "x": 1280,
+      "y": 321,
+      "w": 32,
+      "h": 47,
+      "advance": 36,
+      "bearing_x": 1,
+      "bearing_y": 46
+    },
+    "K": {
+      "x": 1314,
+      "y": 321,
+      "w": 39,
+      "h": 46,
+      "advance": 41,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "L": {
+      "x": 1355,
+      "y": 321,
+      "w": 31,
+      "h": 46,
+      "advance": 35,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "M": {
+      "x": 1388,
+      "y": 321,
+      "w": 50,
+      "h": 46,
+      "advance": 56,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "N": {
+      "x": 1440,
+      "y": 321,
+      "w": 39,
+      "h": 46,
+      "advance": 45,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "O": {
+      "x": 1481,
+      "y": 321,
+      "w": 40,
+      "h": 48,
+      "advance": 44,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    "P": {
+      "x": 1523,
+      "y": 321,
+      "w": 37,
+      "h": 46,
+      "advance": 42,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "Q": {
+      "x": 1562,
+      "y": 321,
+      "w": 41,
+      "h": 55,
+      "advance": 44,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    "R": {
+      "x": 1605,
+      "y": 321,
+      "w": 38,
+      "h": 46,
+      "advance": 42,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "S": {
+      "x": 1645,
+      "y": 321,
+      "w": 36,
+      "h": 48,
+      "advance": 40,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    "T": {
+      "x": 1683,
+      "y": 321,
+      "w": 39,
+      "h": 46,
+      "advance": 40,
+      "bearing_x": 1,
+      "bearing_y": 46
+    },
+    "U": {
+      "x": 1724,
+      "y": 321,
+      "w": 37,
+      "h": 47,
+      "advance": 43,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "V": {
+      "x": 1763,
+      "y": 321,
+      "w": 44,
+      "h": 46,
+      "advance": 42,
+      "bearing_x": -1,
+      "bearing_y": 46
+    },
+    "W": {
+      "x": 1809,
+      "y": 321,
+      "w": 55,
+      "h": 46,
+      "advance": 56,
+      "bearing_x": 0,
+      "bearing_y": 46
+    },
+    "X": {
+      "x": 1866,
+      "y": 321,
+      "w": 41,
+      "h": 46,
+      "advance": 41,
+      "bearing_x": 0,
+      "bearing_y": 46
+    },
+    "Y": {
+      "x": 1909,
+      "y": 321,
+      "w": 42,
+      "h": 46,
+      "advance": 40,
+      "bearing_x": -1,
+      "bearing_y": 46
+    },
+    "Z": {
+      "x": 1953,
+      "y": 321,
+      "w": 37,
+      "h": 46,
+      "advance": 39,
+      "bearing_x": 1,
+      "bearing_y": 46
+    },
+    "[": {
+      "x": 1992,
+      "y": 321,
+      "w": 15,
+      "h": 64,
+      "advance": 18,
+      "bearing_x": 3,
+      "bearing_y": 53
+    },
+    "\\": {
+      "x": 2009,
+      "y": 321,
+      "w": 31,
+      "h": 50,
+      "advance": 27,
+      "bearing_x": -1,
+      "bearing_y": 46
+    },
+    "]": {
+      "x": 0,
+      "y": 389,
+      "w": 15,
+      "h": 64,
+      "advance": 18,
+      "bearing_x": 0,
+      "bearing_y": 53
+    },
+    "^": {
+      "x": 17,
+      "y": 389,
+      "w": 27,
+      "h": 23,
+      "advance": 29,
+      "bearing_x": 1,
+      "bearing_y": 46
+    },
+    "_": {
+      "x": 46,
+      "y": 389,
+      "w": 30,
+      "h": 8,
+      "advance": 28,
+      "bearing_x": -1,
+      "bearing_y": 0
+    },
+    "`": {
+      "x": 78,
+      "y": 389,
+      "w": 19,
+      "h": 10,
+      "advance": 22,
+      "bearing_x": 1,
+      "bearing_y": 48
+    },
+    "a": {
+      "x": 99,
+      "y": 389,
+      "w": 32,
+      "h": 36,
+      "advance": 34,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "b": {
+      "x": 133,
+      "y": 389,
+      "w": 32,
+      "h": 49,
+      "advance": 36,
+      "bearing_x": 3,
+      "bearing_y": 48
+    },
+    "c": {
+      "x": 167,
+      "y": 389,
+      "w": 31,
+      "h": 36,
+      "advance": 33,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "d": {
+      "x": 200,
+      "y": 389,
+      "w": 32,
+      "h": 49,
+      "advance": 36,
+      "bearing_x": 1,
+      "bearing_y": 48
+    },
+    "e": {
+      "x": 234,
+      "y": 389,
+      "w": 33,
+      "h": 36,
+      "advance": 35,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "f": {
+      "x": 269,
+      "y": 389,
+      "w": 24,
+      "h": 49,
+      "advance": 23,
+      "bearing_x": 0,
+      "bearing_y": 49
+    },
+    "g": {
+      "x": 295,
+      "y": 389,
+      "w": 33,
+      "h": 48,
+      "advance": 37,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "h": {
+      "x": 330,
+      "y": 389,
+      "w": 32,
+      "h": 48,
+      "advance": 36,
+      "bearing_x": 2,
+      "bearing_y": 48
+    },
+    "i": {
+      "x": 364,
+      "y": 389,
+      "w": 13,
+      "h": 49,
+      "advance": 18,
+      "bearing_x": 2,
+      "bearing_y": 49
+    },
+    "j": {
+      "x": 379,
+      "y": 389,
+      "w": 19,
+      "h": 62,
+      "advance": 17,
+      "bearing_x": -4,
+      "bearing_y": 49
+    },
+    "k": {
+      "x": 400,
+      "y": 389,
+      "w": 33,
+      "h": 48,
+      "advance": 35,
+      "bearing_x": 3,
+      "bearing_y": 48
+    },
+    "l": {
+      "x": 435,
+      "y": 389,
+      "w": 12,
+      "h": 48,
+      "advance": 18,
+      "bearing_x": 3,
+      "bearing_y": 48
+    },
+    "m": {
+      "x": 449,
+      "y": 389,
+      "w": 50,
+      "h": 35,
+      "advance": 55,
+      "bearing_x": 3,
+      "bearing_y": 35
+    },
+    "n": {
+      "x": 501,
+      "y": 389,
+      "w": 32,
+      "h": 35,
+      "advance": 36,
+      "bearing_x": 2,
+      "bearing_y": 35
+    },
+    "o": {
+      "x": 535,
+      "y": 389,
+      "w": 34,
+      "h": 36,
+      "advance": 36,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "p": {
+      "x": 571,
+      "y": 389,
+      "w": 32,
+      "h": 48,
+      "advance": 36,
+      "bearing_x": 3,
+      "bearing_y": 35
+    },
+    "q": {
+      "x": 605,
+      "y": 389,
+      "w": 32,
+      "h": 48,
+      "advance": 36,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "r": {
+      "x": 639,
+      "y": 389,
+      "w": 21,
+      "h": 35,
+      "advance": 24,
+      "bearing_x": 3,
+      "bearing_y": 35
+    },
+    "s": {
+      "x": 662,
+      "y": 389,
+      "w": 30,
+      "h": 36,
+      "advance": 33,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "t": {
+      "x": 694,
+      "y": 389,
+      "w": 22,
+      "h": 43,
+      "advance": 22,
+      "bearing_x": 0,
+      "bearing_y": 42
+    },
+    "u": {
+      "x": 718,
+      "y": 389,
+      "w": 32,
+      "h": 35,
+      "advance": 36,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "v": {
+      "x": 752,
+      "y": 389,
+      "w": 33,
+      "h": 34,
+      "advance": 33,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "w": {
+      "x": 787,
+      "y": 389,
+      "w": 46,
+      "h": 34,
+      "advance": 46,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "x": {
+      "x": 835,
+      "y": 389,
+      "w": 33,
+      "h": 34,
+      "advance": 33,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "y": {
+      "x": 870,
+      "y": 389,
+      "w": 35,
+      "h": 47,
+      "advance": 33,
+      "bearing_x": -1,
+      "bearing_y": 34
+    },
+    "z": {
+      "x": 907,
+      "y": 389,
+      "w": 29,
+      "h": 34,
+      "advance": 33,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "{": {
+      "x": 938,
+      "y": 389,
+      "w": 19,
+      "h": 61,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 50
+    },
+    "|": {
+      "x": 959,
+      "y": 389,
+      "w": 7,
+      "h": 54,
+      "advance": 16,
+      "bearing_x": 5,
+      "bearing_y": 46
+    },
+    "}": {
+      "x": 968,
+      "y": 389,
+      "w": 19,
+      "h": 61,
+      "advance": 21,
+      "bearing_x": 1,
+      "bearing_y": 50
+    },
+    "~": {
+      "x": 989,
+      "y": 389,
+      "w": 36,
+      "h": 15,
+      "advance": 40,
+      "bearing_x": 2,
+      "bearing_y": 26
+    },
+    "А": {
+      "x": 1027,
+      "y": 389,
+      "w": 45,
+      "h": 46,
+      "advance": 44,
+      "bearing_x": -1,
+      "bearing_y": 46
+    },
+    "Б": {
+      "x": 1074,
+      "y": 389,
+      "w": 36,
+      "h": 46,
+      "advance": 40,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "В": {
+      "x": 1112,
+      "y": 389,
+      "w": 36,
+      "h": 46,
+      "advance": 41,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "Г": {
+      "x": 1150,
+      "y": 389,
+      "w": 32,
+      "h": 46,
+      "advance": 36,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "Д": {
+      "x": 1184,
+      "y": 389,
+      "w": 48,
+      "h": 58,
+      "advance": 48,
+      "bearing_x": 0,
+      "bearing_y": 46
+    },
+    "Е": {
+      "x": 1234,
+      "y": 389,
+      "w": 32,
+      "h": 46,
+      "advance": 36,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "Ж": {
+      "x": 1268,
+      "y": 389,
+      "w": 67,
+      "h": 46,
+      "advance": 67,
+      "bearing_x": 0,
+      "bearing_y": 46
+    },
+    "З": {
+      "x": 1337,
+      "y": 389,
+      "w": 37,
+      "h": 48,
+      "advance": 40,
+      "bearing_x": 1,
+      "bearing_y": 47
+    },
+    "И": {
+      "x": 1376,
+      "y": 389,
+      "w": 40,
+      "h": 46,
+      "advance": 44,
+      "bearing_x": 2,
+      "bearing_y": 46
+    },
+    "Й": {
+      "x": 1418,
+      "y": 389,
+      "w": 40,
+      "h": 59,
+      "advance": 44,
+      "bearing_x": 2,
+      "bearing_y": 59
+    },
+    "К": {
+      "x": 1460,
+      "y": 389,
+      "w": 40,
+      "h": 46,
+      "advance": 41,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "Л": {
+      "x": 1502,
+      "y": 389,
+      "w": 41,
+      "h": 46,
+      "advance": 45,
+      "bearing_x": 1,
+      "bearing_y": 46
+    },
+    "М": {
+      "x": 1545,
+      "y": 389,
+      "w": 50,
+      "h": 46,
+      "advance": 56,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "Н": {
+      "x": 1597,
+      "y": 389,
+      "w": 39,
+      "h": 46,
+      "advance": 45,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "О": {
+      "x": 1638,
+      "y": 389,
+      "w": 40,
+      "h": 48,
+      "advance": 44,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    "П": {
+      "x": 1680,
+      "y": 389,
+      "w": 39,
+      "h": 46,
+      "advance": 45,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "Р": {
+      "x": 1721,
+      "y": 389,
+      "w": 37,
+      "h": 46,
+      "advance": 42,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "С": {
+      "x": 1760,
+      "y": 389,
+      "w": 39,
+      "h": 48,
+      "advance": 42,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    "Т": {
+      "x": 1801,
+      "y": 389,
+      "w": 39,
+      "h": 46,
+      "advance": 40,
+      "bearing_x": 1,
+      "bearing_y": 46
+    },
+    "У": {
+      "x": 1842,
+      "y": 389,
+      "w": 41,
+      "h": 47,
+      "advance": 41,
+      "bearing_x": 0,
+      "bearing_y": 46
+    },
+    "Ф": {
+      "x": 1885,
+      "y": 389,
+      "w": 50,
+      "h": 49,
+      "advance": 54,
+      "bearing_x": 2,
+      "bearing_y": 47
+    },
+    "Х": {
+      "x": 1937,
+      "y": 389,
+      "w": 41,
+      "h": 46,
+      "advance": 41,
+      "bearing_x": 0,
+      "bearing_y": 46
+    },
+    "Ц": {
+      "x": 1980,
+      "y": 389,
+      "w": 46,
+      "h": 57,
+      "advance": 49,
+      "bearing_x": 2,
+      "bearing_y": 46
+    },
+    "Ч": {
+      "x": 0,
+      "y": 457,
+      "w": 38,
+      "h": 46,
+      "advance": 45,
+      "bearing_x": 4,
+      "bearing_y": 46
+    },
+    "Ш": {
+      "x": 40,
+      "y": 457,
+      "w": 56,
+      "h": 46,
+      "advance": 62,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "Щ": {
+      "x": 98,
+      "y": 457,
+      "w": 63,
+      "h": 57,
+      "advance": 67,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "Ъ": {
+      "x": 163,
+      "y": 457,
+      "w": 49,
+      "h": 46,
+      "advance": 50,
+      "bearing_x": 0,
+      "bearing_y": 46
+    },
+    "Ы": {
+      "x": 214,
+      "y": 457,
+      "w": 50,
+      "h": 46,
+      "advance": 56,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "Ь": {
+      "x": 266,
+      "y": 457,
+      "w": 36,
+      "h": 46,
+      "advance": 40,
+      "bearing_x": 3,
+      "bearing_y": 46
+    },
+    "Э": {
+      "x": 304,
+      "y": 457,
+      "w": 39,
+      "h": 48,
+      "advance": 41,
+      "bearing_x": 0,
+      "bearing_y": 47
+    },
+    "Ю": {
+      "x": 345,
+      "y": 457,
+      "w": 57,
+      "h": 48,
+      "advance": 62,
+      "bearing_x": 3,
+      "bearing_y": 47
+    },
+    "Я": {
+      "x": 404,
+      "y": 457,
+      "w": 38,
+      "h": 46,
+      "advance": 37,
+      "bearing_x": -3,
+      "bearing_y": 46
+    },
+    "а": {
+      "x": 444,
+      "y": 457,
+      "w": 32,
+      "h": 36,
+      "advance": 34,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "б": {
+      "x": 478,
+      "y": 457,
+      "w": 34,
+      "h": 50,
+      "advance": 37,
+      "bearing_x": 2,
+      "bearing_y": 49
+    },
+    "в": {
+      "x": 514,
+      "y": 457,
+      "w": 32,
+      "h": 34,
+      "advance": 36,
+      "bearing_x": 3,
+      "bearing_y": 34
+    },
+    "г": {
+      "x": 548,
+      "y": 457,
+      "w": 25,
+      "h": 34,
+      "advance": 27,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "д": {
+      "x": 575,
+      "y": 457,
+      "w": 41,
+      "h": 44,
+      "advance": 41,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "е": {
+      "x": 618,
+      "y": 457,
+      "w": 33,
+      "h": 36,
+      "advance": 35,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "ж": {
+      "x": 653,
+      "y": 457,
+      "w": 56,
+      "h": 34,
+      "advance": 58,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "з": {
+      "x": 711,
+      "y": 457,
+      "w": 31,
+      "h": 36,
+      "advance": 33,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "и": {
+      "x": 744,
+      "y": 457,
+      "w": 32,
+      "h": 34,
+      "advance": 36,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "й": {
+      "x": 778,
+      "y": 457,
+      "w": 32,
+      "h": 48,
+      "advance": 36,
+      "bearing_x": 2,
+      "bearing_y": 48
+    },
+    "к": {
+      "x": 812,
+      "y": 457,
+      "w": 35,
+      "h": 34,
+      "advance": 37,
+      "bearing_x": 3,
+      "bearing_y": 34
+    },
+    "л": {
+      "x": 849,
+      "y": 457,
+      "w": 34,
+      "h": 34,
+      "advance": 36,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "м": {
+      "x": 885,
+      "y": 457,
+      "w": 43,
+      "h": 34,
+      "advance": 49,
+      "bearing_x": 3,
+      "bearing_y": 34
+    },
+    "н": {
+      "x": 930,
+      "y": 457,
+      "w": 32,
+      "h": 34,
+      "advance": 36,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "о": {
+      "x": 964,
+      "y": 457,
+      "w": 34,
+      "h": 36,
+      "advance": 36,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "п": {
+      "x": 1000,
+      "y": 457,
+      "w": 32,
+      "h": 34,
+      "advance": 36,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "р": {
+      "x": 1034,
+      "y": 457,
+      "w": 32,
+      "h": 48,
+      "advance": 36,
+      "bearing_x": 3,
+      "bearing_y": 35
+    },
+    "с": {
+      "x": 1068,
+      "y": 457,
+      "w": 31,
+      "h": 36,
+      "advance": 33,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "т": {
+      "x": 1101,
+      "y": 457,
+      "w": 33,
+      "h": 34,
+      "advance": 34,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "у": {
+      "x": 1136,
+      "y": 457,
+      "w": 35,
+      "h": 47,
+      "advance": 33,
+      "bearing_x": -1,
+      "bearing_y": 34
+    },
+    "ф": {
+      "x": 1173,
+      "y": 457,
+      "w": 45,
+      "h": 61,
+      "advance": 47,
+      "bearing_x": 1,
+      "bearing_y": 48
+    },
+    "х": {
+      "x": 1220,
+      "y": 457,
+      "w": 33,
+      "h": 34,
+      "advance": 33,
+      "bearing_x": 0,
+      "bearing_y": 34
+    },
+    "ц": {
+      "x": 1255,
+      "y": 457,
+      "w": 37,
+      "h": 44,
+      "advance": 39,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "ч": {
+      "x": 1294,
+      "y": 457,
+      "w": 31,
+      "h": 34,
+      "advance": 36,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "ш": {
+      "x": 1327,
+      "y": 457,
+      "w": 49,
+      "h": 34,
+      "advance": 53,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "щ": {
+      "x": 1378,
+      "y": 457,
+      "w": 57,
+      "h": 44,
+      "advance": 60,
+      "bearing_x": 2,
+      "bearing_y": 34
+    },
+    "ъ": {
+      "x": 1437,
+      "y": 457,
+      "w": 42,
+      "h": 34,
+      "advance": 43,
+      "bearing_x": 1,
+      "bearing_y": 34
+    },
+    "ы": {
+      "x": 1481,
+      "y": 457,
+      "w": 48,
+      "h": 34,
+      "advance": 55,
+      "bearing_x": 3,
+      "bearing_y": 34
+    },
+    "ь": {
+      "x": 1531,
+      "y": 457,
+      "w": 33,
+      "h": 34,
+      "advance": 36,
+      "bearing_x": 3,
+      "bearing_y": 34
+    },
+    "э": {
+      "x": 1566,
+      "y": 457,
+      "w": 31,
+      "h": 36,
+      "advance": 33,
+      "bearing_x": 1,
+      "bearing_y": 35
+    },
+    "ю": {
+      "x": 1599,
+      "y": 457,
+      "w": 47,
+      "h": 36,
+      "advance": 52,
+      "bearing_x": 3,
+      "bearing_y": 35
+    },
+    "я": {
+      "x": 1648,
+      "y": 457,
+      "w": 32,
+      "h": 34,
+      "advance": 36,
+      "bearing_x": 1,
+      "bearing_y": 34
+    }
+  }
+}

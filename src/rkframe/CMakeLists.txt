@@ -1,4 +1,4 @@
-add_library(rkframe shot.c)
+add_library(rkframe shot.c transform.c)
 
 target_include_directories(rkframe
     PUBLIC
@@ -15,11 +15,12 @@ pkg_check_modules(FFMPEG REQUIRED
     libswresample
 )
 
-find_path(RGA_INCLUDE_DIR NAMES rga/rga.h rga/im2d.h)
+find_path(RGA_INCLUDE_DIR NAMES rga.h im2d.h)
 find_library(RGA_LIBRARY NAMES rga)
 if (RGA_INCLUDE_DIR AND RGA_LIBRARY)
     target_include_directories(rkframe PUBLIC ${RGA_INCLUDE_DIR})
     target_link_libraries(rkframe PUBLIC ${RGA_LIBRARY})
+    message(${RGA_INCLUDE_DIR})
 else()
     message(FATAL_ERROR "Rockchip RGA not found. Please install librga-dev or set RGA_INCLUDE_DIR/RGA_LIBRARY")
 endif()

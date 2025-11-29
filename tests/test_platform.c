@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
+#include "rkutils.h"
 
 static int rkcv_hw_supports_drm(void)
 {
@@ -23,18 +24,16 @@ int main(void)
     int vpu = rkcv_hw_supports_vpu();
     int rga = rkcv_hw_supports_rga();
 
-    /* Все устройства должны быть доступны */
+    RKX_D("test_platform", "Missing devices:\n"
+                           "  DRM: %s\n"
+                           "  VPU: %s\n"
+                           "  RGA: %s\n",
+          drm ? "OK" : "missing",
+          vpu ? "OK" : "missing",
+          rga ? "OK" : "missing");
+
     if (drm && vpu && rga)
-        return 0; // ✅ PASS
+        return EXIT_SUCCESS;
 
-    fprintf(stderr,
-            "Missing devices:\n"
-            "  DRM: %s\n"
-            "  VPU: %s\n"
-            "  RGA: %s\n",
-            drm ? "OK" : "missing",
-            vpu ? "OK" : "missing",
-            rga ? "OK" : "missing");
-
-    return 1; // ❌ FAIL
+    return EXIT_FAILURE;
 }

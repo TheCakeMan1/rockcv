@@ -1,4 +1,4 @@
-add_library(rkfilter  gauss_vulcan.c)# gauss.c
+add_library(rkfilter a.c)# gauss.c gauss_vulcan.c gauss.c kernel.c
 
 target_include_directories(rkfilter
     PUBLIC

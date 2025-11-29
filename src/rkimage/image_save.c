@@ -6,14 +6,14 @@ int ims(rkcv_t *ctx, const char *filename)
     // TODO дописать логи и проверить логику
 
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
-    log_debug("Создание изображения.");
+    // log_debug("Создание изображения.");
 #endif
     const char *codec_name = get_codec_image(filename);
     const AVCodec *codec = avcodec_find_encoder_by_name(codec_name);
 
     if (!codec)
     {
-        log_fatal("Кодек %s не найден", codec_name);
+        // log_fatal("Кодек %s не найден", codec_name);
         return -1;
         // fprintf(stderr, "⚠️ Кодек %s не найден, пробуем mjpeg (CPU)\n", codec_name);
         // codec = avcodec_find_encoder_by_name("mjpeg");
@@ -26,7 +26,7 @@ int ims(rkcv_t *ctx, const char *filename)
     }
 
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
-    log_debug("Используем кодек: %s.", codec_name);
+    // log_debug("Используем кодек: %s.", codec_name);
 #endif
 
     AVCodecContext *c = avcodec_alloc_context3(codec);

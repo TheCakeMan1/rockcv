@@ -5,29 +5,38 @@
 #include <libavcodec/avcodec.h>
 #include <libswscale/swscale.h>
 #include <libavutil/imgutils.h>
-#include "logs.h"
-#include "rkdrm.h"
-#include "rkframe.h"
 #include <libavfilter/avfilter.h>
 #include <libavfilter/buffersrc.h>
 #include <libavfilter/buffersink.h>
 #include <libavutil/opt.h>
+#include <stddef.h>
 
-#include <rga/RgaApi.h>
-#include <rga/RgaUtils.h>
-#include <CL/cl.h>
+#include "font32.h"
+
+#include "rkutils.h"
+#include "rkdrm.h"
+#include "rkframe.h"
+#include "rkdraw.h"
+
+#ifdef RKRGALIB_ENABLE
+// #include <rga/RgaApi.h>
+// #include <rga/RgaUtils.h>
+#else
+// #include "NormalRga.h"
+#endif
+#include "RgaApi.h"
 
 // TODO сделать в коде вывод списка стримов нормально
 // TODO написать выбор стрима в видео файле, если их несколько
 
-#define RK_TRANSFORM_ROT_0 0x00000000
-#define RK_TRANSFORM_ROT_90 HAL_TRANSFORM_ROT_90
-#define RK_TRANSFORM_ROT_180 HAL_TRANSFORM_ROT_180
-#define RK_TRANSFORM_ROT_270 HAL_TRANSFORM_ROT_270
+// #define RK_TRANSFORM_ROT_0 0x00000000
+// #define RK_TRANSFORM_ROT_90 HAL_TRANSFORM_ROT_90
+// #define RK_TRANSFORM_ROT_180 HAL_TRANSFORM_ROT_180
+// #define RK_TRANSFORM_ROT_270 HAL_TRANSFORM_ROT_270
 
-#define RK_TRANSFORM_FLIP_MASK 0x00000003
-#define RK_TRANSFORM_FLIP_H HAL_TRANSFORM_FLIP_H
-#define RK_TRANSFORM_FLIP_V HAL_TRANSFORM_FLIP_V
+// #define RK_TRANSFORM_FLIP_MASK 0x00000003
+// #define RK_TRANSFORM_FLIP_H HAL_TRANSFORM_FLIP_H
+// #define RK_TRANSFORM_FLIP_V HAL_TRANSFORM_FLIP_V
 
 enum RKCodec
 {
@@ -313,22 +322,21 @@ typedef struct
     _Bool rga_init;
     int rga_fmt;
     rga_info_t s;
+#if USE_DRM_BUFFER
     const AVDRMFrameDescriptor *desc_in;
     const AVDRMFrameDescriptor *desc_out;
+#endif
 } rga_rect;
 
 typedef struct __attribute__((aligned(64)))
 {
-    char *source;
-    _Bool check_rtsp;
+    int8_t type_source;
     AVFormatContext *format_ctx;
     uint8_t video_stream_index;
     AVStream *stream;
     AVCodecContext *codec_ctx;
     const AVCodec *codec;
     AVPacket *packet;
-    // AVFrame *frame;
-    // int max_stream_v;
     AVDictionary *opts;
     int frame_count;
     int fps;
@@ -337,10 +345,8 @@ typedef struct __attribute__((aligned(64)))
 
 rkcv_t *openv(char *source);
 int readf(rkcv_t *ctx);
-// rkcv_t *video(rkcv_t *ctx_in, const char *filename, int codec, int width, int height, rk_pix_fmt_t pix_fmt);
 rkcv_t *video(rkcv_t *ctx_in, const char *filename, int codec, info_frame_t *frame_t);
-// __attribute__((hot, flatten)) int imw(rkcv_t *restrict ctx, rkcv_shot_t *restrict ctx_in);
-__attribute__((hot, flatten, warning("imw имеет тестовый вызов функции отображения текста на кадре"))) int imw(rkcv_t *restrict ctx, rkcv_shot_t *restrict ctx_in, s_text_f *text_t);
+__attribute__((deprecated("imw: тестовая неотлаженная функция при передаче параметра наложения текста, использовать с осторожностью"))) int imw(rkcv_t *restrict ctx, rkcv_shot_t *restrict ctx_in, s_text_f *text_t);
 int realese(rkcv_t *ctx);
 
 __attribute__((__always_inline__, cold)) inline static void printf_streams(rkcv_t *ctx)
@@ -391,6 +397,327 @@ __attribute__((__always_inline__, cold)) inline static void printf_streams(rkcv_
     }
 
     printf("=======================\n");
+}
+
+__attribute__((deprecated("imw: тестовая неотлаженная функция при передаче параметра наложения текста, использовать с осторожностью")))
+__attribute__((hot, flatten)) static int
+imws(rkcv_t *restrict ctx, rkcv_shot_t *restrict ctx_in, s_text_f *text_t)
+{
+    if (!ctx_in->frame)
+    {
+        RKX_E_TAG("imw_f", "The input frame is empty.");
+        return -1;
+    }
+#if USE_DRM_BUFFER
+    if (ctx_in->frame->format != AV_PIX_FMT_DRM_PRIME)
+    {
+        RKX_E_TAG("imw_f", "The pixel format is not supported yet %d.", ctx_in->frame->format);
+        return -1;
+    }
+#endif
+
+    if (!ctx->shot->frame)
+    {
+        ctx->shot->frame = av_frame_alloc();
+        if (!ctx->shot->frame)
+        {
+            RKX_E_TAG("imw_f", "No memory allocated for the shot frame.");
+            return -1;
+        }
+        // TODO тоже DRM не всегда есть не у всех форматов
+#if USE_DRM_BUFFER
+        ctx->shot->frame->format = AV_PIX_FMT_DRM_PRIME;
+#else
+        ctx->shot->frame->format = ctx->codec_ctx->pix_fmt;
+#endif
+        ctx->shot->frame->width = ctx->codec_ctx->width;
+        ctx->shot->frame->height = ctx->codec_ctx->height;
+    }
+    else
+    {
+        ctx->shot->frame->pts = AV_NOPTS_VALUE;
+        ctx->shot->frame->pkt_dts = AV_NOPTS_VALUE;
+        ctx->shot->frame->best_effort_timestamp = AV_NOPTS_VALUE;
+        ctx->shot->frame->duration = 0;
+        ctx->shot->frame->opaque = NULL;
+    }
+
+    if (av_hwframe_get_buffer(ctx->codec_ctx->hw_frames_ctx, ctx->shot->frame, 0) < 0)
+    {
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+        RKX_E_TAG("imw_f", "av_hwframe_get_buffer failed.");
+#else
+        RKX_E_TAG("imw_f", "Bad frame buffer.");
+#endif
+        av_frame_free(&ctx->shot->frame);
+        return -1;
+    }
+
+    int fd_in = drmprime_fd_from_frame(ctx_in->frame);
+    int fd_out = drmprime_fd_from_frame(ctx->shot->frame);
+    if (fd_in < 0 || fd_out < 0)
+    {
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+        RKX_E_TAG("imw_f", "bad drm fd.");
+#else
+        RKX_E_TAG("imw_f", "bad frame buffer.");
+#endif
+        av_frame_free(&ctx->shot->frame);
+        return -1;
+    }
+
+    ctx_in->c->s.fd = fd_in;
+    ctx_in->c->s.mmuFlag = 1;
+    ctx->shot->c->s.fd = fd_out;
+    ctx->shot->c->s.mmuFlag = 1;
+
+    int src_y_stride, src_hstride, dst_y_stride, dst_hstride;
+    if (ctx_in->frame->format == AV_PIX_FMT_DRM_PRIME)
+    {
+        ctx_in->c->desc = (const AVDRMFrameDescriptor *)ctx_in->frame->data[0];
+        ctx->shot->c->desc = (const AVDRMFrameDescriptor *)ctx->shot->frame->data[0];
+
+        if (ctx_in->c->desc->layers[0].planes[1].pitch)
+        {
+            // YUV/NV12/NV21
+            src_y_stride = ctx_in->c->desc->layers[0].planes[0].pitch;
+            src_hstride = ctx_in->c->desc->layers[0].planes[1].offset / src_y_stride;
+            dst_y_stride = ctx->shot->c->desc->layers[0].planes[0].pitch;
+            dst_hstride = ctx->shot->c->desc->layers[0].planes[1].offset / dst_y_stride;
+        }
+        else
+        {
+            // RGB
+            src_y_stride = ctx_in->c->desc->layers[0].planes[0].pitch;
+            src_hstride = ctx_in->frame->height; // RGB одна плоскость
+            dst_y_stride = ctx->shot->c->desc->layers[0].planes[0].pitch;
+            dst_hstride = ctx->shot->frame->height;
+        }
+    }
+
+    if (!ctx->shot->c->rga_init)
+    {
+        if (ctx->shot->c->desc->layers[0].planes[1].pitch)
+            ctx->shot->c->frame_t->fmt = RK_PIX_FMT_YCbCr_420_SP;
+        else
+            ctx->shot->c->frame_t->fmt = RK_PIX_FMT_RGBA_8888;
+        int fmt_local_in = convert_pix_fmt(ctx_in->c->frame_t->fmt, 1);
+        int fmt_local_out = convert_pix_fmt(ctx->shot->c->frame_t->fmt, 1);
+
+        rga_set_rect(&ctx_in->c->s.rect, 0, 0,
+                     ctx_in->c->frame_t->width, ctx_in->c->frame_t->height,
+                     src_y_stride, src_hstride, fmt_local_in);
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+        RKX_D_TAG("imw_f", "src frame w=%d h=%d fmt=%d stride=%d",
+                  ctx_in->frame->width, ctx_in->frame->height,
+                  ctx_in->frame->format, src_y_stride);
+#endif
+
+        rga_set_rect(&ctx->shot->c->s.rect, 0, 0,
+                     ctx->codec_ctx->width, ctx->codec_ctx->height,
+                     dst_y_stride, dst_hstride, fmt_local_out);
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+        RKX_D_TAG("imw_f", "RGA rect: %d %d %d %d stride=%d fmt=%d",
+                  ctx->shot->c->s.rect.xoffset,
+                  ctx->shot->c->s.rect.yoffset,
+                  ctx->shot->c->s.rect.width,
+                  ctx->shot->c->s.rect.height,
+                  ctx->shot->c->s.rect.wstride,
+                  ctx->shot->c->s.rect.format);
+#endif
+        ctx->shot->c->rga_init = 1;
+    }
+
+    int ret = RgaBlit(&ctx_in->c->s, &ctx->shot->c->s, NULL);
+    if (ret)
+    {
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+        RKX_E_TAG("imw_f", "RGA blit failed: %d", ret);
+        // log_error("RGA blit failed: %d", ret);
+#else
+        // log_error("Error transform and write frame");
+#endif
+        av_frame_free(&ctx->shot->frame); // TODO обработка ошибки не срабатывает
+        return -1;
+    }
+
+    if (text_t)
+    {
+#ifdef USE_CPU_DRAW_TEXT
+        // overlay_text_nv12_im2d(fd_out, ctx->shot->frame->width, ctx->shot->frame->height, "HELLO");
+
+        // overlay_text_nv12_rga(drmprime_fd_from_frame(ctx->shot->frame), ctx->shot->frame->width, ctx->shot->frame->height, "ABC");
+        // draw_text_rga(drmprime_fd_from_frame(ctx->shot->frame), ctx->shot->frame->width, ctx->shot->frame->height, 0, 0, "ABC");
+        const int W = ctx->codec_ctx->width;
+        const int H = ctx->codec_ctx->height;
+
+        // 1) DRM_PRIME -> SW (NV12), получаем кадр с произвольными linesize
+        AVFrame *sw = av_frame_alloc();
+        if (!sw)
+            return -1;
+        sw->format = convert_pix_fmt(ctx->shot->c->frame_t->fmt, 0);
+        sw->width = W;
+        sw->height = H;
+
+        if (av_hwframe_transfer_data(sw, ctx->shot->frame, 0) < 0)
+        {
+            av_frame_free(&sw);
+            return -1;
+        }
+        if (av_frame_make_writable(sw) < 0)
+        {
+            av_frame_free(&sw);
+            return -1;
+        }
+
+        image_buffer_t img = {0};
+        img.width = W;
+        img.height = H;
+        img.format = ctx->shot->c->frame_t->fmt;
+        const char *txt = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        const unsigned int clr = RKCOLOR_WHITE;
+        const int fs = 30;
+        uint8_t *tight;
+
+        if (ctx->shot->c->frame_t->fmt == RK_PIX_FMT_YCbCr_420_SP || ctx->shot->c->frame_t->fmt == RK_PIX_FMT_YCrCb_420_SP)
+        {
+            const int y_size = W * H;
+            const int uv_size = W * (H / 2);
+            const int tight_size = y_size + uv_size;
+
+            tight = av_malloc(tight_size);
+            if (!tight)
+            {
+                av_frame_free(&sw);
+                return -1;
+            }
+            uint8_t *tightY = tight;
+            uint8_t *tightUV = tight + y_size;
+
+            // копия Y
+            for (int y = 0; y < H; y++)
+            {
+                memcpy(tightY + y * W, sw->data[0] + y * sw->linesize[0], W);
+            }
+            // копия UV (по строкам, ширина = W байт)
+            for (int y = 0; y < H / 2; y++)
+            {
+                memcpy(tightUV + y * W, sw->data[1] + y * sw->linesize[1], W);
+            }
+
+            img.virt_addr = tight;
+            img.size = tight_size;
+
+            draw_text(&img, txt, text_t->x, text_t->y, text_t->color, fs);
+
+            // 4) Копия обратно из плотного буфера в sw с учётом linesize
+            for (int y = 0; y < H; y++)
+            {
+                memcpy(sw->data[0] + y * sw->linesize[0], tightY + y * W, W);
+            }
+            for (int y = 0; y < H / 2; y++)
+            {
+                memcpy(sw->data[1] + y * sw->linesize[1], tightUV + y * W, W);
+            }
+        }
+        else
+        {
+            RKX_F_TAG("imw_f", "Такой формат не поддерживается"); // TODO сделать нормальный механизм защиты
+            abort();
+        }
+
+        AVFrame *hw_new = av_frame_alloc();
+        if (!hw_new)
+        {
+            av_free(tight);
+            av_frame_free(&sw);
+            return -1;
+        }
+        hw_new->format = AV_PIX_FMT_DRM_PRIME;
+        hw_new->width = W;
+        hw_new->height = H;
+
+        if (av_hwframe_get_buffer(ctx->codec_ctx->hw_frames_ctx, hw_new, 0) < 0)
+        {
+            av_frame_free(&hw_new);
+            av_free(tight);
+            av_frame_free(&sw);
+            return -1;
+        }
+        if (av_hwframe_transfer_data(hw_new, sw, 0) < 0)
+        {
+            av_frame_free(&hw_new);
+            av_free(tight);
+            av_frame_free(&sw);
+            return -1;
+        }
+
+        av_frame_unref(ctx->shot->frame);
+        av_frame_move_ref(ctx->shot->frame, hw_new);
+
+        // 6) Очистка
+        av_frame_free(&hw_new); // после move_ref() он пуст
+        av_free(tight);
+        av_frame_free(&sw);
+#else
+        RKX_F_TAG("imw_t", "There is no text writing module.");
+#endif
+    }
+
+    if (ctx_in->frame->pts == AV_NOPTS_VALUE || ctx_in->frame->pts < 0)
+    {
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+        RKX_W_TAG("imw_t", "Timestamps are broken pts: %d, calc: %d.", ctx_in->frame->pts, ctx->frame_count);
+#endif
+        ctx->shot->frame->pts = ctx->frame_count;
+    }
+    else
+    {
+        ctx->shot->frame->pts = av_rescale_q(ctx_in->frame->pts,
+                                             ctx_in->c->time_base,
+                                             ctx->codec_ctx->time_base);
+    }
+    ctx->frame_count++;
+
+    ret = avcodec_send_frame(ctx->codec_ctx, ctx->shot->frame);
+    if (ret < 0)
+    {
+        fprintf(stderr, "avcodec_send_frame failed: %d\n", ret);
+        av_frame_free(&ctx->shot->frame);
+        return -1;
+    }
+
+    if (ctx->packet)
+    {
+        av_packet_unref(ctx->packet);
+    }
+    else
+    {
+        ctx->packet = av_packet_alloc();
+    }
+
+    while (avcodec_receive_packet(ctx->codec_ctx, ctx->packet) >= 0)
+    {
+        av_packet_rescale_ts(ctx->packet, ctx->codec_ctx->time_base, ctx->stream->time_base);
+        ctx->packet->stream_index = ctx->stream->index;
+        if (av_interleaved_write_frame(ctx->format_ctx, ctx->packet) < 0)
+        {
+            av_packet_unref(ctx->packet);
+            av_frame_unref(ctx->shot->frame);
+            ctx->shot->frame->pts = AV_NOPTS_VALUE;
+            ctx->shot->frame->pkt_dts = AV_NOPTS_VALUE;
+            ctx->shot->frame->best_effort_timestamp = AV_NOPTS_VALUE;
+            ctx->shot->frame->duration = 0;
+            ctx->shot->frame->opaque = NULL;
+            // log_error("Не удалось записать кадр в видео файл.");
+            return -1;
+        }
+        av_packet_unref(ctx->packet);
+    }
+
+    av_frame_unref(ctx->shot->frame);
+
+    return 0;
 }
 
 #endif

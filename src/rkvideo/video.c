@@ -1,91 +1,208 @@
 #include "rkvideo.h"
-#include "font_data.h"
 
-static FT_Library g_ftlib = NULL;
-static FT_Face g_face = NULL;
+#define USE_CPU_DRAW_TEXT // TODO удалить когда появится другая реализация
 
-static inline bool is_rtsp_source(const char *source)
+static inline _Bool is_rtsp_source(const char *source)
 {
     if (unlikely(!source))
-        return false;
+        return 0;
 
     return (strncmp(source, "rtsp://", 7) == 0) ||
            (strncmp(source, "rtsps://", 8) == 0);
 }
 
-rkcv_t *openv(char *source)
+static inline _Bool is_image_source(const char *source)
 {
-    rkcv_t *ctx = calloc(1, sizeof(rkcv_t));
+    if (!source)
+        return 0;
+
+    const char *ext = strrchr(source, '.');
+    if (!ext)
+        return 0;
+
+    ext++; // пропускаем точку
+
+    return
+        // растровые форматы
+        strcasecmp(ext, "png") == 0 ||
+        strcasecmp(ext, "apng") == 0 ||
+        strcasecmp(ext, "jpg") == 0 ||
+        strcasecmp(ext, "jpeg") == 0 ||
+        strcasecmp(ext, "jpe") == 0 ||
+        strcasecmp(ext, "jfif") == 0 ||
+        strcasecmp(ext, "bmp") == 0 ||
+        strcasecmp(ext, "dib") == 0 ||
+        strcasecmp(ext, "gif") == 0 ||
+        strcasecmp(ext, "tif") == 0 ||
+        strcasecmp(ext, "tiff") == 0 ||
+        strcasecmp(ext, "webp") == 0 ||
+        strcasecmp(ext, "ico") == 0 ||
+        strcasecmp(ext, "cur") == 0 ||
+        strcasecmp(ext, "pbm") == 0 ||
+        strcasecmp(ext, "pgm") == 0 ||
+        strcasecmp(ext, "ppm") == 0 ||
+        strcasecmp(ext, "pnm") == 0 ||
+        strcasecmp(ext, "pfm") == 0 ||
+        strcasecmp(ext, "pcx") == 0 ||
+        strcasecmp(ext, "tga") == 0 ||
+        strcasecmp(ext, "icns") == 0 ||
+
+        // форматы сжатия/современные
+        strcasecmp(ext, "heic") == 0 ||
+        strcasecmp(ext, "heif") == 0 ||
+        strcasecmp(ext, "avif") == 0 ||
+
+        // RAW форматы (популярные)
+        strcasecmp(ext, "dng") == 0 ||
+        strcasecmp(ext, "cr2") == 0 ||
+        strcasecmp(ext, "cr3") == 0 ||
+        strcasecmp(ext, "nef") == 0 ||
+        strcasecmp(ext, "nrw") == 0 ||
+        strcasecmp(ext, "arw") == 0 ||
+        strcasecmp(ext, "rw2") == 0 ||
+        strcasecmp(ext, "orf") == 0 ||
+        strcasecmp(ext, "srw") == 0 ||
+        strcasecmp(ext, "raf") == 0 ||
+        strcasecmp(ext, "eps") == 0 || // иногда используется как контейнер картинки
+        strcasecmp(ext, "psd") == 0 || // Photoshop
+        strcasecmp(ext, "xcf") == 0;   // GIMP
+}
+
+__attribute__((hot, flatten)) int readf(rkcv_t *ctx)
+{
+    if (unlikely(ctx->type_source != RK_TYPE_SOURCE_RTSP))
+    {
+        RKX_E_TAG("readf_f", "Невозможно прочитать кадр из картинки");
+        return -1;
+    }
+    while (avcodec_receive_frame(ctx->codec_ctx, ctx->shot->frame) >= 0)
+    {
+        if (!ctx->shot->c->frame_t->fmt)
+        {
+#if USE_DRM_BUFFER
+            AVDRMFrameDescriptor *desc = (AVDRMFrameDescriptor *)ctx->shot->frame->data[0];
+            uint32_t drm_fmt = desc->layers[0].format;
+
+            ctx->shot->c->frame_t->fmt = convert_pix_fmt_from_drm(drm_fmt);
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+            RKX_D("DRM format=0x%x -> RK format=%d", drm_fmt, ctx->shot->c->frame_t->fmt);
+#endif
+#else
+            ctx->shot->c->frame_t->fmt = convert_pix_fmt(ctx->shot->frame->format, 0);
+#endif
+        }
+        return 1;
+    }
+
+    while (av_read_frame(ctx->format_ctx, ctx->packet) >= 0)
+    {
+        if (ctx->packet->stream_index == ctx->video_stream_index)
+        {
+            if (avcodec_send_packet(ctx->codec_ctx, ctx->packet) < 0)
+            {
+                RKX_E("Ошибка отправки пакета в декодер");
+                break;
+            }
+
+            while (avcodec_receive_frame(ctx->codec_ctx, ctx->shot->frame) >= 0)
+            {
+                if (!ctx->shot->c->frame_t->fmt)
+                {
+#if USE_DRM_BUFFER
+                    AVDRMFrameDescriptor *desc = (AVDRMFrameDescriptor *)ctx->shot->frame->data[0];
+                    uint32_t drm_fmt = desc->layers[0].format;
+
+                    ctx->shot->c->frame_t->fmt = convert_pix_fmt_from_drm(drm_fmt);
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+                    RKX_D("DRM format=0x%x -> RK format=%d", drm_fmt, ctx->shot->c->frame_t->fmt);
+#endif
+#else
+                    ctx->shot->c->frame_t->fmt = convert_pix_fmt(ctx->shot->frame->format, 0);
+#endif
+                }
+                return 1;
+            }
+        }
+    }
+
+    return 0;
+}
+
+__attribute__((cold, warn_unused_result))
+rkcv_t *
+openv(char *source)
+{
+    size_t total_size =
+        sizeof(rkcv_t) +
+        sizeof(rkcv_shot_t) +
+        sizeof(s_convert_f) +
+        sizeof(info_frame_t) +
+        3 * __alignof__(max_align_t);
+
+    rkcv_t *ctx = calloc(1, total_size);
     if (unlikely(!ctx))
     {
-        log_fatal("Ошибка: не удалось выделить память под rkcv_t");
-        return NULL;
-    }
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
-    else
-    {
-        log_debug("Выделена память под rkcv_t");
-    }
+        RKX_F_TAG("openv_f", "Couldn't allocate memory");
 #endif
-
-    ctx->shot = calloc(1, sizeof(*ctx->shot));
-    if (!ctx->shot)
-    {
-        log_fatal("Ошибка выделения памяти под ctx->shot");
-    }
-
-    ctx->shot->c = calloc(1, sizeof(*ctx->shot->c));
-    if (!ctx->shot->c)
-    {
-        log_fatal("Ошибка выделения памяти под ctx->shot->c");
-    }
-
-    ctx->shot->c->frame_t = calloc(1, sizeof(info_frame_t));
-    if (!ctx->shot->c->frame_t)
-    {
-        free(ctx->shot->c->frame_t);
         return NULL;
     }
 
-    ctx->shot->frame = av_frame_alloc();
-    if (!ctx->shot->frame)
-    {
-        log_fatal("Ошибка выделения av_frame");
-    }
+    uint8_t *ptr = (uint8_t *)(ctx + 1); // сразу за rkcv_t
 
-    ctx->packet = av_packet_alloc();
-    if (!ctx->packet)
-    {
-        log_fatal("Ошибка выделения av_packet");
-    }
+    ctx->shot = (rkcv_shot_t *)ptr;
+    ptr += sizeof(rkcv_shot_t);
 
-    ctx->check_rtsp = is_rtsp_source(source);
+    ctx->shot->c = (s_convert_f *)ptr;
+    ptr += sizeof(s_convert_f);
+
+    ctx->shot->c->frame_t = (info_frame_t *)ptr;
+    ptr += sizeof(info_frame_t);
+
+    if ((uintptr_t)ptr > (uintptr_t)ctx + total_size)
+    {
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
-    if (likely(ctx->check_rtsp))
-    {
-        log_debug("Обнаружен как rtsp поток");
-    }
-    else
-    {
-        log_debug("Обнаружен как video поток");
-    }
+        RKX_F_TAG("openv_f", "ptr overflow total_size");
 #endif
-
-    ctx->source = strdup(source);
-    if (unlikely(!ctx->source))
-    {
-        log_fatal("Ошибка: strdup(source)");
         free(ctx);
         return NULL;
     }
+
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
-    else
-    {
-        log_debug("strdup удачно");
-    }
+    RKX_D_TAG("openv_f", "выделено %zu байт под rkcv_t, shot, convert, frame_t", total_size);
+    // log_debug("openv(): выделено %zu байт под rkcv_t, shot, convert, frame_t", total_size);
 #endif
 
-    if (ctx->check_rtsp)
+    ctx->shot->frame = av_frame_alloc();
+    if (unlikely(!ctx->shot->frame))
+    {
+        RKX_F_TAG("openv_f", "Ошибка выделения av_frame");
+        // log_fatal("Ошибка выделения av_frame");
+    }
+
+    ctx->packet = av_packet_alloc();
+    if (unlikely(!ctx->packet))
+    {
+        RKX_F_TAG("openv_f", "Ошибка выделения av_packet");
+        // log_fatal("Ошибка выделения av_packet");
+    }
+
+    if (is_rtsp_source(source))
+    {
+        ctx->type_source = RK_TYPE_SOURCE_RTSP;
+    }
+    else if (is_image_source(source))
+    {
+        ctx->type_source = RK_TYPE_SOURCE_IMAGE;
+    }
+    else
+    {
+        // TODO дописать все виды источников, а также аудио
+        RKX_F("Неизвестный источник");
+        return NULL;
+    }
+
+    if (ctx->type_source == RK_TYPE_SOURCE_RTSP)
     {
         avformat_network_init();
 
@@ -95,15 +212,14 @@ rkcv_t *openv(char *source)
 
         if (avformat_open_input(&ctx->format_ctx, source, NULL, &ctx->opts) < 0)
         {
-            log_fatal("Не удалось открыть входной файл: %s", source);
-            free(ctx->source);
+            RKX_F_TAG("openv_f", "Не удалось открыть входной файл: %s", source);
             free(ctx);
             return NULL;
         }
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
         else
         {
-            log_debug("Входной файл открыт");
+            RKX_D_TAG("openv_f", "Входной файл открыт");
             av_dict_free(&ctx->opts);
         }
 #endif
@@ -112,15 +228,14 @@ rkcv_t *openv(char *source)
     {
         if (unlikely(avformat_open_input(&ctx->format_ctx, source, NULL, NULL) < 0))
         {
-            log_fatal("Не удалось открыть входной файл: %s", source);
-            free(ctx->source);
+            RKX_F_TAG("openv_f", "Не удалось открыть входной файл: %s", source);
             free(ctx);
             return NULL;
         }
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
         else
         {
-            log_debug("Входной файл открыт");
+            RKX_I_TAG("openv_f", "Входной файл открыт");
         }
 #endif
     }
@@ -129,17 +244,15 @@ rkcv_t *openv(char *source)
 
     if (unlikely(avformat_find_stream_info(ctx->format_ctx, NULL) < 0))
     {
-        log_fatal("Не удалось найти информацию о потоках.");
-        // fprintf(stderr, "Не удалось найти информацию о потоках.\n");
+        RKX_F_TAG("openv_f", "Не удалось найти информацию о потоках");
         avformat_close_input(&ctx->format_ctx);
-        free(ctx->source);
         free(ctx);
         return NULL;
     }
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
     else
     {
-        log_debug("Найдена информация о потоках");
+        RKX_D_TAG("openv_f", "Найдена информация о потоках");
     }
 #endif
 
@@ -156,17 +269,19 @@ rkcv_t *openv(char *source)
 
     if (unlikely(ctx->video_stream_index == -1))
     {
-        log_fatal("Входной файл не содержит видеопоток.");
+        RKX_F_TAG("openv_f", "Входной файл не содержит видеопоток");
+        // log_fatal("Входной файл не содержит видеопоток.");
         // fprintf(stderr, "Входной файл не содержит видеопоток.\n");
         avformat_close_input(&ctx->format_ctx);
-        free(ctx->source);
+        // free(ctx->source);
         free(ctx);
         return NULL;
     }
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
     else
     {
-        log_debug("Найдена информация о видеопоток");
+        RKX_D_TAG("openv_f", "Найдена информация о видеопоток");
+        // log_debug("Найдена информация о видеопоток");
     }
 #endif
 
@@ -175,59 +290,100 @@ rkcv_t *openv(char *source)
 #ifdef RKMPP_ENABLE
     if (ctx->stream->codecpar->codec_id == AV_CODEC_ID_H264)
     {
+#if HAS_H264_D_RKMPP
         ctx->codec = avcodec_find_decoder_by_name("h264_rkmpp");
-#pragma message "видео кодек h264 кодек h264 заменен на h264_rkmpp"
+#if defined(BUILD_DEV)
+#pragma message "видео декодек h264 заменен на h264_rkmpp"
+#endif
+#else
+        ctx->codec = avcodec_find_decoder(AV_CODEC_ID_H264);
+#pragma error "decoder h264_rkmpp not found"
+#endif
     }
     else if (ctx->stream->codecpar->codec_id == AV_CODEC_ID_HEVC)
     {
+#if HAS_HEVC_D_RKMPP
         ctx->codec = avcodec_find_decoder_by_name("hevc_rkmpp");
-#pragma message "видео кодек hevc заменен на hevc_rkmpp"
+#if defined(BUILD_DEV)
+#pragma message "видео декодек hevc заменен на hevc_rkmpp"
+#endif
+#else
+        ctx->codec = avcodec_find_decoder(AV_CODEC_ID_HEVC);
+#pragma error "decoder hevc_rkmpp not found"
+#endif
     }
     else if (ctx->stream->codecpar->codec_id == AV_CODEC_ID_H263)
     {
+#if HAS_H263_D_RKMPP
         ctx->codec = avcodec_find_decoder_by_name("h263_rkmpp");
-#pragma message "видео кодек hevc заменен на h263_rkmpp"
+#if defined(BUILD_DEV)
+#pragma message "видео декодек hevc заменен на h263_rkmpp"
+#endif
+#else
+        ctx->codec = avcodec_find_decoder(AV_CODEC_ID_H263);
+#pragma error "decoder h263_rkmpp not found"
+#endif
     }
     else if (ctx->stream->codecpar->codec_id == AV_CODEC_ID_AV1)
     {
+#if HAS_H263_D_RKMPP
         ctx->codec = avcodec_find_decoder_by_name("av1_rkmpp");
-#pragma message "видео кодек hevc заменен на h263_rkmpp"
+#if defined(BUILD_DEV)
+#pragma message "видео декодек av1 заменен на av1_rkmpp"
+#endif
+#else
+        ctx->codec = avcodec_find_decoder(AV_CODEC_ID_AV1);
+#pragma error "decoder av1_rkmpp not found"
+#endif
+    }
+    else if (ctx->stream->codecpar->codec_id == AV_CODEC_ID_MJPEG)
+    {
+#if HAS_H263_D_RKMPP
+        ctx->codec = avcodec_find_decoder_by_name("mjpeg_rkmpp");
+#if defined(BUILD_DEV)
+#pragma message "декодек изображений mjpeg заменен на mjpeg_rkmpp"
+#endif
+#else
+        ctx->codec = avcodec_find_decoder(AV_CODEC_ID_MJPEG);
+#pragma error "decoder mjpeg_rkmpp not found"
+#endif
     }
     else
     {
         ctx->codec = avcodec_find_decoder(ctx->stream->codecpar->codec_id);
     }
+#else
+    ctx->codec = avcodec_find_decoder(ctx->stream->codecpar->codec_id);
 #endif
     if (unlikely(!ctx->codec))
     {
-        log_fatal("Не удалось найти декодер.");
+        RKX_F_TAG("openv_f", "Не удалось найти декодер");
+        // log_fatal("Не удалось найти декодер.");
         // fprintf(stderr, "Не удалось найти декодер.\n");
         avformat_close_input(&ctx->format_ctx);
-        free(ctx->source);
+        // free(ctx->source);
         free(ctx);
         return NULL;
     }
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
     else
     {
-        log_debug("Удалось найти декодер");
+        RKX_D_TAG("openv_f", "Удалось найти декодер");
     }
 #endif
 
     ctx->codec_ctx = avcodec_alloc_context3(ctx->codec);
     if (unlikely(!ctx->codec_ctx))
     {
-        log_fatal("Ошибка выделения AVCodecContext.");
-        // fprintf(stderr, "Ошибка выделения AVCodecContext.\n");
+        RKX_F_TAG("openv_f", "Ошибка выделения AVCodecContext");
         avformat_close_input(&ctx->format_ctx);
-        free(ctx->source);
         free(ctx);
         return NULL;
     }
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
     else
     {
-        log_debug("Выделился AVCodecContext.");
+        RKX_D_TAG("openv_f", "Выделился AVCodecContext");
     }
 #endif
 
@@ -238,100 +394,66 @@ rkcv_t *openv(char *source)
 
     if (unlikely(avcodec_parameters_to_context(ctx->codec_ctx, ctx->stream->codecpar) < 0))
     {
-        log_fatal("Не удалось сконфигурировать контекст декодера.");
-        // fprintf(stderr, "Не удалось сконфигурировать контекст декодера.\n");
+        RKX_F_TAG("openv_f", "Не удалось сконфигурировать контекст декодера");
         avcodec_free_context(&ctx->codec_ctx);
         avformat_close_input(&ctx->format_ctx);
-        free(ctx->source);
         free(ctx);
         return NULL;
     }
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
     else
     {
-        log_debug("Удалось сконфигурировать контекст декодера.");
+        RKX_D_TAG("openv_f", "Удалось сконфигурировать контекст декодера");
     }
 #endif
 
+#if USE_DRM_BUFFER
     AVBufferRef *hw_device_ctx = NULL;
     if (av_hwdevice_ctx_create(&hw_device_ctx, AV_HWDEVICE_TYPE_RKMPP, NULL, NULL, 0) < 0)
     {
-        fprintf(stderr, "Не удалось создать RKMpp hwdevice\n");
+        RKX_F_TAG("openv_f", "Не удалось создать RKMpp hwdevice");
         return NULL;
     }
     ctx->codec_ctx->hw_device_ctx = av_buffer_ref(hw_device_ctx);
+#endif
 
     if (unlikely(avcodec_open2(ctx->codec_ctx, ctx->codec, NULL) < 0))
     {
-        log_fatal("Не удалось открыть декодер.");
-        // fprintf(stderr, "Не удалось открыть декодер.\n");
+        RKX_F_TAG("openv_f", "Не удалось открыть декодер");
         avcodec_free_context(&ctx->codec_ctx);
         avformat_close_input(&ctx->format_ctx);
-        free(ctx->source);
         free(ctx);
         return NULL;
     }
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
     else
     {
-        log_debug("Удалось открыть декодер.");
+        RKX_D_TAG("openv_f", "Удалось открыть декодер");
     }
 #endif
 
-    ctx->shot->c->time_base = ctx->stream->time_base;
-    ctx->shot->c->frame_t->width = ctx->codec_ctx->width;
-    ctx->shot->c->frame_t->height = ctx->codec_ctx->height;
+    if (ctx->type_source == RK_TYPE_SOURCE_IMAGE)
+    {
+        ctx->type_source = RK_TYPE_SOURCE_RTSP;
+        if (!readf(ctx))
+        {
+            RKX_E_TAG("openv_f", "Нет кадра в картинке");
+        }
+        ctx->type_source = RK_TYPE_SOURCE_IMAGE;
+        ctx->shot->c->frame_t->width = ctx->codec_ctx->width;
+        ctx->shot->c->frame_t->height = ctx->codec_ctx->height;
+    }
+    else
+    {
+        ctx->shot->c->time_base = ctx->stream->time_base;
+        ctx->shot->c->frame_t->width = ctx->codec_ctx->width;
+        ctx->shot->c->frame_t->height = ctx->codec_ctx->height;
+    }
 
-    log_debug("Все успешно.");
+    RKX_D_TAG("openv_f", "Все успешно");
+    RKX_T("______________________________");
 
     return ctx;
-}
-
-int readf(rkcv_t *ctx)
-{
-    while (avcodec_receive_frame(ctx->codec_ctx, ctx->shot->frame) >= 0)
-    {
-        if (!ctx->shot->c->frame_t->fmt)
-        {
-            AVDRMFrameDescriptor *desc = (AVDRMFrameDescriptor *)ctx->shot->frame->data[0];
-            uint32_t drm_fmt = desc->layers[0].format;
-
-            ctx->shot->c->frame_t->fmt = convert_pix_fmt_from_drm(drm_fmt);
-#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
-            log_debug("DRM format=0x%x -> RK format=%d", drm_fmt, ctx->shot->c->frame_t->fmt);
-#endif
-        }
-        return 1;
-    }
-
-    while (av_read_frame(ctx->format_ctx, ctx->packet) >= 0)
-    {
-        if (ctx->packet->stream_index == ctx->video_stream_index)
-        {
-            if (avcodec_send_packet(ctx->codec_ctx, ctx->packet) < 0)
-            {
-                log_error("Ошибка отправки пакета в декодер.");
-                break;
-            }
-
-            while (avcodec_receive_frame(ctx->codec_ctx, ctx->shot->frame) >= 0)
-            {
-                if (!ctx->shot->c->frame_t->fmt)
-                {
-                    AVDRMFrameDescriptor *desc = (AVDRMFrameDescriptor *)ctx->shot->frame->data[0];
-                    uint32_t drm_fmt = desc->layers[0].format;
-
-                    ctx->shot->c->frame_t->fmt = convert_pix_fmt_from_drm(drm_fmt);
-#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
-                    log_debug("DRM format=0x%x -> RK format=%d", drm_fmt, ctx->shot->c->frame_t->fmt);
-#endif
-                }
-                return 1;
-            }
-        }
-    }
-
-    return 1;
 }
 
 rkcv_t *video(rkcv_t *ctx_in,
@@ -346,7 +468,9 @@ rkcv_t *video(rkcv_t *ctx_in,
     rkcv_t *ctx = aligned_alloc(64, sizeof(*ctx));
     if (unlikely(!ctx))
     {
-        log_fatal("calloc rkcv_t");
+        // RKX_F_TAG("calloc rkcv_t");
+
+        // log_fatal("calloc rkcv_t");
         return NULL;
     }
     ctx->shot = calloc(1, sizeof(*ctx->shot));
@@ -363,32 +487,60 @@ rkcv_t *video(rkcv_t *ctx_in,
         free(ctx->shot->c->frame_t);
         return NULL;
     }
-    // memset(ctx->shot->c, 0, sizeof(*ctx->shot->c));
-    // memset(&ctx->shot->c->s, 0, sizeof(ctx->shot->c->s));
-    // memset(&ctx->shot->c->d, 0, sizeof(ctx->shot->c->d));
 
     if (unlikely(avformat_alloc_output_context2(&ctx->format_ctx, NULL, NULL, filename) < 0))
     {
-        log_fatal("avformat_alloc_output_context2");
+        // log_fatal("avformat_alloc_output_context2");
         free(ctx);
         return NULL;
     }
 
+#if RKMPP_ENABLE
     switch (codec)
     {
     case RKCodec_H264:
+#if HAS_H264_E_RKMPP
         ctx->codec = avcodec_find_encoder_by_name("h264_rkmpp");
+#if defined(BUILD_DEV)
+#pragma message "видео кодек h264 заменен на h264_rkmpp"
+#endif
+#else
+        ctx->codec = avcodec_find_encoder(AV_CODEC_ID_H264);
+#pragma error "encoder h264_rkmpp not found"
+#endif
         break;
     case RKCodec_HEVC:
+#if HAS_HEVC_E_RKMPP
         ctx->codec = avcodec_find_encoder_by_name("hevc_rkmpp");
+#if defined(BUILD_DEV)
+#pragma message "видео кодек hevc заменен на hevc_rkmpp"
+#endif
+#else
+        ctx->codec = avcodec_find_encoder(AV_CODEC_ID_HEVC);
+#pragma error "encoder hevc_rkmpp not found"
+#endif
+        break;
+    case RKCodec_H263:
+#if HAS_H263_E_RKMPP
+        ctx->codec = avcodec_find_encoder_by_name("h263_rkmpp");
+#if defined(BUILD_DEV)
+#pragma message "видео кодек h263 заменен на h263_rkmpp"
+#endif
+#else
+        ctx->codec = avcodec_find_encoder(AV_CODEC_ID_H263);
+#pragma error "encoder h263_rkmpp not found"
+#endif
         break;
     default:
         ctx->codec = avcodec_find_encoder(codec);
         break;
     }
+#else
+    ctx->codec = avcodec_find_encoder(codec);
+#endif
     if (unlikely(!ctx->codec))
     {
-        log_fatal("encoder not found");
+        // log_fatal("encoder not found");
         goto fail_fmt;
     }
 
@@ -396,7 +548,7 @@ rkcv_t *video(rkcv_t *ctx_in,
     ctx->codec_ctx = avcodec_alloc_context3(ctx->codec);
     if (unlikely(!ctx->stream || !ctx->codec_ctx))
     {
-        log_fatal("new_stream/alloc_context");
+        // log_fatal("new_stream/alloc_context");
         goto fail_fmt;
     }
 
@@ -425,12 +577,18 @@ rkcv_t *video(rkcv_t *ctx_in,
     ctx->stream->avg_frame_rate = fps_r;
     ctx->fps = av_q2d(fps_r);
 
+    // TODO DRM буфер не у всех форматов есть
+#if USE_DRM_BUFFER
     ctx->codec_ctx->pix_fmt = AV_PIX_FMT_DRM_PRIME;
+#else
+    ctx->codec_ctx->pix_fmt = convert_pix_fmt(frame_t->fmt, 0);
+#endif
 
+#if USE_DRM_BUFFER
     AVBufferRef *hw_dev = NULL;
     if (unlikely(av_hwdevice_ctx_create(&hw_dev, AV_HWDEVICE_TYPE_RKMPP, NULL, NULL, 0) < 0))
     {
-        log_fatal("av_hwdevice_ctx_create(RKMPP)");
+        // log_fatal("av_hwdevice_ctx_create(RKMPP)");
         goto fail_ctxs;
     }
     ctx->codec_ctx->hw_device_ctx = av_buffer_ref(hw_dev);
@@ -438,7 +596,7 @@ rkcv_t *video(rkcv_t *ctx_in,
     AVBufferRef *hw_frames = av_hwframe_ctx_alloc(ctx->codec_ctx->hw_device_ctx);
     if (unlikely(!hw_frames))
     {
-        log_fatal("av_hwframe_ctx_alloc");
+        // log_fatal("av_hwframe_ctx_alloc");
         goto fail_ctxs;
     }
 
@@ -451,16 +609,17 @@ rkcv_t *video(rkcv_t *ctx_in,
 
     if (unlikely(av_hwframe_ctx_init(hw_frames) < 0))
     {
-        log_fatal("av_hwframe_ctx_init");
+        // log_fatal("av_hwframe_ctx_init");
         goto fail_frames;
     }
     ctx->codec_ctx->hw_frames_ctx = av_buffer_ref(hw_frames);
 
     if (unlikely(avcodec_open2(ctx->codec_ctx, ctx->codec, NULL) < 0))
     {
-        log_fatal("avcodec_open2");
+        // log_fatal("avcodec_open2");
         goto fail_frames;
     }
+#endif
 
     /* ---------------------- */
     /* Оптимизация задержки и копирования */
@@ -470,7 +629,7 @@ rkcv_t *video(rkcv_t *ctx_in,
 
     if (unlikely(avcodec_parameters_from_context(ctx->stream->codecpar, ctx->codec_ctx) < 0))
     {
-        log_fatal("avcodec_parameters_from_context");
+        // log_fatal("avcodec_parameters_from_context");
         goto fail_opened;
     }
 
@@ -479,14 +638,14 @@ rkcv_t *video(rkcv_t *ctx_in,
     {
         if (avio_open(&ctx->format_ctx->pb, filename, AVIO_FLAG_WRITE) < 0)
         {
-            log_fatal("avio_open");
+            // log_fatal("avio_open");
             goto fail_opened;
         }
     }
 
     if (unlikely(avformat_write_header(ctx->format_ctx, NULL) < 0))
     {
-        log_fatal("avformat_write_header");
+        // log_fatal("avformat_write_header");
         if (ctx->format_ctx->pb)
             avio_closep(&ctx->format_ctx->pb);
         goto fail_opened;
@@ -494,15 +653,17 @@ rkcv_t *video(rkcv_t *ctx_in,
 
     ctx->frame_count = 0; // TODO надо рассмотреть необходимость этой переменной
 
-    log_debug("Создан выходной поток для файла: %s", filename);
+// log_debug("Создан выходной поток для файла: %s", filename);
+#if USE_DRM_BUFFER
     av_buffer_unref(&hw_frames);
     av_buffer_unref(&hw_dev);
+#endif
 
     ctx->shot->frame = av_frame_alloc();
     if (!ctx->shot->frame)
     {
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
-        log_error("error alloc frame");
+        // log_error("error alloc frame");
 #endif
         return NULL;
     }
@@ -513,12 +674,14 @@ rkcv_t *video(rkcv_t *ctx_in,
 
 fail_opened:
     avcodec_close(ctx->codec_ctx);
+#if USE_DRM_BUFFER
 fail_frames:
     if (hw_frames)
         av_buffer_unref(&hw_frames);
 fail_ctxs:
     if (hw_dev)
         av_buffer_unref(&hw_dev);
+#endif
 fail_fmt:
     if (ctx->codec_ctx)
         avcodec_free_context(&ctx->codec_ctx);
@@ -528,135 +691,53 @@ fail_fmt:
     return NULL;
 }
 
-int init_text_filter(AVFilterGraph **graph, AVFilterContext **buffersrc_ctx,
-                     AVFilterContext **buffersink_ctx,
-                     const AVCodecContext *codec_ctx,
-                     const char *text, AVBufferRef *hw_device_ctx, s_text_f *text_t)
-{
-    int ret;
-    char args[256];
-    AVFilterGraph *filter_graph = avfilter_graph_alloc();
-    if (!filter_graph)
-        return AVERROR(ENOMEM);
-
-    const AVFilter *buffersrc = avfilter_get_by_name("buffer");
-    const AVFilter *buffersink = avfilter_get_by_name("buffersink");
-    const AVFilter *hwdownload = avfilter_get_by_name("hwdownload");
-    const AVFilter *format = avfilter_get_by_name("format");
-    const AVFilter *drawtext = avfilter_get_by_name("drawtext");
-    const AVFilter *hwupload = avfilter_get_by_name("hwupload");
-
-    AVFilterContext *src_ctx = NULL, *sink_ctx = NULL;
-    AVFilterContext *hwdownload_ctx = NULL, *format_ctx = NULL;
-    AVFilterContext *drawtext_ctx = NULL, *hwupload_ctx = NULL;
-
-    snprintf(args, sizeof(args),
-             "video_size=%dx%d:pix_fmt=%d:time_base=%d/%d:pixel_aspect=%d/%d",
-             codec_ctx->width, codec_ctx->height, AV_PIX_FMT_DRM_PRIME,
-             codec_ctx->time_base.num, codec_ctx->time_base.den,
-             codec_ctx->sample_aspect_ratio.num, codec_ctx->sample_aspect_ratio.den);
-
-    if ((ret = avfilter_graph_create_filter(&src_ctx, buffersrc, "in", args, NULL, filter_graph)) < 0)
-        goto fail;
-
-    // Связываем входной фильтр с hw_frames_ctx
-    {
-        AVBufferSrcParameters *par = av_buffersrc_parameters_alloc();
-        memset(par, 0, sizeof(*par));
-        par->format = AV_PIX_FMT_DRM_PRIME;
-        par->hw_frames_ctx = av_buffer_ref(codec_ctx->hw_frames_ctx);
-        ret = av_buffersrc_parameters_set(src_ctx, par);
-        av_freep(&par);
-        if (ret < 0)
-            goto fail;
-    }
-
-    if ((ret = avfilter_graph_create_filter(&sink_ctx, buffersink, "out", NULL, NULL, filter_graph)) < 0)
-        goto fail;
-
-    // hwdownload
-    if ((ret = avfilter_graph_create_filter(&hwdownload_ctx, hwdownload, "hwdownload", NULL, NULL, filter_graph)) < 0)
-        goto fail;
-
-    // выясняем sw_format
-    const AVHWFramesContext *fc = (const AVHWFramesContext *)codec_ctx->hw_frames_ctx->data;
-    enum AVPixelFormat swfmt = fc->sw_format;
-    const char *fmtname = av_get_pix_fmt_name(swfmt);
-    if (!fmtname)
-        fmtname = "nv12"; // fallback
-
-    char fmt_args[64];
-    snprintf(fmt_args, sizeof(fmt_args), "%s", fmtname);
-    if ((ret = avfilter_graph_create_filter(&format_ctx, format, "format", fmt_args, NULL, filter_graph)) < 0)
-        goto fail;
-
-    char drawtext_args[512];
-    snprintf(drawtext_args, sizeof(drawtext_args),
-             "text='%s':fontcolor=white:fontsize=%d:x=%d:y=%d:box=1:boxcolor=black@0.0",
-             text_t->text, text_t->fontsize, text_t->x, text_t->y);
-    if ((ret = avfilter_graph_create_filter(&drawtext_ctx, drawtext, "drawtext", drawtext_args, NULL, filter_graph)) < 0)
-        goto fail;
-
-    if ((ret = avfilter_graph_create_filter(&hwupload_ctx, hwupload, "hwupload", NULL, NULL, filter_graph)) < 0)
-        goto fail;
-    hwupload_ctx->hw_device_ctx = av_buffer_ref(hw_device_ctx);
-
-    // связываем
-    if ((ret = avfilter_link(src_ctx, 0, hwdownload_ctx, 0)) < 0)
-        goto fail;
-    if ((ret = avfilter_link(hwdownload_ctx, 0, format_ctx, 0)) < 0)
-        goto fail;
-    if ((ret = avfilter_link(format_ctx, 0, drawtext_ctx, 0)) < 0)
-        goto fail;
-    if ((ret = avfilter_link(drawtext_ctx, 0, hwupload_ctx, 0)) < 0)
-        goto fail;
-    if ((ret = avfilter_link(hwupload_ctx, 0, sink_ctx, 0)) < 0)
-        goto fail;
-
-    if ((ret = avfilter_graph_config(filter_graph, NULL)) < 0)
-        goto fail;
-
-    *graph = filter_graph;
-    *buffersrc_ctx = src_ctx;
-    *buffersink_ctx = sink_ctx;
-    return 0;
-
-fail:
-    avfilter_graph_free(&filter_graph);
-    return ret;
-}
-
-__attribute__((hot, flatten, warning("imw имеет тестовый вызов функции отображения текста на кадре"))) int imw(rkcv_t *restrict ctx, rkcv_shot_t *restrict ctx_in, s_text_f *text_t)
+__attribute__((deprecated("imw: тестовая неотлаженная функция при передаче параметра наложения текста, использовать с осторожностью")))
+__attribute__((hot, flatten)) int
+imw(rkcv_t *restrict ctx, rkcv_shot_t *restrict ctx_in, s_text_f *text_t)
 {
     if (!ctx_in->frame)
     {
-        log_warn("no input frame");
-        // fprintf(stderr, "imw: no input frame\n");
+        RKX_E_TAG("imw_f", "The input frame is empty.");
         return -1;
     }
-
+#if USE_DRM_BUFFER
     if (ctx_in->frame->format != AV_PIX_FMT_DRM_PRIME)
     {
-        log_warn("expected DRM_PRIME input, got %d", ctx_in->frame->format);
-        // fprintf(stderr, "imw: expected DRM_PRIME input, got %d\n", src->format);
+        RKX_E_TAG("imw_f", "The pixel format is not supported yet %d.", ctx_in->frame->format);
         return -1;
     }
+#endif
 
     if (!ctx->shot->frame)
     {
         ctx->shot->frame = av_frame_alloc();
         if (!ctx->shot->frame)
         {
-            log_error("alloc frame failed");
+            RKX_E_TAG("imw_f", "No memory allocated for the shot frame.");
             return -1;
         }
+        // TODO тоже DRM не всегда есть не у всех форматов
+#if USE_DRM_BUFFER
         ctx->shot->frame->format = AV_PIX_FMT_DRM_PRIME;
+#else
+        ctx->shot->frame->format = ctx->codec_ctx->pix_fmt;
+#endif
         ctx->shot->frame->width = ctx->codec_ctx->width;
         ctx->shot->frame->height = ctx->codec_ctx->height;
     }
     else
     {
-        // av_frame_unref(ctx->shot->frame);
+        av_frame_unref(ctx->shot->frame); // ← ОБЯЗАТЕЛЬНО
+
+        ctx->shot->frame->format =
+#if USE_DRM_BUFFER
+            AV_PIX_FMT_DRM_PRIME;
+#else
+            ctx->codec_ctx->pix_fmt;
+#endif
+        ctx->shot->frame->width = ctx->codec_ctx->width;
+        ctx->shot->frame->height = ctx->codec_ctx->height;
+
         ctx->shot->frame->pts = AV_NOPTS_VALUE;
         ctx->shot->frame->pkt_dts = AV_NOPTS_VALUE;
         ctx->shot->frame->best_effort_timestamp = AV_NOPTS_VALUE;
@@ -664,177 +745,279 @@ __attribute__((hot, flatten, warning("imw имеет тестовый вызов
         ctx->shot->frame->opaque = NULL;
     }
 
+#if USE_DRM_BUFFER
     if (av_hwframe_get_buffer(ctx->codec_ctx->hw_frames_ctx, ctx->shot->frame, 0) < 0)
     {
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
-        log_warn("av_hwframe_get_buffer failed");
+        RKX_E_TAG("imw_f", "av_hwframe_get_buffer failed.");
 #else
-        log_error("bad frame buffer");
+        RKX_E_TAG("imw_f", "Bad frame buffer.");
 #endif
         av_frame_free(&ctx->shot->frame);
         return -1;
     }
+#else
+    if (av_frame_get_buffer(ctx->shot->frame, 32) < 0)
+    {
+        RKX_E_TAG("imw_f", "av_frame_get_buffer failed");
+        return -1;
+    }
+    if (av_frame_make_writable(ctx->shot->frame) < 0)
+    {
+        RKX_E_TAG("imw_f", "writable failed");
+        return -1;
+    }
+#endif
 
+#if USE_DRM_BUFFER
     int fd_in = drmprime_fd_from_frame(ctx_in->frame);
     int fd_out = drmprime_fd_from_frame(ctx->shot->frame);
     if (fd_in < 0 || fd_out < 0)
     {
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
-        log_error("bad drm fd");
+        RKX_E_TAG("imw_f", "bad drm fd.");
 #else
-        log_error("bad frame buffer");
+        RKX_E_TAG("imw_f", "bad frame buffer.");
 #endif
         av_frame_free(&ctx->shot->frame);
         return -1;
     }
-
     ctx_in->c->s.fd = fd_in;
-    ctx_in->c->s.mmuFlag = 1;
     ctx->shot->c->s.fd = fd_out;
+#else
+    ctx_in->c->s.fd = -1;
+    ctx->shot->c->s.fd = -1;
+    ctx_in->c->s.virAddr = ctx_in->frame->data[0];
+    ctx->shot->c->s.virAddr = ctx->shot->frame->data[0];
+#endif
+
+    ctx_in->c->s.mmuFlag = 1;
     ctx->shot->c->s.mmuFlag = 1;
 
-    int src_y_stride, src_hstride, dst_y_stride, dst_hstride;
-    if (ctx_in->frame->format == AV_PIX_FMT_DRM_PRIME)
-    {
-        ctx->shot->c->desc_in = (const AVDRMFrameDescriptor *)ctx_in->frame->data[0];
-        ctx->shot->c->desc_out = (const AVDRMFrameDescriptor *)ctx->shot->frame->data[0];
+    // int src_y_stride, src_hstride, dst_y_stride, dst_hstride;
+    // if (ctx_in->frame->format == AV_PIX_FMT_DRM_PRIME)
+    // {
+    //     ctx_in->c->desc = (const AVDRMFrameDescriptor *)ctx_in->frame->data[0];
+    //     ctx->shot->c->desc = (const AVDRMFrameDescriptor *)ctx->shot->frame->data[0];
 
-        if (ctx->shot->c->desc_in->layers[0].planes[1].pitch)
-        {
-            // YUV/NV12/NV21
-            src_y_stride = ctx->shot->c->desc_in->layers[0].planes[0].pitch;
-            src_hstride = ctx->shot->c->desc_in->layers[0].planes[1].offset / src_y_stride;
-            dst_y_stride = ctx->shot->c->desc_out->layers[0].planes[0].pitch;
-            dst_hstride = ctx->shot->c->desc_out->layers[0].planes[1].offset / dst_y_stride;
-        }
-        else
-        {
-            // RGB
-            src_y_stride = ctx->shot->c->desc_in->layers[0].planes[0].pitch;
-            src_hstride = ctx_in->frame->height; // RGB одна плоскость
-            dst_y_stride = ctx->shot->c->desc_out->layers[0].planes[0].pitch;
-            dst_hstride = ctx->shot->frame->height;
-        }
-    }
+    //     if (ctx_in->c->desc->layers[0].planes[1].pitch)
+    //     {
+    //         // YUV/NV12/NV21
+    //         src_y_stride = ctx_in->c->desc->layers[0].planes[0].pitch;
+    //         src_hstride = ctx_in->c->desc->layers[0].planes[1].offset / src_y_stride;
+    //         dst_y_stride = ctx->shot->c->desc->layers[0].planes[0].pitch;
+    //         dst_hstride = ctx->shot->c->desc->layers[0].planes[1].offset / dst_y_stride;
+    //     }
+    //     else
+    //     {
+    //         // RGB
+    //         src_y_stride = ctx_in->c->desc->layers[0].planes[0].pitch;
+    //         src_hstride = ctx_in->frame->height; // RGB одна плоскость
+    //         dst_y_stride = ctx->shot->c->desc->layers[0].planes[0].pitch;
+    //         dst_hstride = ctx->shot->frame->height;
+    //     }
+    // }
+    // else
+    // {
+    // }
 
     if (!ctx->shot->c->rga_init)
     {
-        if (ctx->shot->c->desc_in->layers[0].planes[1].pitch)
+#if USE_DRM_BUFFER
+        ctx_in->c->desc = (const AVDRMFrameDescriptor *)ctx_in->frame->data[0];
+        ctx->shot->c->desc = (const AVDRMFrameDescriptor *)ctx->shot->frame->data[0];
+        int src_y_stride = ctx_in->c->desc->layers[0].planes[0].pitch;
+        int dst_y_stride = ctx->shot->c->desc->layers[0].planes[0].pitch;
+        int src_hstride =
+            ctx_in->c->desc->layers[0].planes[1].pitch ? ctx_in->c->desc->layers[0].planes[1].offset / src_y_stride : ctx_in->frame->height;
+
+        int dst_hstride =
+            ctx->shot->c->desc->layers[0].planes[1].pitch ? ctx->shot->c->desc->layers[0].planes[1].offset / dst_y_stride : ctx->shot->frame->height;
+        if (ctx->shot->c->desc->layers[0].planes[1].pitch)
             ctx->shot->c->frame_t->fmt = RK_PIX_FMT_YCbCr_420_SP;
         else
             ctx->shot->c->frame_t->fmt = RK_PIX_FMT_RGBA_8888;
+#else
+        ctx_in->c->frame_t->fmt = convert_pix_fmt_from_av(ctx_in->frame->format);
+
+        ctx->shot->c->frame_t->fmt = convert_pix_fmt_from_av(ctx->codec_ctx->pix_fmt);
+
+        int src_y_stride = ctx_in->frame->linesize[0];
+        int dst_y_stride = ctx->shot->frame->linesize[0];
+
+        int src_hstride = ctx_in->frame->height;
+        int dst_hstride = ctx->shot->frame->height;
+#endif
+
         int fmt_local_in = convert_pix_fmt(ctx_in->c->frame_t->fmt, 1);
         int fmt_local_out = convert_pix_fmt(ctx->shot->c->frame_t->fmt, 1);
 
         rga_set_rect(&ctx_in->c->s.rect, 0, 0,
                      ctx_in->c->frame_t->width, ctx_in->c->frame_t->height,
                      src_y_stride, src_hstride, fmt_local_in);
-        log_debug("src frame w=%d h=%d fmt=%d stride=%d",
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+        RKX_D_TAG("imw_f", "src frame w=%d h=%d fmt=%d stride=%d",
                   ctx_in->frame->width, ctx_in->frame->height,
                   ctx_in->frame->format, src_y_stride);
+#endif
 
         rga_set_rect(&ctx->shot->c->s.rect, 0, 0,
                      ctx->codec_ctx->width, ctx->codec_ctx->height,
                      dst_y_stride, dst_hstride, fmt_local_out);
-        log_debug("RGA rect: %d %d %d %d stride=%d fmt=%d",
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+        RKX_D_TAG("imw_f", "RGA rect: %d %d %d %d stride=%d fmt=%d",
                   ctx->shot->c->s.rect.xoffset,
                   ctx->shot->c->s.rect.yoffset,
                   ctx->shot->c->s.rect.width,
                   ctx->shot->c->s.rect.height,
                   ctx->shot->c->s.rect.wstride,
                   ctx->shot->c->s.rect.format);
-
+#endif
+        fprintf(stderr, "RGA in: fmt=%d, out: fmt=%d, codec pix_fmt=%d, frame->format=%d\n",
+                fmt_local_in, fmt_local_out,
+                ctx->codec_ctx->pix_fmt,
+                ctx->shot->frame->format);
         ctx->shot->c->rga_init = 1;
     }
 
-    int ret = c_RkRgaBlit(&ctx_in->c->s, &ctx->shot->c->s, NULL);
+    int ret = RgaBlit(&ctx_in->c->s, &ctx->shot->c->s, NULL);
     if (ret)
     {
 #if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
-        log_error("RGA blit failed: %d", ret);
+        RKX_E_TAG("imw_f", "RGA blit failed: %d", ret);
+        // log_error("RGA blit failed: %d", ret);
 #else
-        log_error("Error transform and write frame");
+        // log_error("Error transform and write frame");
 #endif
         av_frame_free(&ctx->shot->frame); // TODO обработка ошибки не срабатывает
         return -1;
     }
 
-    if (text_t)
-    { // после подготовки ctx->shot->frame
-        static AVFilterGraph *graph = NULL;
-        static AVFilterContext *src_ctx = NULL, *sink_ctx = NULL;
+    if (0)
+    {
+#ifdef USE_CPU_DRAW_TEXT
+        const int W = ctx->codec_ctx->width;
+        const int H = ctx->codec_ctx->height;
 
-        if (!ctx->codec_ctx->hw_device_ctx)
+        // 1) DRM_PRIME -> SW (NV12), получаем кадр с произвольными linesize
+        AVFrame *sw = av_frame_alloc();
+        if (!sw)
+            return -1;
+        sw->format = convert_pix_fmt(ctx->shot->c->frame_t->fmt, 0);
+        sw->width = W;
+        sw->height = H;
+#if USE_DRM_BUFFER
+        if (av_hwframe_transfer_data(sw, ctx->shot->frame, 0) < 0)
         {
-            if (av_hwdevice_ctx_create(&ctx->codec_ctx->hw_device_ctx,
-                                       AV_HWDEVICE_TYPE_DRM, NULL, NULL, 0) < 0)
-            {
-                log_error("Failed to create hw_device_ctx");
-                return -1;
-            }
+            av_frame_free(&sw);
+            return -1;
         }
-
-        if (!ctx->codec_ctx->hw_frames_ctx)
+#endif
+        if (av_frame_make_writable(sw) < 0)
         {
-            AVBufferRef *frames_ref = av_hwframe_ctx_alloc(ctx->codec_ctx->hw_device_ctx);
-            if (!frames_ref)
-            {
-                log_error("Failed to alloc hw_frames_ctx");
-                return -1;
-            }
-            AVHWFramesContext *fc = (AVHWFramesContext *)frames_ref->data;
-            fc->format = AV_PIX_FMT_DRM_PRIME;
-            fc->sw_format = AV_PIX_FMT_NV12;
-            fc->width = ctx->codec_ctx->width;
-            fc->height = ctx->codec_ctx->height;
-            if (av_hwframe_ctx_init(frames_ref) < 0)
-            {
-                log_error("Failed to init hw_frames_ctx");
-                av_buffer_unref(&frames_ref);
-                return -1;
-            }
-            ctx->codec_ctx->hw_frames_ctx = frames_ref;
-        }
-
-        if (!ctx->shot->frame->hw_frames_ctx)
-            ctx->shot->frame->hw_frames_ctx = av_buffer_ref(ctx->codec_ctx->hw_frames_ctx);
-
-        if (!graph)
-        {
-            AVBufferRef *hw_device_ref = av_buffer_ref(ctx->codec_ctx->hw_device_ctx);
-            if (init_text_filter(&graph, &src_ctx, &sink_ctx,
-                                 ctx->codec_ctx, "Demo Text", hw_device_ref, text_t) < 0)
-            {
-                log_error("init_text_filter failed");
-                av_buffer_unref(&hw_device_ref);
-                return -1;
-            }
-            av_buffer_unref(&hw_device_ref);
-        }
-
-        if (av_buffersrc_add_frame_flags(src_ctx, ctx->shot->frame, AV_BUFFERSRC_FLAG_KEEP_REF) < 0)
-        {
-            log_error("add frame to filter failed");
+            av_frame_free(&sw);
             return -1;
         }
 
-        AVFrame *filt_frame = av_frame_alloc();
-        int ret = av_buffersink_get_frame(sink_ctx, filt_frame);
-        if (ret >= 0)
+        image_buffer_t img = {0};
+        img.width = W;
+        img.height = H;
+        img.format = ctx->shot->c->frame_t->fmt;
+        const char *txt = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        const unsigned int clr = RKCOLOR_WHITE;
+        const int fs = 30;
+        uint8_t *tight;
+
+        if (ctx->shot->c->frame_t->fmt == RK_PIX_FMT_YCbCr_420_SP || ctx->shot->c->frame_t->fmt == RK_PIX_FMT_YCrCb_420_SP)
         {
-            av_frame_unref(ctx->shot->frame);
-            av_frame_move_ref(ctx->shot->frame, filt_frame);
+            const int y_size = W * H;
+            const int uv_size = W * (H / 2);
+            const int tight_size = y_size + uv_size;
+
+            tight = av_malloc(tight_size);
+            if (!tight)
+            {
+                av_frame_free(&sw);
+                return -1;
+            }
+            uint8_t *tightY = tight;
+            uint8_t *tightUV = tight + y_size;
+
+            // копия Y
+            for (int y = 0; y < H; y++)
+            {
+                memcpy(tightY + y * W, sw->data[0] + y * sw->linesize[0], W);
+            }
+            // копия UV (по строкам, ширина = W байт)
+            for (int y = 0; y < H / 2; y++)
+            {
+                memcpy(tightUV + y * W, sw->data[1] + y * sw->linesize[1], W);
+            }
+
+            img.virt_addr = tight;
+            img.size = tight_size;
+
+            draw_text(&img, txt, text_t->x, text_t->y, text_t->color, fs);
+
+            // 4) Копия обратно из плотного буфера в sw с учётом linesize
+            for (int y = 0; y < H; y++)
+            {
+                memcpy(sw->data[0] + y * sw->linesize[0], tightY + y * W, W);
+            }
+            for (int y = 0; y < H / 2; y++)
+            {
+                memcpy(sw->data[1] + y * sw->linesize[1], tightUV + y * W, W);
+            }
         }
-        else if (ret != AVERROR(EAGAIN))
+        else
         {
-            log_error("failed to get filtered frame: %d", ret);
+            RKX_F_TAG("imw_f", "Такой формат не поддерживается"); // TODO сделать нормальный механизм защиты
+            abort();
         }
-        av_frame_free(&filt_frame);
+
+        AVFrame *hw_new = av_frame_alloc();
+        if (!hw_new)
+        {
+            av_free(tight);
+            av_frame_free(&sw);
+            return -1;
+        }
+        hw_new->format = AV_PIX_FMT_DRM_PRIME;
+        hw_new->width = W;
+        hw_new->height = H;
+
+        if (av_hwframe_get_buffer(ctx->codec_ctx->hw_frames_ctx, hw_new, 0) < 0)
+        {
+            av_frame_free(&hw_new);
+            av_free(tight);
+            av_frame_free(&sw);
+            return -1;
+        }
+        if (av_hwframe_transfer_data(hw_new, sw, 0) < 0)
+        {
+            av_frame_free(&hw_new);
+            av_free(tight);
+            av_frame_free(&sw);
+            return -1;
+        }
+
+        av_frame_unref(ctx->shot->frame);
+        av_frame_move_ref(ctx->shot->frame, hw_new);
+
+        // 6) Очистка
+        av_frame_free(&hw_new); // после move_ref() он пуст
+        av_free(tight);
+        av_frame_free(&sw);
+#else
+        RKX_F_TAG("imw_t", "There is no text writing module.");
+#endif
     }
 
     if (ctx_in->frame->pts == AV_NOPTS_VALUE || ctx_in->frame->pts < 0)
     {
-        log_warn("Что-то с временными метками, рассчитываю вручную. Могут быть сдвиги в временных метках.");
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+        RKX_W_TAG("imw_t", "Timestamps are broken pts: %d, calc: %d.", ctx_in->frame->pts, ctx->frame_count);
+#endif
         ctx->shot->frame->pts = ctx->frame_count;
     }
     else
@@ -844,6 +1027,17 @@ __attribute__((hot, flatten, warning("imw имеет тестовый вызов
                                              ctx->codec_ctx->time_base);
     }
     ctx->frame_count++;
+    if (!ctx->shot->frame)
+    {
+        fprintf(stderr, "shot->frame is NULL\n");
+        return -1;
+    }
+
+    fprintf(stderr, "send_frame: codec pix_fmt=%d, frame format=%d, w=%d/%d, h=%d/%d\n",
+            ctx->codec_ctx->pix_fmt,
+            ctx->shot->frame->format,
+            ctx->codec_ctx->width, ctx->shot->frame->width,
+            ctx->codec_ctx->height, ctx->shot->frame->height);
 
     ret = avcodec_send_frame(ctx->codec_ctx, ctx->shot->frame);
     if (ret < 0)
@@ -875,7 +1069,7 @@ __attribute__((hot, flatten, warning("imw имеет тестовый вызов
             ctx->shot->frame->best_effort_timestamp = AV_NOPTS_VALUE;
             ctx->shot->frame->duration = 0;
             ctx->shot->frame->opaque = NULL;
-            log_error("Не удалось записать кадр в видео файл.");
+            // log_error("Не удалось записать кадр в видео файл.");
             return -1;
         }
         av_packet_unref(ctx->packet);

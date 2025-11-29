@@ -82,6 +82,22 @@
     "hwcontext_drm.h": "c",
     "vulkan.h": "c",
     "pixfmt.h": "c",
-    "avfilter.h": "c"
+    "avfilter.h": "c",
+    "rkframe.h": "c",
+    "rkutils.h": "c",
+    "rkvideo.h": "c",
+    "ft2build.h": "c",
+    "signal.h": "c",
+    "image_drawing.h": "c",
+    "normalrga.h": "c",
+    "eglext.h": "c",
+    "gl32.h": "c",
+    "normalrgacontext.h": "c",
+    "stddef.h": "c",
+    "drmrga.h": "c",
+    "im2d.h": "c",
+    "im2d_type.h": "c",
+    "string.h": "c",
+    "im2d_buffer.h": "c"
   }
 }

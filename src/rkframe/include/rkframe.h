@@ -7,10 +7,11 @@
 #include <libavcodec/avcodec.h>
 #include <libswscale/swscale.h>
 #include <libavutil/imgutils.h>
-#include <rga/RgaApi.h>
-#include <rga/RgaUtils.h>
+#include <RgaApi.h>
+#include <RgaUtils.h>
 #include "drm/drm_fourcc.h"
 #include "rkdrm.h"
+#include "rkutils.h"
 
 typedef enum
 {
@@ -43,7 +44,7 @@ typedef enum
     RK_PIX_FMT_YCrCb_422_SP_10B,
 } rk_pix_fmt_t;
 
-static inline int convert_pix_fmt(rk_pix_fmt_t fmt, _Bool to_rga)
+__attribute__((pure)) static inline int convert_pix_fmt(rk_pix_fmt_t fmt, _Bool to_rga)
 {
     switch (fmt)
     {
@@ -59,16 +60,16 @@ static inline int convert_pix_fmt(rk_pix_fmt_t fmt, _Bool to_rga)
         return to_rga ? RK_FORMAT_BGR_888 : AV_PIX_FMT_BGR24;
     case RK_PIX_FMT_RGB_565:
         return to_rga ? RK_FORMAT_RGB_565 : AV_PIX_FMT_RGB565LE;
-    case RK_PIX_FMT_BGR_565:
-        return to_rga ? RK_FORMAT_BGR_565 : AV_PIX_FMT_BGR565LE;
-    case RK_PIX_FMT_ARGB_8888:
-        return to_rga ? RK_FORMAT_ARGB_8888 : AV_PIX_FMT_ARGB;
-    case RK_PIX_FMT_ABGR_8888:
-        return to_rga ? RK_FORMAT_ABGR_8888 : AV_PIX_FMT_ABGR;
-    case RK_PIX_FMT_XRGB_8888:
-        return to_rga ? RK_FORMAT_XRGB_8888 : AV_PIX_FMT_0RGB;
-    case RK_PIX_FMT_XBGR_8888:
-        return to_rga ? RK_FORMAT_XBGR_8888 : AV_PIX_FMT_0BGR;
+        // case RK_PIX_FMT_BGR_565:
+        //     return to_rga ? RK_FORMAT_BGR_565 : AV_PIX_FMT_BGR565LE;
+        // case RK_PIX_FMT_ARGB_8888:
+        //     return to_rga ? RK_FORMAT_ARGB_8888 : AV_PIX_FMT_ARGB;
+        // case RK_PIX_FMT_ABGR_8888:
+        //     return to_rga ? RK_FORMAT_ABGR_8888 : AV_PIX_FMT_ABGR;
+        // case RK_PIX_FMT_XRGB_8888:
+        //     return to_rga ? RK_FORMAT_XRGB_8888 : AV_PIX_FMT_0RGB;
+        // case RK_PIX_FMT_XBGR_8888:
+        //     return to_rga ? RK_FORMAT_XBGR_8888 : AV_PIX_FMT_0BGR;
 
     case RK_PIX_FMT_YCbCr_420_P:
         return to_rga ? RK_FORMAT_YCbCr_420_P : AV_PIX_FMT_YUV420P;
@@ -80,32 +81,32 @@ static inline int convert_pix_fmt(rk_pix_fmt_t fmt, _Bool to_rga)
         return to_rga ? RK_FORMAT_YCbCr_422_P : AV_PIX_FMT_YUV422P;
     case RK_PIX_FMT_YCbCr_422_SP:
         return to_rga ? RK_FORMAT_YCbCr_422_SP : AV_PIX_FMT_NV16;
-    // case RK_PIX_FMT_YCrCb_422_SP:
-    //     return to_rga ? RK_FORMAT_YCrCb_422_SP : AV_PIX_FMT_NV61;
-    case RK_PIX_FMT_YCbCr_400:
-        return to_rga ? RK_FORMAT_YCbCr_400 : AV_PIX_FMT_GRAY8;
-    case RK_PIX_FMT_YUYV_422:
-        return to_rga ? RK_FORMAT_YUYV_422 : AV_PIX_FMT_YUYV422;
-    case RK_PIX_FMT_UYVY_422:
-        return to_rga ? RK_FORMAT_UYVY_422 : AV_PIX_FMT_UYVY422;
-    case RK_PIX_FMT_YVYU_422:
-        return to_rga ? RK_FORMAT_YVYU_422 : AV_PIX_FMT_YVYU422;
+        // case RK_PIX_FMT_YCrCb_422_SP:
+        //     return to_rga ? RK_FORMAT_YCrCb_422_SP : AV_PIX_FMT_NV61;
+        // case RK_PIX_FMT_YCbCr_400:
+        //     return to_rga ? RK_FORMAT_YCbCr_400 : AV_PIX_FMT_GRAY8;
+        // case RK_PIX_FMT_YUYV_422:
+        //     return to_rga ? RK_FORMAT_YUYV_422 : AV_PIX_FMT_YUYV422;
+        // case RK_PIX_FMT_UYVY_422:
+        //     return to_rga ? RK_FORMAT_UYVY_422 : AV_PIX_FMT_UYVY422;
+        // case RK_PIX_FMT_YVYU_422:
+        //     return to_rga ? RK_FORMAT_YVYU_422 : AV_PIX_FMT_YVYU422;
 
     case RK_PIX_FMT_YCbCr_420_SP_10B:
         return to_rga ? RK_FORMAT_YCbCr_420_SP_10B : AV_PIX_FMT_P010LE;
     case RK_PIX_FMT_YCrCb_420_SP_10B:
-        return to_rga ? RK_FORMAT_YCrCb_420_SP_10B : AV_PIX_FMT_P010LE;
-    case RK_PIX_FMT_YCbCr_422_SP_10B:
-        return to_rga ? RK_FORMAT_YCbCr_422_SP_10B : AV_PIX_FMT_P210LE;
-    case RK_PIX_FMT_YCrCb_422_SP_10B:
-        return to_rga ? RK_FORMAT_YCrCb_422_SP_10B : AV_PIX_FMT_P210LE;
+        //     return to_rga ? RK_FORMAT_YCrCb_420_SP_10B : AV_PIX_FMT_P010LE;
+        // case RK_PIX_FMT_YCbCr_422_SP_10B:
+        //     return to_rga ? RK_FORMAT_YCbCr_422_SP_10B : AV_PIX_FMT_P210LE;
+        // case RK_PIX_FMT_YCrCb_422_SP_10B:
+        //     return to_rga ? RK_FORMAT_YCrCb_422_SP_10B : AV_PIX_FMT_P210LE;
 
     default:
         return -1;
     }
 }
 
-static inline int8_t convert_pix_fmt_from_av(int fmt)
+__attribute__((pure)) static inline int8_t convert_pix_fmt_from_av(int fmt)
 {
     switch (fmt)
     {
@@ -163,7 +164,7 @@ static inline int8_t convert_pix_fmt_from_av(int fmt)
     }
 }
 
-static inline int8_t convert_pix_fmt_from_drm(uint32_t drm_fmt)
+__attribute__((pure)) static inline int8_t convert_pix_fmt_from_drm(uint32_t drm_fmt)
 {
     switch (drm_fmt)
     {
@@ -235,35 +236,48 @@ enum RK_FILTERS
     RK_GAUSS
 };
 
-typedef struct
+typedef enum
+{
+    RK_TYPE_SOURCE_VIDEO,
+    RK_TYPE_SOURCE_RTSP,
+    RK_TYPE_SOURCE_IMAGE
+} RK_TYPE_SOURCE;
+
+typedef struct __attribute__((packed, aligned(8))) info_frame_s
 {
     int width;
     int height;
     rk_pix_fmt_t fmt;
+    int rot;
+    int flip;
 } info_frame_t;
 
-typedef struct
+typedef struct __attribute__((packed, aligned(8))) s_text_s
 {
     char *text;
     int x;
     int y;
     int fontsize;
+    unsigned int color;
 } s_text_f;
 
-typedef struct __attribute__((aligned(64)))
+typedef struct __attribute__((aligned(64))) s_convert_s
 {
-    info_frame_t *frame_t;
-    int rot;
-    int flip;
-    rga_info_t s;
-    rga_info_t d;
     _Bool rga_init;
+    info_frame_t *frame_t;
+    rga_info_t s;
     AVRational time_base;
-    const AVDRMFrameDescriptor *desc_in;
-    const AVDRMFrameDescriptor *desc_out;
+    const AVDRMFrameDescriptor *desc;
+    // const AVDRMFrameDescriptor *desc_out;
 } s_convert_f;
 
-typedef struct
+typedef struct __attribute__((aligned(64))) s_transform_s
+{
+    int flip;
+    int rot;
+} s_transform_t;
+
+typedef struct __attribute__((aligned(64))) rkcv_shot_s
 {
     enum RK_FILTERS filter_t;
     s_convert_f *c;
@@ -271,9 +285,11 @@ typedef struct
     AVBufferRef *drm_hwdev;
 } rkcv_shot_t;
 
-rkcv_shot_t *nshot(info_frame_t *frame_t);
-
-// rkcv_shot_t *nshot(int width, int height, rk_pix_fmt_t sw_fmt);
+__attribute__((deprecated("nshot: тестовая неотлаженная функция, использовать с осторожностью")))
+rkcv_shot_t *
+nshot(const info_frame_t *in_frame);
 void free_shot(rkcv_shot_t *shot);
+
+int imt(rkcv_shot_t *restrict ctx, rkcv_shot_t *restrict ctx_out);
 
 #endif

@@ -1,96 +1,72 @@
 #include "rkframe.h"
 
-// rkcv_shot_t *nshot(int width, int height, rk_pix_fmt_t sw_fmt)
-rkcv_shot_t *nshot(info_frame_t *frame_t)
+__attribute__((deprecated("nshot: тестовая неотлаженная функция, использовать с осторожностью"))) rkcv_shot_t *nshot(const info_frame_t *in_frame)
 {
+    if (!in_frame)
+        return NULL;
+
+    info_frame_t frame = *in_frame;
+
+    frame.width = (frame.width + 15) & ~15;
+    frame.height = frame.height & ~1;
+
     rkcv_shot_t *temp = calloc(1, sizeof(*temp));
-    if (!temp)
+    if (unlikely(!temp))
         return NULL;
 
-    temp->c = calloc(1, sizeof(s_convert_f));
-    if (!temp->c)
-    {
-        free(temp);
-        return NULL;
-    }
+    temp->c = calloc(1, sizeof(*temp->c) + sizeof(info_frame_t));
+    if (unlikely(!temp->c))
+        goto cleanup;
 
-    temp->c->frame_t = calloc(1, sizeof(info_frame_t));
-    if (!temp->c->frame_t)
-    {
-        free(temp);
-        return NULL;
-    }
+    // Указатель на info_frame_t идёт сразу после структуры
+    temp->c->frame_t = (info_frame_t *)(temp->c + 1);
+    *temp->c->frame_t = frame;
 
     temp->frame = av_frame_alloc();
-    if (!temp->frame)
-    {
-        free(temp->c);
-        free(temp);
-        return NULL;
-    }
+    if (unlikely(!temp->frame))
+        goto cleanup;
 
-    // --- создаём HW device и frame context ---
     AVBufferRef *hw_dev = NULL;
-    if (av_hwdevice_ctx_create(&hw_dev, AV_HWDEVICE_TYPE_RKMPP, NULL, NULL, 0) < 0)
-    {
-        fprintf(stderr, "av_hwdevice_ctx_create(RKMPP) failed\n");
-        goto fail;
-    }
+    if (unlikely(av_hwdevice_ctx_create(&hw_dev, AV_HWDEVICE_TYPE_RKMPP, NULL, NULL, 0) < 0))
+        goto cleanup;
 
     AVBufferRef *hw_frames = av_hwframe_ctx_alloc(hw_dev);
-    if (!hw_frames)
-    {
-        fprintf(stderr, "av_hwframe_ctx_alloc failed\n");
-        goto fail_dev;
-    }
-
-    if (frame_t->width % 16)
-        frame_t->width = (frame_t->width + 15) & ~15;
-    if (frame_t->height % 2)
-        frame_t->height &= ~1;
+    if (unlikely(!hw_frames))
+        goto cleanup;
 
     AVHWFramesContext *fc = (AVHWFramesContext *)hw_frames->data;
-    fc->format = AV_PIX_FMT_DRM_PRIME;                // аппаратный формат
-    fc->sw_format = convert_pix_fmt(frame_t->fmt, 0); // программный (например, NV12 или RGB)
-    fc->width = frame_t->width;
-    fc->height = frame_t->height;
+    fc->format = AV_PIX_FMT_DRM_PRIME;
+    fc->sw_format = convert_pix_fmt(frame.fmt, 0);
+    fc->width = frame.width;
+    fc->height = frame.height;
     fc->initial_pool_size = 2;
 
-    if (av_hwframe_ctx_init(hw_frames) < 0)
-    {
-        fprintf(stderr, "av_hwframe_ctx_init failed\n");
-        goto fail_frames;
-    }
+    if (unlikely(av_hwframe_ctx_init(hw_frames) < 0))
+        goto cleanup;
 
-    // --- выделяем сам буфер ---
-    if (av_hwframe_get_buffer(hw_frames, temp->frame, 0) < 0)
-    {
-        fprintf(stderr, "av_hwframe_get_buffer failed\n");
-        goto fail_frames;
-    }
+    if (unlikely(av_hwframe_get_buffer(hw_frames, temp->frame, 0) < 0))
+        goto cleanup;
 
-    // теперь temp->frame уже содержит DRM fd
-    // int fd = drmprime_fd_from_frame(temp->frame);
-    // temp->c->s.fd = fd;
-    // temp->c->s.mmuFlag = 1;
-    temp->c->frame_t->fmt = frame_t->fmt; // пример для NV12
-    temp->c->frame_t->width = frame_t->width;
-    temp->c->frame_t->height = frame_t->height;
+    temp->c->desc = (const AVDRMFrameDescriptor *)temp->frame->data[0];
 
-    temp->c->desc_in = (const AVDRMFrameDescriptor *)temp->frame->data[0];
+#if defined(RKLOG_ENABLE) && defined(BUILD_DEV)
+    // log_debug("Создался shot %dx%d fmt=%d", frame.width, frame.height, frame.fmt);
+#endif
 
     av_buffer_unref(&hw_frames);
     av_buffer_unref(&hw_dev);
     return temp;
 
-fail_frames:
-    av_buffer_unref(&hw_frames);
-fail_dev:
-    av_buffer_unref(&hw_dev);
-fail:
-    av_frame_free(&temp->frame);
-    free(temp->c);
-    free(temp);
+cleanup:
+    if (temp)
+    {
+        av_frame_free(&temp->frame);
+        if (temp->c)
+            free(temp->c);
+        free(temp);
+    }
+    if (hw_dev)
+        av_buffer_unref(&hw_dev);
     return NULL;
 }
 
